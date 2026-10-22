@@ -33,7 +33,7 @@ def build():
         return f"{m.group(1)}17pt/1 {m.group(2)}"
     tiles = ''.join(f'''<div style="background:{LOOK[k]['bg']};color:{LOOK[k]['fg']};padding:3.5mm;display:flex;flex-direction:column;justify-content:space-between;min-height:31mm;border:.5pt solid rgba(0,0,0,.1)">
  <span style="font:500 6.5pt var(--fm);opacity:.6">{i+1:02d}</span><span style="font:{tfont(k)};color:{LOOK[k]['acc'] if k not in ('rococo','naive') else LOOK[k]['fg']}">{LOOK[k]['title']}</span></div>''' for i, k in enumerate(ORDER))
-    cover = f'''<p class="kick">Памятка 04 из 08</p>
+    cover = f'''<p class="kick">Памятка 04 из 09</p>
 <h1 style="font-size:70pt">Тренды 2026</h1>
 <p class="lead" style="margin-bottom:8mm">Девять визуальных направлений для лендингов. На каждой странице: что это, признаки, где работает и где нет, палитра, шрифты, пример из набора и блок стиля для промпта.</p>
 <div class="g3" style="gap:4mm">{tiles}</div>

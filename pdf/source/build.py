@@ -17,6 +17,7 @@ MEMOS = [
  ('m06_launch', '06-zapusk-v-rossii.pdf'),
  ('m07_fonts', '07-shrifty-i-animacii.pdf'),
  ('m08_glossary', '08-slovar.pdf'),
+ ('m09_setup', '09-ustanovka.pdf'),
 ]
 
 def main(only):

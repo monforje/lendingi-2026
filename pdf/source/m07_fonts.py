@@ -17,7 +17,7 @@ def build():
     spec = ''.join(f'<div style="border-top:.8pt solid var(--line);padding-top:2mm"><div style="font:{f};line-height:1.15;white-space:nowrap;overflow:hidden">{w}</div><div class="mono" style="font-size:6.8pt;opacity:.6;margin-top:1mm">{n}</div></div>' for n, f, w in SPEC[:12])
     pairs = ''.join(f'<tr><td>{a}</td><td>{html.escape(b)}</td></tr>' for a, b in G.PAIRS[:9])
     found = ''.join(f'<div style="margin-bottom:1.6mm"><a href="{u}"><b>{n}</b></a> <span class="muted">{html.escape(d)}</span></div>' for n, u, d in G.FOUNDRIES[:5])
-    p1 = f'''<p class="kick">Памятка 07 из 08</p>
+    p1 = f'''<p class="kick">Памятка 07 из 09</p>
 <h1 style="font-size:42pt">Шрифты и анимации</h1>
 <p class="lead" style="margin-bottom:5mm;font-size:12pt">Шрифт делает половину стиля. Все шрифты ниже бесплатные, с кириллицей, лежат в папке assets/fonts и на Google Fonts.</p>
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm 5mm;margin-bottom:6mm">{spec}</div>

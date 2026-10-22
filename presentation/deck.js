@@ -105,7 +105,7 @@
   });
   // свайпы
   let tx=null,ty=null;
-  addEventListener('touchstart',e=>{document.body.classList.add('touch');tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+  let uiT=null;addEventListener('touchstart',e=>{document.body.classList.add('touch');clearTimeout(uiT);uiT=setTimeout(()=>{if(!document.querySelector('#ui:focus-within'))document.body.classList.remove('touch')},3500);tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
   addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))go(cur+(dx<0?1:-1));tx=null},{passive:true});
 
   // подсказка

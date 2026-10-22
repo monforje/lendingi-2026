@@ -58,7 +58,7 @@ def secs(lst, start):
     return out
 
 def build():
-    p1 = f'''<p class="kick">Памятка 02 из 08</p>
+    p1 = f'''<p class="kick">Памятка 02 из 09</p>
 <h1 style="font-size:46pt">Хороший лендинг: 40 пунктов</h1>
 <p class="lead" style="margin-bottom:7mm">Пройдите перед тем, как показывать сайт клиенту или запускать рекламу. Распечатайте и ставьте галочки ручкой.</p>
 <div class="g2" style="gap:8mm">

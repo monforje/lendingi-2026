@@ -13,7 +13,7 @@ def build():
     half = (len(items) + 1) // 2
     def col(lst):
         return ''.join(f'<div style="border-top:.8pt solid var(--line);padding:2.2mm 0;break-inside:avoid"><b style="font:700 10pt/1.2 var(--fd)">{html.escape(t)}</b><div style="font-size:9pt;line-height:1.38;margin-top:.8mm">{html.escape(d[0].upper()+d[1:])}</div></div>' for t, d in lst)
-    p1 = f'''<p class="kick">Памятка 08 из 08</p>
+    p1 = f'''<p class="kick">Памятка 08 из 09</p>
 <h1 style="font-size:54pt">Словарь</h1>
 <p class="lead" style="margin-bottom:5mm">{len(items)} слов, которые вы услышите от разработчиков, дизайнеров и нейросетей.</p>
 <div class="g2" style="gap:8mm">{'<div>'+col(items[:10])+'</div><div>'+col(items[10:20])+'</div>'}</div>'''

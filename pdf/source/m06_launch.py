@@ -23,7 +23,7 @@ def build():
     col = {'ok': 'var(--blue)', 'warn': '#B08000', 'bad': 'var(--signal)'}
     rows = ''.join(f'<tr><td><b>{a}</b></td><td class="mono" style="font-size:8pt">{b}</td><td style="color:{col[c]}">{d}</td></tr>' for a, b, d, c in PLAT)
     dep = ''.join(f'<div class="cell"><span class="k">{i+1:02d}</span><b style="font-size:9.5pt">{h}</b><p style="font-size:8.3pt;margin-top:1mm">{md(x)}</p></div>' for i,(h, x) in enumerate(DEPLOY))
-    p1 = f'''<p class="kick">Памятка 06 из 08</p>
+    p1 = f'''<p class="kick">Памятка 06 из 09</p>
 <h1 style="font-size:44pt">Запуск в России</h1>
 <p class="lead" style="margin-bottom:5mm;font-size:12pt">Чтобы сайт увидели, нужны адрес, место для файлов и публикация. В России к этому добавляются блокировки зарубежных платформ и закон о персональных данных.</p>
 <div style="display:grid;grid-template-columns:1fr 8mm 1fr 8mm 1fr;align-items:stretch;margin-bottom:6mm">

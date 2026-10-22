@@ -1,7 +1,7 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Набор лектора Медиаком</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 /* Стартовая страница архива. Бумага, чернила, ультрамарин, как в презентации. */
@@ -53,13 +53,33 @@ kbd{font:500 13px var(--f-m);border:1px solid var(--line);padding:1px 6px;border
 a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 @media (max-width:900px){.memos{grid-template-columns:1fr 1fr}.main{grid-template-columns:1fr}.sites{grid-template-columns:1fr 1fr}.refs{grid-template-columns:repeat(3,1fr)}.howto{grid-template-columns:1fr}}
 @media (max-width:480px){.sites{grid-template-columns:1fr}}
+
+.setup{margin-bottom:56px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{font:600 15px var(--f-t);padding:10px 18px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;min-height:44px}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.pane{display:none}.pane.on{display:block}
+.pane ol{margin:0 0 14px;padding-left:22px;max-width:70ch}.pane li{margin:4px 0}
+.cmd{display:flex;align-items:stretch;background:#121212;color:#C6F432;margin:10px 0;max-width:100%}
+.cmd code{flex:1;min-width:0;font:500 15px/1.45 var(--f-m);padding:14px 16px;overflow-x:auto;white-space:pre}
+.cmd button{flex:none;font:700 14px var(--f-t);background:var(--lime);color:#121212;border:0;padding:0 18px;cursor:pointer;min-width:110px}
+.cmd button.done{background:#fff}
+details.full{margin-top:10px}details.full summary{cursor:pointer;font-weight:600;padding:8px 0}
+details.full pre{background:var(--card);border:1px solid var(--line);padding:14px;font:13px/1.45 var(--f-m);overflow:auto;max-height:420px;white-space:pre}
+.note{font-size:15px;color:var(--ink2);max-width:70ch}
+.links{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:56px}
+.links a{display:flex;flex-direction:column;gap:4px;padding:16px;background:var(--card);border-top:3px solid var(--blue);text-decoration:none;color:inherit;min-width:0}
+.links b{font:700 17px/1.2 var(--f-t)}.links span{font-size:14px;color:var(--ink2)}
+.links small{font:500 12px var(--f-m);color:var(--blue);overflow-wrap:anywhere}
+@media (max-width:900px){.links{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.links{grid-template-columns:1fr}.cmd{flex-direction:column}.cmd button{min-height:44px}.cmd code{font-size:13px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 <div class="wrap">
   <div class="top"><span>Лекция для Медиакома</span><span>Даниил Комаров · октябрь 2026</span></div>
   <h1>Сайты, что продают</h1>
-  <p class="lead">Набор лектора: презентация, сквозной бриф для интерактива, сценарий пары на бумаге, восемь живых сайтов в трендах 2026, гайдбук с референсами и промптами, восемь PDF-памяток, шрифты и библиотеки анимаций. Всё работает без интернета.</p>
+  <p class="lead">Набор лектора: презентация, сквозной бриф для интерактива, сценарий пары на бумаге, восемь живых сайтов в трендах 2026, гайдбук с референсами и промптами, скрипты установки, девять PDF-памяток, шрифты и библиотеки анимаций. Всё работает без интернета.</p>
 
   <div class="main">
     <a class="big deck" href="presentation/index.html"><span>Открыть первым</span><b>Презентация, 95 слайдов</b><p>Стрелки или свайп для перелистывания. <kbd>N</kbd> заметки лектора, <kbd>M</kbd> оглавление, <kbd>F</kbd> полный экран.</p></a>
@@ -70,9 +90,360 @@ a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
     <a class="big scen" href="pdf/00-scenarij-lektora.pdf"><span>Только для лектора, распечатать</span><b>Сценарий пары</b><p>10 страниц А4: тайминг, что говорить, когда заполнять бриф, истории, практика с GitHub Pages, ответы на вопросы и рабочий лист для группы.</p></a>
   </div>
 
+  <h2 id="setup">Подготовка компьютера</h2>
+  <p class="lead" style="margin-bottom:20px">Один скрипт ставит Git, Node.js LTS (node, npm, npx) и VS Code, прописывает PATH и настраивает Git. После него откройте новый терминал, и всё работает.</p>
+  <div class="setup">
+    <div class="tabs" role="tablist">
+      <button role="tab" aria-selected="true" data-tab="win">Windows</button>
+      <button role="tab" aria-selected="false" data-tab="mac">macOS</button>
+      <button role="tab" aria-selected="false" data-tab="lin">Linux</button>
+    </div>
+    <div class="pane on" id="p-win">
+      <ol><li>Нажмите Win, наберите <b>PowerShell</b>, откройте.</li><li>Скопируйте команду, вставьте правой кнопкой мыши, нажмите Enter.</li><li>Разрешите установку, если Windows спросит. Введите имя и email от GitHub.</li><li>Закройте окно, откройте новое и проверьте: <code>node -v</code></li></ol>
+      <div class="cmd"><code>irm https://monforje.github.io/lendingi-2026/setup/win.txt | iex</code><button type="button" data-copy="irm https://monforje.github.io/lendingi-2026/setup/win.txt | iex">Копировать</button></div>
+      <p class="note">Нужен Windows 10 или 11. Скрипт использует winget, а если его нет, качает установщики с официальных сайтов. Ошибка «выполнение сценариев отключено» больше не появится: скрипт разрешает npm запускаться в PowerShell.</p>
+      <details class="full"><summary>Показать весь скрипт</summary><pre># Lending kit setup for Windows 10/11: Git, Node.js LTS, VS Code, PATH.
+# Run in PowerShell (not as admin needed, Windows will ask for permission itself):
+#   irm https://monforje.github.io/lendingi-2026/setup/win.txt | iex
+
+$ErrorActionPreference = &#x27;Stop&#x27;
+try { [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 } catch {}
+
+function Say($t) { Write-Host &quot;`n== $t&quot; -ForegroundColor Cyan }
+function Ok($t)  { Write-Host &quot;   OK  $t&quot; -ForegroundColor Green }
+function Warn($t){ Write-Host &quot;   !!  $t&quot; -ForegroundColor Yellow }
+function Has($c) { [bool](Get-Command $c -ErrorAction SilentlyContinue) }
+function Refresh-Path {
+  $m = [Environment]::GetEnvironmentVariable(&#x27;Path&#x27;,&#x27;Machine&#x27;)
+  $u = [Environment]::GetEnvironmentVariable(&#x27;Path&#x27;,&#x27;User&#x27;)
+  $env:Path = ($m + &#x27;;&#x27; + $u)
+}
+function Add-UserPath($dir) {
+  if (-not (Test-Path $dir)) { return }
+  $u = [Environment]::GetEnvironmentVariable(&#x27;Path&#x27;,&#x27;User&#x27;); if (-not $u) { $u = &#x27;&#x27; }
+  if (($u -split &#x27;;&#x27;) -notcontains $dir) {
+    [Environment]::SetEnvironmentVariable(&#x27;Path&#x27;, ($u.TrimEnd(&#x27;;&#x27;) + &#x27;;&#x27; + $dir).TrimStart(&#x27;;&#x27;), &#x27;User&#x27;)
+    Ok &quot;PATH += $dir&quot;
+  }
+}
+$HasWinget = Has winget
+function WG($id) {
+  winget install -e --id $id --silent --accept-source-agreements --accept-package-agreements
+  if ($LASTEXITCODE -ne 0 -and $LASTEXITCODE -ne -1978335189) { throw &quot;winget $id exit $LASTEXITCODE&quot; }
+}
+function Download($url, $out) {
+  Write-Host &quot;   download $url&quot;
+  Invoke-WebRequest -UseBasicParsing -Uri $url -OutFile $out
+}
+
+Write-Host &quot;Lending kit setup: Git + Node.js LTS + VS Code&quot; -ForegroundColor Cyan
+if (-not $HasWinget) { Warn &quot;winget not found, using direct downloads&quot; }
+
+# 1. Git
+Say &quot;Git&quot;
+Refresh-Path
+if (Has git) { Ok (git --version) } else {
+  try {
+    if ($HasWinget) { WG &#x27;Git.Git&#x27; } else { throw &#x27;no winget&#x27; }
+  } catch {
+    $rel = Invoke-RestMethod &#x27;https://api.github.com/repos/git-for-windows/git/releases/latest&#x27;
+    $arch = if ($env:PROCESSOR_ARCHITECTURE -eq &#x27;ARM64&#x27;) { &#x27;arm64&#x27; } else { &#x27;64-bit&#x27; }
+    $asset = $rel.assets | Where-Object { $_.name -match &quot;^Git-.*-$arch\.exe$&quot; } | Select-Object -First 1
+    $exe = Join-Path $env:TEMP $asset.name
+    Download $asset.browser_download_url $exe
+    Start-Process $exe -ArgumentList &#x27;/VERYSILENT&#x27;,&#x27;/NORESTART&#x27;,&#x27;/SP-&#x27; -Verb RunAs -Wait
+  }
+  Add-UserPath &quot;$env:ProgramFiles\Git\cmd&quot;
+  Refresh-Path
+  if (Has git) { Ok (git --version) } else { Warn &quot;Git installed, open a new terminal&quot; }
+}
+
+# 2. Node.js LTS (node + npm + npx)
+Say &quot;Node.js LTS&quot;
+if (Has node) { Ok (&quot;node &quot; + (node -v)) } else {
+  try {
+    if ($HasWinget) { WG &#x27;OpenJS.NodeJS.LTS&#x27; } else { throw &#x27;no winget&#x27; }
+  } catch {
+    $lts = (Invoke-RestMethod &#x27;https://nodejs.org/dist/index.json&#x27; | Where-Object { $_.lts } | Select-Object -First 1).version
+    $arch = if ($env:PROCESSOR_ARCHITECTURE -eq &#x27;ARM64&#x27;) { &#x27;arm64&#x27; } else { &#x27;x64&#x27; }
+    $msi = Join-Path $env:TEMP &quot;node-$lts-$arch.msi&quot;
+    Download &quot;https://nodejs.org/dist/$lts/node-$lts-$arch.msi&quot; $msi
+    Start-Process msiexec.exe -ArgumentList &#x27;/i&#x27;, &quot;`&quot;$msi`&quot;&quot;, &#x27;/qn&#x27;, &#x27;/norestart&#x27; -Verb RunAs -Wait
+  }
+  Refresh-Path
+}
+Add-UserPath &quot;$env:ProgramFiles\nodejs&quot;
+Add-UserPath &quot;$env:APPDATA\npm&quot;
+New-Item -ItemType Directory -Force &quot;$env:APPDATA\npm&quot; | Out-Null
+Refresh-Path
+if (Has node) { Ok (&quot;node &quot; + (node -v) + &quot;, npm &quot; + (npm -v)) } else { Warn &quot;Node installed, open a new terminal&quot; }
+
+# npm scripts (*.ps1) are blocked by default on Windows. Allow local scripts for this user only.
+try {
+  if ((Get-ExecutionPolicy -Scope CurrentUser) -in &#x27;Undefined&#x27;,&#x27;Restricted&#x27;,&#x27;AllSigned&#x27;) {
+    Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force
+    Ok &quot;ExecutionPolicy CurrentUser = RemoteSigned (npm, npx work in PowerShell)&quot;
+  }
+} catch { Warn &quot;Could not change ExecutionPolicy: $($_.Exception.Message)&quot; }
+
+# 3. VS Code
+Say &quot;VS Code&quot;
+if (Has code) { Ok &quot;VS Code already installed&quot; } else {
+  try {
+    if ($HasWinget) { WG &#x27;Microsoft.VisualStudioCode&#x27; } else { throw &#x27;no winget&#x27; }
+  } catch {
+    $exe = Join-Path $env:TEMP &#x27;VSCodeUserSetup.exe&#x27;
+    $a = if ($env:PROCESSOR_ARCHITECTURE -eq &#x27;ARM64&#x27;) { &#x27;win32-arm64-user&#x27; } else { &#x27;win32-x64-user&#x27; }
+    Download &quot;https://update.code.visualstudio.com/latest/$a/stable&quot; $exe
+    Start-Process $exe -ArgumentList &#x27;/VERYSILENT&#x27;,&#x27;/NORESTART&#x27;,&#x27;/MERGETASKS=!runcode,addcontextmenufiles,addcontextmenufolders,addtopath&#x27; -Wait
+  }
+  Add-UserPath &quot;$env:LOCALAPPDATA\Programs\Microsoft VS Code\bin&quot;
+  Refresh-Path
+  if (Has code) { Ok &quot;VS Code installed&quot; } else { Warn &quot;VS Code installed, open a new terminal&quot; }
+}
+
+# 4. Git settings
+Say &quot;Git settings&quot;
+if (Has git) {
+  git config --global init.defaultBranch main
+  git config --global core.autocrlf true
+  if (-not (git config --global user.name)) {
+    $n = Read-Host &quot;   Your name for commits (Enter = skip)&quot;
+    if ($n) { git config --global user.name &quot;$n&quot; }
+  }
+  if (-not (git config --global user.email)) {
+    $e = Read-Host &quot;   Email from GitHub (Enter = skip)&quot;
+    if ($e) { git config --global user.email &quot;$e&quot; }
+  }
+  Ok &quot;branch main, user: $(git config --global user.name) &lt;$(git config --global user.email)&gt;&quot;
+}
+
+Say &quot;Done&quot;
+foreach ($c in &#x27;git&#x27;,&#x27;node&#x27;,&#x27;npm&#x27;,&#x27;code&#x27;) {
+  if (Has $c) { Ok &quot;$c found&quot; } else { Warn &quot;$c not found yet&quot; }
+}
+Write-Host &quot;`nClose this window and open a NEW terminal. Then check: node -v; npm -v; git --version&quot; -ForegroundColor Green
+</pre></details>
+    </div>
+    <div class="pane" id="p-mac">
+      <ol><li>Cmd + Пробел, наберите <b>Терминал</b>, откройте.</li><li>Вставьте команду, нажмите Enter.</li><li>Если появится окно «Инструменты командной строки», нажмите «Установить» и дождитесь конца.</li><li>Откройте новое окно Терминала и проверьте: <code>node -v</code></li></ol>
+      <div class="cmd"><code>curl -fsSL https://monforje.github.io/lendingi-2026/setup/install.sh | bash</code><button type="button" data-copy="curl -fsSL https://monforje.github.io/lendingi-2026/setup/install.sh | bash">Копировать</button></div>
+      <p class="note">Node ставится через nvm, без sudo. Обновить потом: <code>nvm install --lts</code>. VS Code ставится через Homebrew, если он есть, иначе скачайте по ссылке ниже.</p>
+      <details class="full"><summary>Показать весь скрипт</summary><pre>#!/usr/bin/env bash
+# Lending kit setup for macOS and Linux: Git, Node.js LTS (via nvm), PATH in your shell profile.
+# Run in Terminal:
+#   curl -fsSL https://monforje.github.io/lendingi-2026/setup/install.sh | bash
+set -euo pipefail
+
+say()  { printf &#x27;\n\033[1;36m== %s\033[0m\n&#x27; &quot;$1&quot;; }
+ok()   { printf &#x27;   \033[32mOK\033[0m  %s\n&#x27; &quot;$1&quot;; }
+warn() { printf &#x27;   \033[33m!!\033[0m  %s\n&#x27; &quot;$1&quot;; }
+has()  { command -v &quot;$1&quot; &gt;/dev/null 2&gt;&amp;1; }
+ask()  { local a=&quot;&quot;; if [ -r /dev/tty ]; then read -r -p &quot;   $1&quot; a &lt;/dev/tty || true; fi; printf &#x27;%s&#x27; &quot;$a&quot;; }
+
+OS=&quot;$(uname -s)&quot;
+SUDO=&quot;&quot;; if [ &quot;$(id -u)&quot; -ne 0 ] &amp;&amp; has sudo; then SUDO=&quot;sudo&quot;; fi
+
+# Shell profile where PATH is written
+case &quot;${SHELL:-}&quot; in
+  */zsh)  RC=&quot;$HOME/.zshrc&quot; ;;
+  */bash) if [ &quot;$OS&quot; = &quot;Darwin&quot; ]; then RC=&quot;$HOME/.bash_profile&quot;; else RC=&quot;$HOME/.bashrc&quot;; fi ;;
+  *)      RC=&quot;$HOME/.profile&quot; ;;
+esac
+touch &quot;$RC&quot;
+printf &#x27;\033[1;36mLending kit setup: Git + Node.js LTS. Profile: %s\033[0m\n&#x27; &quot;$RC&quot;
+
+# 1. Git (+ curl)
+say &quot;Git&quot;
+if [ &quot;$OS&quot; = &quot;Darwin&quot; ]; then
+  if xcode-select -p &gt;/dev/null 2&gt;&amp;1; then ok &quot;$(git --version)&quot;; else
+    warn &quot;A window will open: press Install (Command Line Tools, 5-15 min)&quot;
+    xcode-select --install || true
+    for _ in $(seq 1 180); do xcode-select -p &gt;/dev/null 2&gt;&amp;1 &amp;&amp; break; sleep 10; done
+    xcode-select -p &gt;/dev/null 2&gt;&amp;1 &amp;&amp; ok &quot;$(git --version)&quot; || { warn &quot;Finish Command Line Tools install and run this script again&quot;; exit 1; }
+  fi
+else
+  if has git &amp;&amp; has curl; then ok &quot;$(git --version)&quot;; else
+    if   has apt-get; then $SUDO apt-get update -y &amp;&amp; $SUDO apt-get install -y git curl ca-certificates
+    elif has dnf;     then $SUDO dnf install -y git curl
+    elif has yum;     then $SUDO yum install -y git curl
+    elif has pacman;  then $SUDO pacman -Sy --noconfirm git curl
+    elif has zypper;  then $SUDO zypper --non-interactive install git curl
+    elif has apk;     then $SUDO apk add git curl bash
+    else warn &quot;Unknown package manager: install git and curl manually&quot;; exit 1; fi
+    ok &quot;$(git --version)&quot;
+  fi
+fi
+
+# 2. Node.js LTS through nvm (no sudo, easy to update)
+say &quot;Node.js LTS&quot;
+export NVM_DIR=&quot;$HOME/.nvm&quot;
+if [ ! -s &quot;$NVM_DIR/nvm.sh&quot; ]; then
+  NVM_VER=&quot;$(curl -fsSL https://api.github.com/repos/nvm-sh/nvm/releases/latest 2&gt;/dev/null | sed -n &#x27;s/.*&quot;tag_name&quot;: *&quot;\(v[^&quot;]*\)&quot;.*/\1/p&#x27; | head -1 || true)&quot;
+  NVM_VER=&quot;${NVM_VER:-v0.40.3}&quot;
+  curl -fsSL &quot;https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VER/install.sh&quot; | PROFILE=&quot;$RC&quot; bash &gt;/dev/null
+  ok &quot;nvm $NVM_VER&quot;
+fi
+# nvm.sh is not compatible with `set -u`
+set +u
+# shellcheck disable=SC1091
+. &quot;$NVM_DIR/nvm.sh&quot;
+nvm install --lts || { warn &quot;Could not download Node.js from nodejs.org. Check internet/VPN and run the script again&quot;; exit 1; }
+nvm alias default &#x27;lts/*&#x27; &gt;/dev/null
+nvm use default &gt;/dev/null
+set -u
+ok &quot;node $(node -v), npm $(npm -v)&quot;
+
+# PATH block in profile (nvm usually writes it, this makes sure)
+if ! grep -q &#x27;NVM_DIR&#x27; &quot;$RC&quot;; then
+  {
+    echo &#x27;&#x27;
+    echo &#x27;# nvm + Node.js (lending kit)&#x27;
+    echo &#x27;export NVM_DIR=&quot;$HOME/.nvm&quot;&#x27;
+    echo &#x27;[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; . &quot;$NVM_DIR/nvm.sh&quot;&#x27;
+  } &gt;&gt; &quot;$RC&quot;
+fi
+if ! grep -q &#x27;.local/bin&#x27; &quot;$RC&quot;; then
+  echo &#x27;export PATH=&quot;$HOME/.local/bin:$PATH&quot;&#x27; &gt;&gt; &quot;$RC&quot;
+fi
+ok &quot;PATH written to $RC&quot;
+
+# 3. VS Code (macOS with Homebrew only; otherwise link)
+say &quot;VS Code&quot;
+if has code; then ok &quot;VS Code found&quot;
+elif [ &quot;$OS&quot; = &quot;Darwin&quot; ] &amp;&amp; has brew; then brew install --cask visual-studio-code &amp;&amp; ok &quot;VS Code installed&quot;
+else warn &quot;Download VS Code: https://code.visualstudio.com/download&quot;; fi
+
+# 4. Git settings
+say &quot;Git settings&quot;
+git config --global init.defaultBranch main
+git config --global core.autocrlf input
+if [ -z &quot;$(git config --global user.name || true)&quot; ]; then
+  n=&quot;$(ask &#x27;Your name for commits (Enter = skip): &#x27;)&quot;; [ -n &quot;$n&quot; ] &amp;&amp; git config --global user.name &quot;$n&quot;
+fi
+if [ -z &quot;$(git config --global user.email || true)&quot; ]; then
+  e=&quot;$(ask &#x27;Email from GitHub (Enter = skip): &#x27;)&quot;; [ -n &quot;$e&quot; ] &amp;&amp; git config --global user.email &quot;$e&quot;
+fi
+ok &quot;branch main, user: $(git config --global user.name || true) &lt;$(git config --global user.email || true)&gt;&quot;
+
+say &quot;Done&quot;
+printf &#x27;\033[32mOpen a NEW terminal window (or run: source %s). Then check: node -v; npm -v; git --version\033[0m\n&#x27; &quot;$RC&quot;
+</pre></details>
+    </div>
+    <div class="pane" id="p-lin">
+      <ol><li>Откройте терминал (Ctrl + Alt + T).</li><li>Вставьте команду (Ctrl + Shift + V), нажмите Enter, введите пароль для sudo.</li><li>Откройте новый терминал и проверьте: <code>node -v</code></li></ol>
+      <div class="cmd"><code>curl -fsSL https://monforje.github.io/lendingi-2026/setup/install.sh | bash</code><button type="button" data-copy="curl -fsSL https://monforje.github.io/lendingi-2026/setup/install.sh | bash">Копировать</button></div>
+      <p class="note">Ubuntu, Debian, Fedora, Arch, openSUSE, Alpine. Git ставится пакетным менеджером, Node через nvm.</p>
+      <details class="full"><summary>Показать весь скрипт</summary><pre>#!/usr/bin/env bash
+# Lending kit setup for macOS and Linux: Git, Node.js LTS (via nvm), PATH in your shell profile.
+# Run in Terminal:
+#   curl -fsSL https://monforje.github.io/lendingi-2026/setup/install.sh | bash
+set -euo pipefail
+
+say()  { printf &#x27;\n\033[1;36m== %s\033[0m\n&#x27; &quot;$1&quot;; }
+ok()   { printf &#x27;   \033[32mOK\033[0m  %s\n&#x27; &quot;$1&quot;; }
+warn() { printf &#x27;   \033[33m!!\033[0m  %s\n&#x27; &quot;$1&quot;; }
+has()  { command -v &quot;$1&quot; &gt;/dev/null 2&gt;&amp;1; }
+ask()  { local a=&quot;&quot;; if [ -r /dev/tty ]; then read -r -p &quot;   $1&quot; a &lt;/dev/tty || true; fi; printf &#x27;%s&#x27; &quot;$a&quot;; }
+
+OS=&quot;$(uname -s)&quot;
+SUDO=&quot;&quot;; if [ &quot;$(id -u)&quot; -ne 0 ] &amp;&amp; has sudo; then SUDO=&quot;sudo&quot;; fi
+
+# Shell profile where PATH is written
+case &quot;${SHELL:-}&quot; in
+  */zsh)  RC=&quot;$HOME/.zshrc&quot; ;;
+  */bash) if [ &quot;$OS&quot; = &quot;Darwin&quot; ]; then RC=&quot;$HOME/.bash_profile&quot;; else RC=&quot;$HOME/.bashrc&quot;; fi ;;
+  *)      RC=&quot;$HOME/.profile&quot; ;;
+esac
+touch &quot;$RC&quot;
+printf &#x27;\033[1;36mLending kit setup: Git + Node.js LTS. Profile: %s\033[0m\n&#x27; &quot;$RC&quot;
+
+# 1. Git (+ curl)
+say &quot;Git&quot;
+if [ &quot;$OS&quot; = &quot;Darwin&quot; ]; then
+  if xcode-select -p &gt;/dev/null 2&gt;&amp;1; then ok &quot;$(git --version)&quot;; else
+    warn &quot;A window will open: press Install (Command Line Tools, 5-15 min)&quot;
+    xcode-select --install || true
+    for _ in $(seq 1 180); do xcode-select -p &gt;/dev/null 2&gt;&amp;1 &amp;&amp; break; sleep 10; done
+    xcode-select -p &gt;/dev/null 2&gt;&amp;1 &amp;&amp; ok &quot;$(git --version)&quot; || { warn &quot;Finish Command Line Tools install and run this script again&quot;; exit 1; }
+  fi
+else
+  if has git &amp;&amp; has curl; then ok &quot;$(git --version)&quot;; else
+    if   has apt-get; then $SUDO apt-get update -y &amp;&amp; $SUDO apt-get install -y git curl ca-certificates
+    elif has dnf;     then $SUDO dnf install -y git curl
+    elif has yum;     then $SUDO yum install -y git curl
+    elif has pacman;  then $SUDO pacman -Sy --noconfirm git curl
+    elif has zypper;  then $SUDO zypper --non-interactive install git curl
+    elif has apk;     then $SUDO apk add git curl bash
+    else warn &quot;Unknown package manager: install git and curl manually&quot;; exit 1; fi
+    ok &quot;$(git --version)&quot;
+  fi
+fi
+
+# 2. Node.js LTS through nvm (no sudo, easy to update)
+say &quot;Node.js LTS&quot;
+export NVM_DIR=&quot;$HOME/.nvm&quot;
+if [ ! -s &quot;$NVM_DIR/nvm.sh&quot; ]; then
+  NVM_VER=&quot;$(curl -fsSL https://api.github.com/repos/nvm-sh/nvm/releases/latest 2&gt;/dev/null | sed -n &#x27;s/.*&quot;tag_name&quot;: *&quot;\(v[^&quot;]*\)&quot;.*/\1/p&#x27; | head -1 || true)&quot;
+  NVM_VER=&quot;${NVM_VER:-v0.40.3}&quot;
+  curl -fsSL &quot;https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VER/install.sh&quot; | PROFILE=&quot;$RC&quot; bash &gt;/dev/null
+  ok &quot;nvm $NVM_VER&quot;
+fi
+# nvm.sh is not compatible with `set -u`
+set +u
+# shellcheck disable=SC1091
+. &quot;$NVM_DIR/nvm.sh&quot;
+nvm install --lts || { warn &quot;Could not download Node.js from nodejs.org. Check internet/VPN and run the script again&quot;; exit 1; }
+nvm alias default &#x27;lts/*&#x27; &gt;/dev/null
+nvm use default &gt;/dev/null
+set -u
+ok &quot;node $(node -v), npm $(npm -v)&quot;
+
+# PATH block in profile (nvm usually writes it, this makes sure)
+if ! grep -q &#x27;NVM_DIR&#x27; &quot;$RC&quot;; then
+  {
+    echo &#x27;&#x27;
+    echo &#x27;# nvm + Node.js (lending kit)&#x27;
+    echo &#x27;export NVM_DIR=&quot;$HOME/.nvm&quot;&#x27;
+    echo &#x27;[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; . &quot;$NVM_DIR/nvm.sh&quot;&#x27;
+  } &gt;&gt; &quot;$RC&quot;
+fi
+if ! grep -q &#x27;.local/bin&#x27; &quot;$RC&quot;; then
+  echo &#x27;export PATH=&quot;$HOME/.local/bin:$PATH&quot;&#x27; &gt;&gt; &quot;$RC&quot;
+fi
+ok &quot;PATH written to $RC&quot;
+
+# 3. VS Code (macOS with Homebrew only; otherwise link)
+say &quot;VS Code&quot;
+if has code; then ok &quot;VS Code found&quot;
+elif [ &quot;$OS&quot; = &quot;Darwin&quot; ] &amp;&amp; has brew; then brew install --cask visual-studio-code &amp;&amp; ok &quot;VS Code installed&quot;
+else warn &quot;Download VS Code: https://code.visualstudio.com/download&quot;; fi
+
+# 4. Git settings
+say &quot;Git settings&quot;
+git config --global init.defaultBranch main
+git config --global core.autocrlf input
+if [ -z &quot;$(git config --global user.name || true)&quot; ]; then
+  n=&quot;$(ask &#x27;Your name for commits (Enter = skip): &#x27;)&quot;; [ -n &quot;$n&quot; ] &amp;&amp; git config --global user.name &quot;$n&quot;
+fi
+if [ -z &quot;$(git config --global user.email || true)&quot; ]; then
+  e=&quot;$(ask &#x27;Email from GitHub (Enter = skip): &#x27;)&quot;; [ -n &quot;$e&quot; ] &amp;&amp; git config --global user.email &quot;$e&quot;
+fi
+ok &quot;branch main, user: $(git config --global user.name || true) &lt;$(git config --global user.email || true)&gt;&quot;
+
+say &quot;Done&quot;
+printf &#x27;\033[32mOpen a NEW terminal window (or run: source %s). Then check: node -v; npm -v; git --version\033[0m\n&#x27; &quot;$RC&quot;
+</pre></details>
+    </div>
+    <p class="note" style="margin-top:18px"><b>Claude Code</b> (по желанию, нужен платный план Claude): Windows <code>irm https://claude.ai/install.ps1 | iex</code>, macOS и Linux <code>curl -fsSL https://claude.ai/install.sh | bash</code>. Памятка со всем этим: <a href="pdf/09-ustanovka.pdf" style="color:var(--blue)">09-ustanovka.pdf</a>.</p>
+  </div>
+
+  <h2>Полезные ссылки</h2>
+  <div class="links"><a href="https://code.visualstudio.com/download" target="_blank" rel="noopener"><b>VS Code</b><span>Редактор кода. Бесплатно.</span><small>code.visualstudio.com/download</small></a><a href="https://git-scm.com/downloads" target="_blank" rel="noopener"><b>Git</b><span>Если скрипт не сработал: ручная установка.</span><small>git-scm.com/downloads</small></a><a href="https://nodejs.org/en/download" target="_blank" rel="noopener"><b>Node.js</b><span>LTS-версия: node, npm, npx.</span><small>nodejs.org/en/download</small></a><a href="https://github.com/signup" target="_blank" rel="noopener"><b>GitHub</b><span>Регистрация. Выключите VPN, если «Доступ ограничен».</span><small>github.com/signup</small></a><a href="https://desktop.github.com/download/" target="_blank" rel="noopener"><b>GitHub Desktop</b><span>Git мышкой, без терминала.</span><small>desktop.github.com/download</small></a><a href="https://docs.github.com/ru/pages/quickstart" target="_blank" rel="noopener"><b>GitHub Pages</b><span>Официальная инструкция на русском.</span><small>docs.github.com/ru/pages/quickstart</small></a><a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener"><b>Claude Code</b><span>ИИ-агент в терминале. Нужен платный план Claude.</span><small>code.claude.com/docs/en/setup</small></a><a href="https://cursor.com/download" target="_blank" rel="noopener"><b>Cursor</b><span>Редактор со встроенным ИИ.</span><small>cursor.com/download</small></a><a href="https://aistudio.google.com/" target="_blank" rel="noopener"><b>Google AI Studio</b><span>Режим Build: сайт из промпта, бесплатно.</span><small>aistudio.google.com</small></a><a href="https://lovable.dev/" target="_blank" rel="noopener"><b>Lovable</b><span>Сайт из промпта, 5 кредитов в день.</span><small>lovable.dev</small></a><a href="https://giga.chat/" target="_blank" rel="noopener"><b>GigaChat</b><span>Работает в России без VPN.</span><small>giga.chat</small></a><a href="https://reactbits.dev/" target="_blank" rel="noopener"><b>React Bits</b><span>Готовые анимации для React.</span><small>reactbits.dev</small></a></div>
+
   <h2>PDF-памятки для студентов</h2>
-  <p class="lead" style="margin-bottom:20px">Можно раздать файлами или распечатать на А4. <a href="pdf/00-vse-pamyatki.pdf">Все памятки одним файлом</a>, 27 страниц.</p>
-  <div class="memos"><a class="memo" href="pdf/01-anti-ii.pdf"><small>01</small><b>Анти-ИИ</b><p>Штампы ИИ-дизайна и ИИ-текстов, что делать вместо. 4 стр.</p></a><a class="memo" href="pdf/02-cheklist-lendinga.pdf"><small>02</small><b>Чек-лист лендинга</b><p>40 пунктов и тест 5 секунд. 2 стр.</p></a><a class="memo" href="pdf/03-lending-za-vecher.pdf"><small>03</small><b>Лендинг за вечер</b><p>Рабочий лист, план на 4 часа, промпты. 3 стр.</p></a><a class="memo" href="pdf/04-trendy-2026.pdf"><small>04</small><b>Тренды 2026</b><p>9 стилей: признаки, палитра, шрифты, блок для промпта. 10 стр.</p></a><a class="memo" href="pdf/05-skorost-i-seo.pdf"><small>05</small><b>Скорость и SEO</b><p>Core Web Vitals, SEO-минимум, Яндекс и GEO. 2 стр.</p></a><a class="memo" href="pdf/06-zapusk-v-rossii.pdf"><small>06</small><b>Запуск в России</b><p>Домен, хостинг, деплой, 152-ФЗ, реклама. 2 стр.</p></a><a class="memo" href="pdf/07-shrifty-i-animacii.pdf"><small>07</small><b>Шрифты и анимации</b><p>Шрифты с кириллицей, пары, библиотеки, reactbits. 2 стр.</p></a><a class="memo" href="pdf/08-slovar.pdf"><small>08</small><b>Словарь</b><p>36 терминов простыми словами. 2 стр.</p></a></div>
+  <p class="lead" style="margin-bottom:20px">Можно раздать файлами или распечатать на А4. <a href="pdf/00-vse-pamyatki.pdf">Все памятки одним файлом</a>, 29 страниц.</p>
+  <div class="memos"><a class="memo" href="pdf/01-anti-ii.pdf"><small>01</small><b>Анти-ИИ</b><p>Штампы ИИ-дизайна и ИИ-текстов, что делать вместо. 4 стр.</p></a><a class="memo" href="pdf/02-cheklist-lendinga.pdf"><small>02</small><b>Чек-лист лендинга</b><p>40 пунктов и тест 5 секунд. 2 стр.</p></a><a class="memo" href="pdf/03-lending-za-vecher.pdf"><small>03</small><b>Лендинг за вечер</b><p>Рабочий лист, план на 4 часа, промпты. 3 стр.</p></a><a class="memo" href="pdf/04-trendy-2026.pdf"><small>04</small><b>Тренды 2026</b><p>9 стилей: признаки, палитра, шрифты, блок для промпта. 10 стр.</p></a><a class="memo" href="pdf/05-skorost-i-seo.pdf"><small>05</small><b>Скорость и SEO</b><p>Core Web Vitals, SEO-минимум, Яндекс и GEO. 2 стр.</p></a><a class="memo" href="pdf/06-zapusk-v-rossii.pdf"><small>06</small><b>Запуск в России</b><p>Домен, хостинг, деплой, 152-ФЗ, реклама. 2 стр.</p></a><a class="memo" href="pdf/07-shrifty-i-animacii.pdf"><small>07</small><b>Шрифты и анимации</b><p>Шрифты с кириллицей, пары, библиотеки, reactbits. 2 стр.</p></a><a class="memo" href="pdf/08-slovar.pdf"><small>08</small><b>Словарь</b><p>36 терминов простыми словами. 2 стр.</p></a><a class="memo" href="pdf/09-ustanovka.pdf"><small>09</small><b>Установка</b><p>Git, Node.js, VS Code одной командой, ссылки, ошибки. 2 стр.</p></a></div>
 
   <h2>Восемь сайтов-примеров</h2>
   <div class="sites">
@@ -103,3 +474,8 @@ a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
     <div><h3>Взять себе</h3><p>Шрифты и библиотеки в папке assets. Фото с Unsplash по свободной лицензии, логотипы из simple-icons.</p></div>
   </div>
 </div>
+<script>
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.tab))}));
+(function(){var u=navigator.userAgent;var t=/Mac/.test(u)&&!/iPhone|iPad/.test(u)?'mac':/Linux/.test(u)&&!/Android/.test(u)?'lin':null;if(t)document.querySelector('[data-tab="'+t+'"]').click()})();
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const t=b.dataset.copy;try{await navigator.clipboard.writeText(t)}catch(e){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(_){}a.remove()}b.textContent='Скопировано';b.classList.add('done');setTimeout(()=>{b.textContent='Копировать';b.classList.remove('done')},1800)}));
+</script>

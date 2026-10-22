@@ -21,7 +21,7 @@ def gauge(val, label, sub, pct, col):
 <b style="font:700 11pt var(--fd)">{label}</b><span class="muted" style="font-size:8.5pt">{sub}</span></div>'''
 
 def build():
-    p1 = f'''<p class="kick">Памятка 05 из 08</p>
+    p1 = f'''<p class="kick">Памятка 05 из 09</p>
 <h1 style="font-size:54pt">Скорость и SEO</h1>
 <p class="lead" style="margin-bottom:7mm">Медленный сайт теряет людей до того, как они увидят оффер. SEO дает бесплатный трафик годами, реклама работает, только пока платите.</p>
 <div style="display:flex;justify-content:space-between;margin-bottom:7mm">
