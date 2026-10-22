@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мох и Роза, косметика из трав Приморья</title>
+<meta name="description" content="Натуральная косметика из трав уссурийской тайги. Сыворотки, масла и гидролаты ручной работы. Владивосток, Светланская, 38.">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- impeccable-disable cream-palette: жемчужный и пудровый фон это и есть палитра New Rococo, выбрана осознанно вместе с мшистым -->
+<style>
+:root{
+  --moss:#17231b;
+  --moss2:#203027;
+  --moss3:#3a5340;
+  --lichen:#b3c29a;
+  --pearl:#f1ebe2;
+  --pearl2:#f8f4ee;
+  --powder:#ecdcd5;      /* пудровый шёлк витрины */
+  --rose:#dcb1ae;
+  --wine:#7a4550;
+  --gilt:#a8885a;        /* старое золото рам */
+  --ink:#1c241e;
+  --soft:#46504a;        /* вторичный текст на светлом */
+  --softd:#d3cbbf;       /* вторичный текст на тёмном */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:20px;line-height:1.55;color:var(--ink);background:var(--pearl);overflow-x:clip}
+::selection{background:var(--rose);color:var(--moss)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--gilt);outline-offset:4px}
+.wrap{max-width:1300px;margin:0 auto;padding:0 40px}
+.vibes{font-family:'Great Vibes',cursive;font-weight:400;letter-spacing:0;word-spacing:.18em}
+.dark{background:linear-gradient(rgba(23,35,27,.55),rgba(23,35,27,.55)),url(../../assets/grain.png) var(--moss);color:var(--pearl)}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+svg.orn{overflow:visible}
+svg .s{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- шапка ---------- */
+header.top{position:absolute;top:0;left:0;right:0;z-index:20;color:var(--pearl)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:22px;gap:20px}
+.mini-logo{font-family:'Great Vibes';word-spacing:.2em;font-size:36px;text-decoration:none;line-height:1}
+nav.nav{display:flex;gap:30px}
+nav.nav a{text-decoration:none;font-size:18px;font-style:italic;padding:6px 0}
+nav.nav a:hover{text-decoration:underline}
+.bag{font-style:italic;font-size:18px;display:flex;align-items:center;gap:10px;text-decoration:none;min-height:44px}
+.bag b{display:inline-grid;place-items:center;min-width:30px;height:30px;border-radius:50%;border:1px solid var(--rose);font-weight:600;font-style:normal;font-size:16px}
+
+/* ---------- кнопки ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 34px;border-radius:999px;background:var(--pearl2);color:var(--moss);font-weight:600;font-size:20px;font-style:italic;text-decoration:none;box-shadow:inset 0 0 0 1px var(--pearl2),inset 0 0 0 4px var(--moss),inset 0 0 0 5px var(--gilt);transition:background-color .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{background:#fff;transform:translateY(-2px)}
+.btn.rose{background:var(--rose);box-shadow:inset 0 0 0 1px var(--rose),inset 0 0 0 4px var(--moss2),inset 0 0 0 5px var(--rose)}
+.btn.rose:hover{background:#e8c4c1}
+.link{font-style:italic;font-size:20px;padding:10px 0}
+
+/* ---------- hero ---------- */
+.hero{position:relative;color:var(--pearl);padding:130px 0 90px;overflow:hidden;background:radial-gradient(60% 70% at 78% 40%,rgba(90,116,82,.38),transparent 70%),radial-gradient(40% 50% at 10% 90%,rgba(122,69,80,.28),transparent 70%),linear-gradient(rgba(23,35,27,.55),rgba(23,35,27,.55)),url(../../assets/grain.png) var(--moss)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-family:'Great Vibes';word-spacing:.1em;font-weight:400;font-size:clamp(96px,11.5vw,176px);line-height:.95;color:var(--pearl2);margin-left:-8px}
+.hero h1 .amp{display:inline-block;color:var(--rose);font-size:.62em;margin:0 .08em;transform:translateY(-.08em)}
+.hero h1 .l2{display:block;padding-left:1.6em}
+.hero .lead{font-size:clamp(22px,1.9vw,27px);font-style:italic;font-weight:500;line-height:1.45;max-width:28ch;margin-top:30px;color:#e6dfd4}
+.hero .ctas{display:flex;gap:30px;flex-wrap:wrap;margin-top:38px;align-items:center}
+.mirror-big{position:relative;width:100%;max-width:500px;justify-self:center;color:var(--pearl2)}
+.mirror-big svg{width:100%;height:auto;display:block}
+.ribbon-t{font-family:'Great Vibes';word-spacing:6px;font-size:30px;fill:var(--moss)}
+
+/* лента-разделитель с латынью трав */
+.swag{color:var(--pearl);display:block;background:linear-gradient(var(--moss) 50%,var(--pearl) 50%);line-height:0}
+.swag svg{display:block;width:100%;height:auto;min-height:90px}
+.swag text{font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:21px;fill:var(--moss);letter-spacing:.04em}
+
+/* ---------- общие секции ---------- */
+.sec{padding:130px 0}
+.h2{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(46px,5.6vw,84px);line-height:1;letter-spacing:-.01em}
+.h2 .vibes{font-size:1.12em;color:var(--wine);line-height:.8}
+.dark .h2 .vibes{color:var(--rose)}
+
+/* философия */
+.philo{display:grid;grid-template-columns:5fr 6fr;gap:90px;align-items:center}
+.cameo{position:relative;max-width:420px;margin:0 auto;width:100%;color:var(--moss3)}
+.cameo svg{width:100%;height:auto;display:block}
+.philo-text p{font-size:22px;line-height:1.6;margin-top:26px;max-width:38ch}
+.philo-text p.first::first-letter{font-family:'Great Vibes';float:left;font-size:104px;line-height:.8;margin:10px 14px 0 -4px;color:var(--wine)}
+.sign{margin-top:34px;display:flex;align-items:center;gap:20px}
+.sign .vibes{font-size:50px;color:var(--moss3);line-height:1}
+.sign small{font-style:italic;font-size:18px;color:var(--soft);line-height:1.35}
+.batch{margin-top:30px;font-style:italic;font-size:19px;color:var(--wine);max-width:36ch;line-height:1.5}
+
+/* ритуал */
+.ritual-head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap}
+.ritual-head p{max-width:30ch;font-style:italic;font-size:22px;color:var(--softd);line-height:1.5}
+.steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:90px}
+.steps .thread{position:absolute;left:0;right:0;top:56px;width:100%;height:120px;color:var(--rose);pointer-events:none}
+.step{position:relative;text-align:center;padding:0 10px}
+.step:nth-child(3){margin-top:60px}
+.step:nth-child(4){margin-top:120px}
+.medal{width:132px;height:132px;margin:0 auto;position:relative;display:grid;place-items:center;color:var(--pearl2)}
+.medal svg{position:absolute;inset:0;width:100%;height:100%}
+.medal b{font-style:italic;font-weight:500;font-size:46px;line-height:1;position:relative}
+.step h3{font-weight:500;font-style:italic;font-size:36px;margin-top:22px;line-height:1.1}
+.step .time{font-style:italic;font-size:18px;color:var(--lichen);margin-top:4px}
+.step p{font-size:19px;color:var(--softd);margin:14px auto 0;max-width:28ch;line-height:1.5}
+.step .prod{font-family:'Great Vibes';word-spacing:.18em;font-size:30px;color:var(--rose);margin-top:12px;line-height:1.2}
+
+/* ---------- витрина: развеска рам на шёлке ---------- */
+.salon{background:radial-gradient(70% 60% at 50% 30%,#f3e6e0,var(--powder))}
+.shop-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:40px}
+.shop-head p{font-style:italic;font-size:21px;max-width:32ch;color:var(--soft);text-align:right;line-height:1.45}
+.wall{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:20px 64px;align-items:start}
+.item{text-align:center;position:relative}
+.it1{grid-column:1;grid-row:1}
+.it5{grid-column:2;grid-row:1/3;align-self:center}
+.it2{grid-column:3;grid-row:1;margin-top:60px}
+.it3{grid-column:1;grid-row:2;margin-top:10px}
+.it4{grid-column:3;grid-row:2;margin-top:50px}
+.hang{display:block;width:70px;height:96px;margin:0 auto -6px;color:var(--wine)}
+.it5 .hang{height:70px}
+.frame{position:relative;margin:0 auto;color:var(--gilt)}
+.frame .pic{position:relative;overflow:hidden;border-radius:inherit;background:#d9c3bb}
+.frame .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.item:hover .pic img{transform:scale(1.05)}
+.frame::before,.frame::after{content:"";position:absolute;border-radius:inherit;pointer-events:none}
+.frame::before{inset:-9px;border:1.5px solid currentColor}
+.frame::after{inset:-15px;border:1px solid currentColor;opacity:.55}
+.frame.oval{width:78%;border-radius:50%}
+.frame.oval .pic{aspect-ratio:3/4}
+.frame.circle{width:72%;border-radius:50%}
+.frame.circle .pic{aspect-ratio:1}
+.frame.arch{width:92%;border-radius:50% 50% 10px 10px/34% 34% 10px 10px}
+.frame.arch .pic{aspect-ratio:3/4.1}
+.frame .lace{position:absolute;inset:-34px;width:calc(100% + 68px);height:calc(100% + 68px);pointer-events:none}
+.frame .crest{position:absolute;left:50%;top:-44px;width:120px;height:44px;margin-left:-60px;color:var(--gilt)}
+.it5 .frame .crest{width:170px;height:62px;margin-left:-85px;top:-60px}
+.label{margin:40px auto 0;max-width:30ch}
+.label .vibes{display:block;font-size:40px;line-height:1;color:var(--moss3)}
+.it5 .label .vibes{font-size:54px}
+.label h3{font-weight:500;font-style:italic;font-size:22px;line-height:1.3;margin-top:4px}
+.label p{font-size:18px;line-height:1.5;color:var(--soft);margin-top:8px}
+.label .buy{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px}
+.price{font-weight:600;font-size:26px;line-height:1.3}
+.price small{font-weight:500;font-style:italic;font-size:17px;color:var(--soft);margin-left:6px}
+.add{min-height:44px;font-style:italic;font-weight:600;font-size:18px;padding:0 20px;border-radius:999px;border:1px solid var(--moss3);color:var(--moss3);transition:background-color .3s,color .3s}
+.add:hover{background:var(--moss3);color:var(--pearl2)}
+.add[aria-pressed="true"]{background:var(--wine);border-color:var(--wine);color:#fff}
+.fav{position:absolute;right:-34px;top:22%;font-family:'Marck Script';font-size:24px;color:var(--wine);transform:rotate(-10deg);line-height:1.1}
+
+/* ---------- календарь сбора ---------- */
+.taiga{display:grid;grid-template-columns:4fr 7fr;gap:90px;align-items:start}
+.taiga-left{position:sticky;top:110px}
+.taiga-left p{font-style:italic;font-size:22px;color:var(--softd);margin-top:26px;max-width:28ch;line-height:1.5}
+.sprig{display:block;width:200px;height:auto;margin-top:40px;color:var(--rose)}
+.cal{list-style:none;border-top:1px solid rgba(241,235,226,.22)}
+.cal li{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:baseline;padding:28px 6px;border-bottom:1px solid rgba(241,235,226,.22)}
+.cal .mo{font-family:'Great Vibes';font-size:40px;line-height:1;color:var(--rose)}
+.cal .mo small{display:block;font-family:'Cormorant Garamond';font-style:italic;font-size:17px;color:var(--lichen);margin-top:6px;line-height:1.3}
+.cal h3{font-weight:500;font-size:32px;line-height:1.15}
+.cal h3 i{display:block;font-size:18px;color:var(--lichen);font-weight:500;margin-top:2px}
+.cal p{font-size:19px;color:var(--softd);margin-top:8px;max-width:44ch;line-height:1.5}
+
+/* ---------- письма ---------- */
+.letters-sec{background:linear-gradient(180deg,var(--pearl) 0%,var(--powder) 100%)}
+.letters{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;align-items:start;margin-top:50px}
+.env-wrap{position:relative;padding-top:230px}
+.env-wrap:nth-child(2){margin-top:60px}
+.env{position:relative;aspect-ratio:1.5;cursor:pointer;perspective:900px}
+.env::before{content:"";position:absolute;inset:8% 4% -6%;background:rgba(80,40,46,.16);border-radius:50%;z-index:-1;transform:translateY(12px) scaleY(.4)}
+.env .back{position:absolute;inset:0;background:#e4cbc3}
+.letter{position:absolute;left:6%;right:6%;top:6%;height:150%;background:var(--pearl2);z-index:1;padding:22px;transform:translateY(-66%);clip-path:inset(0 0 0 0);transition:transform 1s cubic-bezier(.3,.7,.2,1) .25s,clip-path 1s .25s;box-shadow:0 0 0 1px rgba(122,69,80,.18)}
+.letter p{font-family:'Marck Script';font-size:23px;line-height:1.35;color:#2e2a2b}
+.letter .from{font-style:italic;font-size:17px;color:var(--wine);margin-top:10px}
+.pocket{position:absolute;inset:0;z-index:2;background:linear-gradient(160deg,#f1ddd7,#e3c6be);clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
+.addr{position:absolute;left:7%;bottom:7%;z-index:3;font-family:'Marck Script';color:var(--wine);font-size:20px;line-height:1.3;transform:rotate(-3deg)}
+.flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:0;transform-origin:top;transform:rotateX(180deg);transition:transform .6s cubic-bezier(.5,0,.2,1),z-index 0s .3s}
+.flap::before{content:"";position:absolute;inset:0;background:linear-gradient(#ead2cb,#dcbcb3);clip-path:polygon(0 0,100% 0,50% 100%)}
+.seal{position:absolute;left:50%;top:60%;width:64px;height:64px;margin:-32px 0 0 -32px;z-index:4;border-radius:47% 53% 50% 50%;background:radial-gradient(circle at 35% 30%,#b9787f,#7a4550 60%,#5a2f37);display:grid;place-items:center;color:#f3dcda;font-family:'Great Vibes';font-size:25px;word-spacing:-.05em;box-shadow:0 3px 8px rgba(60,20,30,.35);transition:opacity .4s,transform .5s}
+.js .env.closed .flap{transform:rotateX(0);z-index:3;transition:transform .6s cubic-bezier(.5,0,.2,1)}
+.js .env.closed .letter{transform:translateY(0);clip-path:inset(0 0 42% 0);transition:transform .6s,clip-path .6s}
+.env:not(.closed) .seal{opacity:0;transform:scale(.6) rotate(-20deg)}
+.env-hint{text-align:center;font-style:italic;font-size:19px;color:var(--wine);margin-top:26px}
+
+/* ---------- консультация ---------- */
+.consult{display:grid;grid-template-columns:5fr 6fr;gap:90px;align-items:center}
+.consult p.lead2{font-style:italic;font-size:23px;color:var(--softd);margin-top:26px;max-width:32ch;line-height:1.5}
+.consult ol{list-style:none;margin-top:30px;display:grid;gap:12px;font-size:20px;counter-reset:r}
+.consult ol li{display:flex;gap:16px;align-items:baseline;counter-increment:r}
+.consult ol li::before{content:counter(r,lower-roman);font-style:italic;color:var(--rose);font-size:22px;min-width:26px}
+.fbox{position:relative;padding:60px 54px 50px;background:var(--moss2);isolation:isolate}
+.fbox::before{content:"";position:absolute;inset:12px;border:1px solid rgba(220,177,174,.5);pointer-events:none}
+.corner{position:absolute;width:100px;height:100px;color:var(--rose);pointer-events:none}
+.corner svg{width:100%;height:100%}
+.corner.tl{top:-2px;left:-2px}.corner.tr{top:-2px;right:-2px;transform:scaleX(-1)}
+.corner.bl{bottom:-2px;left:-2px;transform:scaleY(-1)}.corner.br{bottom:-2px;right:-2px;transform:scale(-1,-1)}
+.fbox h3{font-family:'Great Vibes';word-spacing:.18em;font-weight:400;font-size:54px;line-height:1.1;color:var(--pearl2);text-align:center}
+.fbox .sub{text-align:center;font-style:italic;color:var(--softd);margin-top:4px}
+form.f{display:grid;gap:22px;margin-top:30px}
+.f label.fl{display:grid;gap:2px;font-style:italic;font-size:18px;color:var(--rose)}
+.f input[type=text],.f input[type=tel],.f select{font:italic 500 22px 'Cormorant Garamond';color:var(--pearl2);background:transparent;border:0;border-bottom:1px solid rgba(241,235,226,.5);padding:8px 2px;width:100%;border-radius:0;min-height:48px}
+.f select option{color:var(--ink);background:var(--pearl2)}
+.f input::placeholder{color:#a9aea2}
+.f input:focus,.f select:focus{outline:none;border-bottom-color:var(--rose);box-shadow:0 1px 0 var(--rose)}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.f .agree{display:flex;gap:12px;align-items:flex-start;font-size:18px;line-height:1.4;color:var(--softd)}
+.f .agree input{width:20px;height:20px;accent-color:var(--rose);flex:none;margin-top:3px}
+.f .btn{justify-self:center;margin-top:6px}
+.thanks{display:none;text-align:center;padding:30px 0 10px}
+.thanks .vibes{font-size:72px;color:var(--pearl2);line-height:1.1}
+.thanks p{font-style:italic;color:var(--softd);margin-top:10px}
+.f.done>*:not(.thanks){display:none}
+.f.done .thanks{display:block}
+
+footer{background:#101912;color:#d3cbbf;padding:90px 0 32px}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;font-size:19px;line-height:1.5}
+.fgrid h4{font-style:italic;font-weight:600;font-size:20px;color:var(--rose);margin-bottom:10px}
+.fgrid a{text-decoration:none}
+.fgrid a:hover{color:var(--pearl2);text-decoration:underline}
+.fgrid .vibes{font-size:58px;color:var(--pearl2);line-height:1}
+.ftail{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:70px;padding-top:24px;border-top:1px solid rgba(241,235,226,.15);font-size:16px;font-style:italic;color:#a8ab9f}
+
+/* ---------- о стиле ---------- */
+.about-btn{position:fixed;right:18px;bottom:18px;z-index:100;min-height:46px;padding:0 22px;border-radius:999px;background:var(--pearl2);color:var(--moss);font-style:italic;font-weight:600;font-size:18px;box-shadow:inset 0 0 0 1px var(--gilt),0 10px 30px rgba(0,0,0,.28)}
+.about{position:fixed;right:18px;bottom:76px;z-index:101;width:min(440px,calc(100vw - 32px));max-height:calc(100vh - 110px);overflow:auto;background:var(--pearl2);color:var(--ink);padding:36px 34px 30px;display:none;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.about::before{content:"";position:absolute;inset:8px;border:1px solid var(--gilt);pointer-events:none}
+.about.open{display:block}
+.about h2{font-family:'Great Vibes';word-spacing:.18em;font-weight:400;font-size:50px;color:var(--moss3);line-height:1.1}
+.about h3{font-style:italic;font-weight:600;font-size:20px;color:var(--wine);margin:16px 0 4px}
+.about ul{font-size:18px;line-height:1.4;display:grid;gap:4px;padding-left:20px}
+.about li::marker{color:var(--gilt)}
+.about p{font-size:18px;line-height:1.45}
+.about .no{margin-top:16px;padding:12px 14px;background:var(--powder)}
+.about a{color:var(--wine)}
+.about .x{position:absolute;top:14px;right:16px;width:44px;height:44px;font-size:28px;color:var(--moss3);line-height:1}
+
+
+/* ---------- адаптив ---------- */
+@media (max-width:1100px){
+  .hero-grid,.philo,.taiga,.consult{grid-template-columns:1fr;gap:56px}
+  .taiga-left{position:static}
+  nav.nav{display:none}
+  .wall{grid-template-columns:1fr 1fr;gap:40px 50px}
+  .it5{grid-column:1/-1;grid-row:1;max-width:480px;justify-self:center}
+  .it1,.it2,.it3,.it4{grid-row:auto;grid-column:auto;margin-top:0}
+  .it2,.it4{margin-top:70px}
+}
+@media (max-width:700px){
+  body{font-size:19px}
+  .wrap{padding:0 20px}
+  .mini-logo{font-size:32px}
+  .hero{padding:100px 0 60px}
+  .hero h1{font-size:86px}
+  .hero h1 .l2{padding-left:1em}
+  .hero .lead{font-size:21px}
+  .btn{padding:0 26px;font-size:19px}
+  .mirror-big{max-width:330px}
+  .sec{padding:90px 0}
+  .h2{font-size:48px}
+  .philo-text p{font-size:20px}
+  .steps{grid-template-columns:1fr;gap:60px;margin-top:60px}
+  .steps .thread{display:none}
+  .step:nth-child(n){margin-top:0}
+  .shop-head{grid-template-columns:1fr;margin-bottom:20px}
+  .shop-head p{text-align:left}
+  .wall{grid-template-columns:1fr;gap:56px}
+  .it1,.it2,.it3,.it4,.it5{grid-column:1;margin-top:0}
+  .fav{display:none}
+  .cal li{grid-template-columns:1fr;gap:6px;padding:24px 4px}
+  .cal .mo{font-size:34px}
+  .cal .mo small{display:inline;margin-left:10px}
+  .cal h3{font-size:28px}
+  .letters{grid-template-columns:1fr;gap:20px}
+  .env-wrap:nth-child(n){margin-top:0}
+  .env-wrap{padding-top:200px}
+  .letter p{font-size:21px}
+  .fbox{padding:48px 24px 36px}
+  .fbox h3{font-size:46px}
+  .f .two{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fgrid>div:first-child{grid-column:1/-1}
+  .bag span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Спрайт: раковина-рокайль, бант и уголок нарисованы вручную кривыми Безье -->
+<svg class="sprite" aria-hidden="true">
+  <symbol id="crest" viewBox="126 6 268 74">
+    <path class="s" stroke-width="1.4" d="M210 74Q222 30 260 14 298 30 310 74M218 72Q230 40 260 26 290 40 302 72M260 76V20M260 76 238 26M260 76 282 26M260 76 222 40M260 76 298 40M260 76 214 58M260 76 306 58"/>
+    <path class="s" stroke-width="1.3" d="M210 74c-14 6-26-4-20-14 5-8 16-3 13 4-2 4-7 3-7 0M310 74c14 6 26-4 20-14-5-8-16-3-13 4 2 4 7 3 7 0"/>
+    <path class="s" stroke-width="1.1" d="M188 66c-24-10-50 0-56 20M332 66c24-10 50 0 56 20M150 62c-8-8-4-18 4-16M370 62c8-8 4-18-4-16"/>
+  </symbol>
+  <symbol id="bow" viewBox="0 0 70 96">
+    <path d="M35 0V40" stroke="currentColor" stroke-width="1"/>
+    <path d="M35 42C26 28 8 26 6 36 4 46 24 48 35 42ZM35 42C44 28 62 26 64 36 66 46 46 48 35 42Z" fill="#dcb1ae" stroke="currentColor" stroke-width="1"/>
+    <path d="M33 44 22 82 29 77 31 85 36 46ZM37 44 48 82 41 77 39 85 34 46Z" fill="#dcb1ae" stroke="currentColor" stroke-width="1" stroke-linejoin="round"/>
+    <ellipse cx="35" cy="42" rx="5" ry="4.5" fill="#c9938f" stroke="currentColor" stroke-width="1"/>
+  </symbol>
+  <symbol id="corner" viewBox="0 0 120 120">
+    <path class="s" stroke-width="1.3" d="M8 116C7 80 9 52 20 34 30 18 52 8 116 8"/>
+    <path class="s" stroke-width=".8" d="M18 104C18 76 22 56 32 44 44 30 62 20 104 18"/>
+    <path class="s" stroke-width="1.2" d="M116 8c9 0 13 9 6 13-6 3-10-4-5-6M8 116c0 9 9 13 13 6 3-6-4-10-6-5"/>
+    <path class="s" stroke-width="1.1" d="M20 34C12 26 14 12 26 12c10 0 12 12 4 14-6 1-8-6-3-7"/>
+    <path class="s" stroke-width="1" d="M34 34c10 2 20 10 22 22 2 10-6 16-12 12-5-3-3-10 2-9 4 1 4 5 1 6"/>
+    <path class="s" stroke-width=".9" d="M40 20c8-6 22-6 30 0M20 40c-6 8-6 22 0 30M60 36c10-2 18 2 22 8-8 2-16 0-22-8zM36 60c-2 10 2 18 8 22 2-8 0-16-8-22z"/>
+  </symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mini-logo" href="#">Мох и Роза</a>
+    <nav class="nav" aria-label="Разделы"><a href="#philo">Философия</a><a href="#ritual">Ритуал</a><a href="#shop">Витрина</a><a href="#taiga">Календарь трав</a><a href="#letters">Письма</a></nav>
+    <a class="bag" href="#shop"><span>Ваш ритуал</span><b id="bagN" aria-label="Флаконов в ритуале">0</b></a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 aria-label="Мох и Роза"><span>Мох <span class="amp">и</span></span><span class="l2">Роза</span></h1>
+      <p class="lead">Сыворотки, масла и гидролаты из трав уссурийской тайги. Собираем вручную, варим маленькими партиями на Седанке с 2018 года.</p>
+      <div class="ctas">
+        <a class="btn" href="#consult">Подобрать ритуал</a>
+        <a class="link" href="#shop">Смотреть витрину</a>
+      </div>
+    </div>
+    <div class="mirror-big">
+      <svg class="orn" id="heroMirror" viewBox="0 0 520 740" role="img" aria-label="Девушка с букетом полевых цветов в овальном зеркале с рокайльной рамой">
+        <defs><clipPath id="ovHero"><ellipse cx="260" cy="380" rx="186" ry="262"/></clipPath>
+          <linearGradient id="ribG" x1="0" x2="1"><stop offset="0" stop-color="#d3a29f"/><stop offset=".5" stop-color="#f1d8d4"/><stop offset="1" stop-color="#d3a29f"/></linearGradient></defs>
+        <image clip-path="url(#ovHero)" href="../../assets/photos/woman-flowers.webp" x="70" y="110" width="380" height="560" preserveAspectRatio="xMidYMid slice"/>
+        <ellipse class="s d" cx="260" cy="380" rx="194" ry="270" stroke-width="1.4"/>
+        <ellipse class="s d" cx="260" cy="380" rx="201" ry="277" stroke-width=".7"/>
+        <path class="s d" id="heroLace" stroke-width="1.1" d=""/>
+        <use href="#crest" x="126" y="26" width="268" height="74"/>
+        <path class="s d" stroke-width="1.1" d="M62 340c-30-10-44 20-30 36 12 14 32 4 26-10-4-9-16-6-14 2M458 340c30-10 44 20 30 36-12 14-32 4-26-10 4-9 16-6 14 2M64 410c-22 6-30 28-18 40M456 410c22 6 30 28 18 40"/>
+        <g>
+          <path d="M120 646 98 660 120 674 104 690 160 686 160 650Z" fill="#b67f83"/>
+          <path d="M400 646 422 660 400 674 416 690 360 686 360 650Z" fill="#b67f83"/>
+          <path d="M140 636C200 616 320 616 380 636V676C320 656 200 656 140 676Z" fill="url(#ribG)"/>
+          <text class="ribbon-t" x="260" y="662" text-anchor="middle">сварено в Приморье</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- лента с латинскими именами трав: статичный SVG вместо бегущей строки -->
+<div class="swag" aria-hidden="true">
+  <svg viewBox="0 0 1440 130" preserveAspectRatio="xMidYMid slice">
+    <defs><path id="swagP" d="M-40 70C200 18 440 118 720 66S1240 16 1480 70"/></defs>
+    <use href="#swagP" fill="none" stroke="#7a4550" stroke-width="50"/>
+    <use href="#swagP" fill="none" stroke="#dcb1ae" stroke-width="46"/>
+    <use href="#swagP" fill="none" stroke="#7a4550" stroke-width=".8" stroke-dasharray="2 5" transform="translate(0 -17)"/>
+    <use href="#swagP" fill="none" stroke="#7a4550" stroke-width=".8" stroke-dasharray="2 5" transform="translate(0 17)"/>
+    <text dy="7"><textPath href="#swagP" startOffset="2%">Schisandra chinensis ❦ Rosa rugosa ❦ Pinus koraiensis ❦ Aralia elata ❦ Eleutherococcus senticosus ❦ Matteuccia struthiopteris ❦ Schisandra chinensis ❦ Rosa rugosa</textPath></text>
+  </svg>
+</div>
+
+<!-- ============ ФИЛОСОФИЯ ============ -->
+<section class="sec" id="philo">
+  <div class="wrap philo">
+    <div class="cameo">
+      <svg class="orn" viewBox="0 0 440 580" role="img" aria-label="Молодые листья папоротника в овальной раме">
+        <defs><clipPath id="ovFern"><ellipse cx="220" cy="300" rx="170" ry="230"/></clipPath></defs>
+        <image clip-path="url(#ovFern)" href="../../assets/photos/fern.webp" x="-60" y="40" width="560" height="560" preserveAspectRatio="xMidYMid slice"/>
+        <ellipse class="s" cx="220" cy="300" rx="178" ry="238" stroke-width="1.2"/>
+        <path class="s" id="fernLace" stroke-width=".9" d=""/>
+        <use href="#crest" x="120" y="18" width="200" height="56"/>
+        <g transform="rotate(180 220 300)"><use href="#crest" x="120" y="18" width="200" height="56"/></g>
+      </svg>
+    </div>
+    <div class="philo-text">
+      <h2 class="h2">Медленная <span class="vibes">красота</span> из влажного леса</h2>
+      <p class="first">Приморская тайга растёт в тумане: здесь лимонник обвивает кедры, а шиповник выходит прямо к морю. Мы берём у неё понемногу и только то, что она отдаёт сама: опавшие лепестки, молодые побеги, орех после первых заморозков.</p>
+      <p>Никаких силиконов, отдушек и консервантов из длинного списка. Девять трав, холодный отжим и терпение: масло настаивается сорок дней на подоконнике ателье.</p>
+      <div class="sign"><span class="vibes">Вера Лаптева</span><small>основательница,<br>фитотерапевт</small></div>
+      <p class="batch">В осенней партии 320 флаконов, и на каждом Вера пишет номер от руки.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ РИТУАЛ ============ -->
+<section class="dark sec" id="ritual">
+  <div class="wrap">
+    <div class="ritual-head">
+      <h2 class="h2">Три жеста <span class="vibes">на ночь</span></h2>
+      <p>Семь минут перед сном. Свет приглушить, телефон отложить, ладони согреть.</p>
+    </div>
+    <div class="steps">
+      <svg class="thread orn" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path class="s" stroke-width="1.2" vector-effect="non-scaling-stroke" d="M120 30C260 10 330 100 480 80S700 20 780 70 1000 150 1100 90"/><path class="s" stroke-width=".7" vector-effect="non-scaling-stroke" d="M120 38C260 18 330 108 480 88S700 28 780 78 1000 158 1100 98"/></svg>
+      <div class="step">
+        <div class="medal"><svg class="orn" viewBox="0 0 140 140" aria-hidden="true"><path class="s medal-lace" stroke-width="1" d=""/><circle class="s" cx="70" cy="70" r="46" stroke-width="1"/></svg><b>I</b></div>
+        <h3>Очищение</h3><div class="time">две минуты</div>
+        <p>Гидролат шиповника на ватный диск, затем по лицу лёгкими похлопываниями. Кожа пьёт воду, пока она влажная.</p>
+        <div class="prod">Гидролат «Роза ругоза»</div>
+      </div>
+      <div class="step">
+        <div class="medal"><svg class="orn" viewBox="0 0 140 140" aria-hidden="true"><path class="s medal-lace" stroke-width="1" d=""/><circle class="s" cx="70" cy="70" r="46" stroke-width="1"/></svg><b>II</b></div>
+        <h3>Питание</h3><div class="time">три минуты</div>
+        <p>Три капли сыворотки на тёплые ладони. Прижать к лицу и задержать дыхание на счёт пять.</p>
+        <div class="prod">Сыворотка «Страусник»</div>
+      </div>
+      <div class="step">
+        <div class="medal"><svg class="orn" viewBox="0 0 140 140" aria-hidden="true"><path class="s medal-lace" stroke-width="1" d=""/><circle class="s" cx="70" cy="70" r="46" stroke-width="1"/></svg><b>III</b></div>
+        <h3>Запечатывание</h3><div class="time">две минуты</div>
+        <p>Масло кедрового ореха вбить подушечками пальцев от центра к вискам. Утром кожа как после долгого сна.</p>
+        <div class="prod">Масло «Кедр и туман»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ВИТРИНА ============ -->
+<section class="salon sec" id="shop">
+  <div class="wrap">
+    <div class="shop-head">
+      <h2 class="h2">Пять <span class="vibes">сокровищ</span> тайги</h2>
+      <p>Развеска как в гостиной у Веры: каждый флакон в своей раме, каждая партия пронумерована вручную.</p>
+    </div>
+    <div class="wall">
+      <article class="item it1">
+        <svg class="hang" aria-hidden="true"><use href="#bow"/></svg>
+        <div class="frame oval"><svg class="crest orn" aria-hidden="true"><use href="#crest"/></svg><div class="pic"><img src="../../assets/photos/hydrangea-pink.webp" width="1280" height="853" loading="lazy" decoding="async" alt="Розовые лепестки крупным планом"></div></div>
+        <div class="label"><span class="vibes">Роза ругоза</span><h3>гидролат для лица</h3><p>Цветочная вода шиповника морщинистого с побережья Шаморы. Тонизирует и снимает покраснения.</p><div class="buy"><span class="price">1 450 ₽<small>100 мл</small></span><button class="add" aria-pressed="false">В ритуал</button></div></div>
+      </article>
+      <article class="item it2">
+        <svg class="hang" aria-hidden="true"><use href="#bow"/></svg>
+        <div class="frame circle"><svg class="crest orn" aria-hidden="true"><use href="#crest"/></svg><div class="pic"><img src="../../assets/photos/fern.webp" width="1280" height="850" loading="lazy" decoding="async" alt="Молодой лист папоротника на просвет"></div></div>
+        <div class="label"><span class="vibes">Страусник</span><h3>сыворотка-эликсир</h3><p>Молодой папоротник-страусник и ягоды лимонника. Возвращает коже упругость за четыре недели.</p><div class="buy"><span class="price">3 200 ₽<small>30 мл</small></span><button class="add" aria-pressed="false">В ритуал</button></div></div>
+        <span class="fav" aria-hidden="true">любимое<br>Веры</span>
+      </article>
+      <article class="item it3">
+        <svg class="hang" aria-hidden="true"><use href="#bow"/></svg>
+        <div class="frame oval"><svg class="crest orn" aria-hidden="true"><use href="#crest"/></svg><div class="pic"><img src="../../assets/photos/woman-lake.webp" width="1280" height="854" loading="lazy" decoding="async" alt="Мухоловка на ветке с набухшими почками"></div></div>
+        <div class="label"><span class="vibes">Кедр и туман</span><h3>масло для лица</h3><p>Масло кедрового ореха холодного отжима с почками берёзы. Для сухой кожи и ветреной приморской зимы.</p><div class="buy"><span class="price">2 650 ₽<small>30 мл</small></span><button class="add" aria-pressed="false">В ритуал</button></div></div>
+      </article>
+      <article class="item it4">
+        <svg class="hang" aria-hidden="true"><use href="#bow"/></svg>
+        <div class="frame circle"><svg class="crest orn" aria-hidden="true"><use href="#crest"/></svg><div class="pic"><img src="../../assets/photos/bluetit.webp" width="1280" height="781" loading="lazy" decoding="async" alt="Лазоревка на цветущей ветке абрикоса"></div></div>
+        <div class="label"><span class="vibes">Цветущий абрикос</span><h3>бальзам для губ</h3><p>Воск диких пчёл из Анучино, масло абрикосовой косточки и капля розы. Пахнет маем на Седанке.</p><div class="buy"><span class="price">1 650 ₽<small>15 мл</small></span><button class="add" aria-pressed="false">В ритуал</button></div></div>
+      </article>
+      <article class="item it5">
+        <svg class="hang" aria-hidden="true"><use href="#bow"/></svg>
+        <div class="frame arch"><svg class="crest orn" aria-hidden="true"><use href="#crest"/></svg><div class="pic"><img src="../../assets/photos/butterfly.webp" width="1280" height="853" loading="lazy" decoding="async" alt="Бабочка-голубянка на розовых соцветиях"></div></div>
+        <div class="label"><span class="vibes">Голубянка</span><h3>ночной крем-кокон, флагман коллекции</h3><p>Аралия, женьшень с плантации в Чугуевке и масло шиповника. Восстанавливает кожу за ночь.</p><div class="buy"><span class="price">4 800 ₽<small>50 мл</small></span><button class="add" aria-pressed="false">В ритуал</button></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ КАЛЕНДАРЬ СБОРА ============ -->
+<section class="dark sec" id="taiga">
+  <div class="wrap taiga">
+    <div class="taiga-left">
+      <h2 class="h2">Тайга <span class="vibes">во флаконе</span></h2>
+      <p>Шесть растений, за которыми мы ходим сами. Каждое собираем в свой месяц, когда сила на пике.</p>
+      <svg class="sprig orn" viewBox="0 0 200 120" aria-hidden="true"><path class="s" stroke-width="1.2" d="M10 110C60 90 110 60 190 12"/><path class="s" stroke-width="1" d="M40 96c-6-16 2-30 14-34-2 14-6 26-14 34zM62 84c2-18 14-28 28-28-6 14-14 24-28 28zM92 66c0-16 12-28 26-30-4 14-12 24-26 30zM118 50c4-14 16-22 30-22-6 12-16 20-30 22zM46 98c16 4 30-2 36-14-14 0-26 4-36 14zM74 82c16 4 30-2 36-14-14-2-26 4-36 14zM104 64c14 2 28-4 32-16-14 0-24 6-32 16z"/><circle cx="178" cy="20" r="4" fill="currentColor"/><circle cx="168" cy="14" r="3" fill="currentColor"/><circle cx="184" cy="30" r="2.5" fill="currentColor"/></svg>
+    </div>
+    <ul class="cal">
+      <li><span class="mo">май<small>Седанка</small></span><div><h3>Аралия маньчжурская<i>Aralia elata</i></h3><p>Колючее «чёртово дерево». Молодые побеги дают экстракт для уставшей кожи.</p></div></li>
+      <li><span class="mo">май<small>Русский остров</small></span><div><h3>Страусник<i>Matteuccia struthiopteris</i></h3><p>Свёрнутые улитки молодого папоротника. Успокаивают и снимают отёки.</p></div></li>
+      <li><span class="mo">июнь<small>Шамора</small></span><div><h3>Шиповник морщинистый<i>Rosa rugosa</i></h3><p>Растёт на песке у самой воды. Лепестки идут в гидролат, косточки в масло.</p></div></li>
+      <li><span class="mo">август<small>Шкотово</small></span><div><h3>Элеутерококк<i>Eleutherococcus senticosus</i></h3><p>Дальний родственник женьшеня. Помогает коже пережить отопительный сезон.</p></div></li>
+      <li><span class="mo">сентябрь<small>Лазо</small></span><div><h3>Лимонник китайский<i>Schisandra chinensis</i></h3><p>Ягоды пяти вкусов. Тонизирует кожу, выравнивает тон, бодрит как утренний холод.</p></div></li>
+      <li><span class="mo">октябрь<small>Анучино</small></span><div><h3>Кедр корейский<i>Pinus koraiensis</i></h3><p>Орех после первых заморозков, самый маслянистый. Питает, не оставляя плёнки.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ПИСЬМА ============ -->
+<section class="letters-sec sec" id="letters">
+  <div class="wrap">
+    <h2 class="h2">Письма, которые <span class="vibes">нам пишут</span></h2>
+    <div class="letters">
+      <div class="env-wrap"><div class="env" tabindex="0" role="button" aria-label="Открыть письмо от Марины">
+        <div class="back"></div>
+        <div class="letter"><p>Вера, здравствуйте! Третью зиму живу с вашим кедровым маслом. Ветер на Эгершельде больше не страшен, щёки не трескаются.</p><div class="from">Марина, Владивосток</div></div>
+        <div class="flap"></div><div class="pocket"></div>
+        <div class="addr">Светланская, 38<br>ателье «Мох и Роза»</div>
+        <div class="seal" aria-hidden="true">МР</div>
+      </div></div>
+      <div class="env-wrap"><div class="env" tabindex="0" role="button" aria-label="Открыть письмо от Анастасии">
+        <div class="back"></div>
+        <div class="letter"><p>Заказала «Голубянку» маме на юбилей. Она спрятала крем от всех и пользуется им по праздникам. Пришлите, пожалуйста, ещё одну!</p><div class="from">Анастасия, Хабаровск</div></div>
+        <div class="flap"></div><div class="pocket"></div>
+        <div class="addr">Владивосток<br>Вере Лаптевой</div>
+        <div class="seal" aria-hidden="true">МР</div>
+      </div></div>
+      <div class="env-wrap"><div class="env" tabindex="0" role="button" aria-label="Открыть письмо от Ольги">
+        <div class="back"></div>
+        <div class="letter"><p>Гидролат пахнет так же, как шиповник у бабушкиной дачи в Тавричанке. Умываюсь и возвращаюсь в детство.</p><div class="from">Ольга, Москва</div></div>
+        <div class="flap"></div><div class="pocket"></div>
+        <div class="addr">Приморье<br>с любовью</div>
+        <div class="seal" aria-hidden="true">МР</div>
+      </div></div>
+    </div>
+    <p class="env-hint">Нажмите на конверт, чтобы сломать печать</p>
+  </div>
+</section>
+
+<!-- ============ КОНСУЛЬТАЦИЯ ============ -->
+<section class="dark sec" id="consult">
+  <div class="wrap consult">
+    <div>
+      <h2 class="h2">Подберём <span class="vibes">ваш ритуал</span></h2>
+      <p class="lead2">Тридцать минут с Верой в ателье на Светланской или по видеосвязи. Бесплатно, с пробниками в подарок.</p>
+      <ol>
+        <li>Смотрим кожу при дневном свете</li>
+        <li>Составляем ритуал из двух или трёх флаконов</li>
+        <li>Даём пробники на неделю</li>
+      </ol>
+    </div>
+    <div class="fbox">
+      <svg class="corner tl orn" aria-hidden="true"><use href="#corner"/></svg><svg class="corner tr orn" aria-hidden="true"><use href="#corner"/></svg><svg class="corner bl orn" aria-hidden="true"><use href="#corner"/></svg><svg class="corner br orn" aria-hidden="true"><use href="#corner"/></svg>
+      <h3>Запись к Вере</h3>
+      <p class="sub">перезвоним в течение дня</p>
+      <form class="f" id="form" novalidate>
+        <label class="fl">Ваше имя<input type="text" name="name" required autocomplete="name" placeholder="Анна"></label>
+        <label class="fl">Телефон<input type="tel" name="phone" id="phone" required autocomplete="tel" placeholder="+7 (___) ___-__-__"></label>
+        <div class="two">
+          <label class="fl">Тип кожи<select name="skin"><option>Сухая</option><option>Нормальная</option><option>Комбинированная</option><option>Жирная</option><option>Чувствительная</option><option>Не знаю</option></select></label>
+          <label class="fl">Формат<select name="fmt"><option>В ателье</option><option>По видеосвязи</option></select></label>
+        </div>
+        <label class="agree"><input type="checkbox" name="agree" required><span>Согласна на обработку персональных данных и принимаю <a href="#privacy">Политику конфиденциальности</a></span></label>
+        <button class="btn" type="submit">Записаться</button>
+        <div class="thanks" role="status"><div class="vibes">Спасибо!</div><p>Вера позвонит вам сегодня или завтра утром.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><div class="vibes">Мох и Роза</div><p style="font-style:italic;margin-top:14px;max-width:30ch">Натуральная косметика из трав Приморья. Варим и разливаем вручную.</p></div>
+      <div><h4>Ателье</h4><p>Владивосток,<br>ул. Светланская, 38<br>ежедневно с 11:00 до 20:00</p></div>
+      <div><h4>Связь</h4><p><a href="tel:+74232647031">+7 (423) 264-70-31</a><br><a href="mailto:vera@mohiroza.ru">vera@mohiroza.ru</a></p></div>
+      <div><h4>Мы пишем</h4><p><a href="#">Телеграм</a><br><a href="#">ВКонтакте</a><br><a href="#privacy" id="privacy">Политика конфиденциальности</a></p></div>
+    </div>
+    <div class="ftail"><span>© 2026 «Мох и Роза». Учебный пример для лекции, бренд вымышленный</span><span>Фото: Unsplash</span></div>
+  </div>
+</footer>
+
+<button class="about-btn" id="aboutBtn" aria-expanded="false" aria-controls="about">О стиле</button>
+<aside class="about" id="about" aria-label="О стиле">
+  <button class="x" id="aboutX" aria-label="Закрыть">×</button>
+  <h2>New Rococo</h2>
+  <h3>Признаки</h3>
+  <ul>
+    <li>Рокайль: раковины, завитки, банты и кружево петель, нарисованные вручную кривыми Безье</li>
+    <li>Витрина как салонная развеска: рамы разной формы висят на бантах, подписи как музейные этикетки</li>
+    <li>Мшистый, жемчужный, пудровый и старое золото</li>
+    <li>Формальная каллиграфия рядом со строгой антиквой</li>
+  </ul>
+  <h3>Шрифты</h3>
+  <ul><li>Great Vibes: парадная каллиграфия</li><li>Cormorant Garamond: текст и курсив</li><li>Marck Script: только письма покупательниц, живой почерк</li></ul>
+  <h3>Библиотеки</h3>
+  <ul><li>anime.js v4: рама зеркала в hero прорисовывается пером один раз (svg.createDrawable)</li><li>Остальное на CSS и небольшом своём JS</li></ul>
+  <h3>Эффекты по мотивам reactbits.dev</h3>
+  <ul><li>Draw-on SVG вместо Blur Text</li><li>Конверты с печатью, которые открываются по клику</li></ul>
+  <h3>Референсы</h3>
+  <ul><li><a href="https://t.me/setters_agency" target="_blank" rel="noopener">SETTERS, тренды 2026</a></li><li><a href="https://www.diptyqueparis.com" target="_blank" rel="noopener">Diptyque</a></li><li>Салонная развеска в Эрмитаже и Версале</li></ul>
+  <p class="no"><b>Чего здесь нет:</b> размытых пятен-блобов, мерцающих звёздочек, свечения у текста, блика на кнопке, бегущей строки и подписей капсом над заголовками. Вместо десяти эффектов одна прорисовка рамы.</p>
+</aside>
+
+<script src="../../assets/js/anime.min.js" defer></script>
+<script>
+document.documentElement.classList.add('js');
+document.addEventListener('DOMContentLoaded',function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+/* кружево из петель вдоль эллипса: считается один раз, дальше статичная линия */
+const f1=n=>n.toFixed(1);
+function lace(cx,cy,a,b,n,r0,r1,steps,ph=0){
+  let d='';
+  for(let i=0;i<=steps;i++){
+    const t=i/steps*Math.PI*2,r=r0+r1*Math.pow(Math.sin(3*t+ph),2);
+    d+=(i?'L':'M')+f1(cx+a*Math.cos(t)+r*Math.cos(n*t))+' '+f1(cy+b*Math.sin(t)+r*Math.sin(n*t));
+  }
+  return d;
+}
+$('#heroLace').setAttribute('d',lace(260,380,214,290,46,7,11,1200,.4));
+$('#fernLace').setAttribute('d',lace(220,300,190,250,36,5,9,900,1.2));
+$$('.medal-lace').forEach((p,i)=>p.setAttribute('d',lace(70,70,56,56,18,4,6,420,i)));
+/* кружево вокруг овальных и круглых рам витрины */
+$$('.frame.oval,.frame.circle').forEach((fr,i)=>{
+  const c=fr.classList.contains('circle'),W=200,H=c?200:266;
+  fr.insertAdjacentHTML('beforeend',`<svg class="lace orn" viewBox="-30 -30 ${W+60} ${H+60}" preserveAspectRatio="none" aria-hidden="true"><path class="s" stroke-width="1" vector-effect="non-scaling-stroke" d="${lace(W/2,H/2,W/2+22,H/2+22,c?24:28,3,5,700,i)}"/></svg>`);
+});
+
+/* рама зеркала прорисовывается пером один раз */
+if(!RM&&typeof anime!=='undefined'){
+  const els=$$('#heroMirror .d');
+  const dr=anime.svg.createDrawable(els);
+  anime.utils.set(dr,{draw:'0 0'});
+  anime.animate(dr,{draw:['0 0','0 1'],duration:2400,ease:'inOutSine',delay:anime.stagger(140,{start:200})});
+}
+
+/* корзина-ритуал */
+let bag=0;
+$$('.add').forEach(b=>b.addEventListener('click',()=>{
+  const on=b.getAttribute('aria-pressed')!=='true';
+  b.setAttribute('aria-pressed',on);b.textContent=on?'В ритуале':'В ритуал';
+  bag+=on?1:-1;const n=$('#bagN');n.textContent=bag;
+  if(!RM) n.animate([{transform:'scale(1.5)'},{transform:'scale(1)'}],{duration:500,easing:'cubic-bezier(.2,.8,.2,1)'});
+}));
+
+/* письма-конверты */
+const envs=$$('.env');
+envs.forEach(e=>{
+  if(!RM) e.classList.add('closed');
+  const t=()=>e.classList.toggle('closed');
+  e.addEventListener('click',t);
+  e.addEventListener('keydown',k=>{if(k.key==='Enter'||k.key===' '){k.preventDefault();t()}});
+});
+/* первый конверт открывается сам, когда доезжает до экрана */
+const io=new IntersectionObserver(([en])=>{if(en.isIntersecting){io.disconnect();setTimeout(()=>envs[0].classList.remove('closed'),500)}},{threshold:.6});
+io.observe(envs[0]);
+
+/* форма */
+const ph=$('#phone');
+ph.addEventListener('input',()=>{let d=ph.value.replace(/\D/g,'');if(d[0]==='8')d='7'+d.slice(1);if(d&&d[0]!=='7')d='7'+d;d=d.slice(0,11);let r='+7';if(d.length>1)r+=' ('+d.slice(1,4);if(d.length>=4)r+=') '+d.slice(4,7);if(d.length>=7)r+='-'+d.slice(7,9);if(d.length>=9)r+='-'+d.slice(9,11);ph.value=d?r:''});
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.currentTarget;
+  if(!f.checkValidity()){f.reportValidity();return}
+  if(ph.value.replace(/\D/g,'').length<11){ph.setCustomValidity('Введите номер полностью');ph.reportValidity();ph.setCustomValidity('');return}
+  f.classList.add('done');
+});
+
+/* о стиле */
+const ab=$('#about'),abb=$('#aboutBtn');
+abb.addEventListener('click',()=>{abb.setAttribute('aria-expanded',ab.classList.toggle('open'))});
+$('#aboutX').addEventListener('click',()=>{ab.classList.remove('open');abb.setAttribute('aria-expanded',false);abb.focus()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&ab.classList.contains('open')){ab.classList.remove('open');abb.setAttribute('aria-expanded',false)}});
+});
+</script>
+</body>
+</html>

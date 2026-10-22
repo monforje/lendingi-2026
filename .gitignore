@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+sites/REWORK.md
+pdf/source/*.html

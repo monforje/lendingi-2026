@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пломбир с Седанки</title>
+<meta name="description" content="Фермерское мороженое из молока с Седанки. Восемь вкусов, доставка по Владивостоку за два часа.">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --ink:#211C33;
+  --ink-soft:#4A4360;
+  --grass:#3DAF5C;
+  --grass-deep:#1E6B37;
+  --yolk:#FFD447;
+  --pink:#FF86B6;
+  --sky:#7CC8F2;
+  --waffle:#E9A452;
+  --display:'Dela Gothic One',system-ui,sans-serif;
+  --text:'Onest',system-ui,sans-serif;
+  --hand:'Caveat',cursive;
+  --gut:56px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--paper);color:var(--ink);-webkit-text-size-adjust:100%;overflow-x:clip}
+/* зерно: обычный фон под приглушающей плёнкой цвета, без fixed-слоя и mix-blend */
+body{font-family:var(--text);font-size:18px;line-height:1.55;overflow-x:clip;--bg:var(--paper);--veil:rgba(255,255,255,.8)}
+body{background:linear-gradient(var(--veil),var(--veil)),url(../../assets/grain.png),var(--bg)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:4px;text-decoration-thickness:2px}
+button,input,select{font:inherit;color:inherit}
+::selection{background:var(--yolk);color:var(--ink)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:4px;border-radius:4px}
+.wrap{max-width:1208px;margin:0 auto}
+.flav,.farm,.rev,.order,footer{padding-left:56px;padding-right:56px}
+.hand{font-family:var(--hand);font-weight:700;fill:var(--ink)}
+
+/* рисунки: один маркер на весь сайт, заливка печатается со сдвигом */
+svg .ln,svg .sl{fill:none;stroke:var(--ink);stroke-width:4.5px;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+svg .thin{stroke-width:2.75px}
+svg .f{transform:translate(5px,4px)}
+.boilbox{position:relative;display:block}
+.boilbox>svg{display:block;width:100%;height:auto}
+.boilbox .fr{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0}
+.boilbox .fr0{opacity:1}
+.boilbox.live .fr{animation:.84s step-end infinite}
+.boilbox.live .fr0{animation-name:fr0}
+.boilbox.live .fr1{animation-name:fr1}
+.boilbox.live .fr2{animation-name:fr2}
+@keyframes fr0{0%{opacity:1}33.33%{opacity:0}100%{opacity:0}}
+@keyframes fr1{0%{opacity:0}33.33%{opacity:1}66.66%{opacity:0}100%{opacity:0}}
+@keyframes fr2{0%{opacity:0}66.66%{opacity:1}100%{opacity:1}}
+
+/* шапка */
+.top{display:flex;align-items:center;gap:28px;padding:18px var(--gut);max-width:1440px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:16px;line-height:1}
+.logo-pic{width:36px;height:45px}
+.top nav{display:flex;gap:26px;margin-left:auto;font-weight:500}
+.top nav a{text-decoration:none;padding:8px 0}
+.top nav a:hover{text-decoration:underline wavy var(--pink);text-decoration-thickness:2px}
+.tel{font-weight:500;text-decoration:none;white-space:nowrap}
+
+/* первый экран */
+.hero{background:var(--sky);overflow:hidden}
+.hero-in{display:grid;grid-template-columns:5fr 7fr;gap:2vw;align-items:end;max-width:1440px;margin:0 auto;padding:8px 56px 4px}
+.hero-copy{align-self:center;padding:40px 0 80px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,6.2vw,96px);line-height:.92;letter-spacing:-.02em}
+.hero h1 span{display:block;margin-left:.42em;white-space:nowrap}
+.lead{font-size:21px;line-height:1.5;max-width:32ch;margin:28px 0 22px}
+.price{font-family:var(--hand);font-weight:700;font-size:30px;line-height:1.15;margin-bottom:30px}
+.price b{font-weight:700;background:var(--yolk);padding:0 6px;border-radius:6px}
+.cta{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);font-family:var(--display);font-size:17px;line-height:1;padding:20px 30px;border:0;border-radius:60px 46px 58px 44px/44px 58px 46px 60px;text-decoration:none;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),background-color .2s}
+.btn:hover{background:var(--grass-deep);transform:rotate(-2deg)}
+.btn:active{transform:rotate(-2deg) scale(.97)}
+.more{font-weight:500}
+.scene-wrap{margin-bottom:-2px}
+
+/* вкусы */
+.flav{padding-top:120px;padding-bottom:130px}
+.h2{font-family:var(--display);font-weight:400;font-size:clamp(38px,5vw,72px);line-height:.98;letter-spacing:-.015em}
+.flav-head{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end}
+.flav-head p{max-width:44ch}
+.flav-grid{display:grid;grid-template-columns:minmax(260px,1fr) 2.3fr;gap:64px;margin-top:64px;align-items:start}
+.counter{position:sticky;top:32px;text-align:center}
+.counter .bigcone{width:100%;max-width:320px;margin:0 auto}
+.counter .scoopfill{transition:fill .35s ease-out}
+.counter .inc{display:none}
+.counter[data-k="0"] .inc[data-k="0"],.counter[data-k="1"] .inc[data-k="1"],.counter[data-k="2"] .inc[data-k="2"],.counter[data-k="3"] .inc[data-k="3"],.counter[data-k="4"] .inc[data-k="4"],.counter[data-k="5"] .inc[data-k="5"],.counter[data-k="6"] .inc[data-k="6"],.counter[data-k="7"] .inc[data-k="7"]{display:inline}
+.counter .now{font-family:var(--hand);font-weight:700;font-size:40px;line-height:1;margin-top:10px;min-height:44px}
+.counter .bigcone-box{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.counter.plop .bigcone-box{transform:translateY(-10px) rotate(-3deg)}
+.scoops{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:48px 28px}
+.scoops li:nth-child(4n+2){margin-top:34px}
+.scoops li:nth-child(4n+4){margin-top:18px}
+.scoop{display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:6px;border-radius:18px}
+.scoop svg{width:100%;max-width:150px;display:block;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.scoop:hover svg{transform:rotate(-5deg) translateY(-6px)}
+.scoop[aria-pressed="true"] svg{transform:rotate(4deg) translateY(-8px)}
+.scoop .sn{display:block;font-family:var(--display);font-size:19px;line-height:1.1;margin-top:12px}
+.scoop[aria-pressed="true"] .sn{text-decoration:underline wavy var(--pink);text-decoration-thickness:3px;text-underline-offset:5px}
+.scoop .sd{display:block;font-size:16px;line-height:1.45;color:var(--ink-soft);margin-top:10px;max-width:24ch}
+
+/* ферма */
+.farm{background:var(--grass);padding-top:120px;padding-bottom:140px}
+.farm-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.farm .lead{margin:28px 0 18px;max-width:36ch}
+.farm p{max-width:46ch}
+.farm p+p{margin-top:14px}
+.day{margin-top:18px;display:grid;gap:22px;max-width:520px}
+.day div{display:grid;grid-template-columns:64px 92px 1fr;gap:16px;align-items:center}
+.day dt{font-family:var(--display);font-size:22px;line-height:1}
+.day dd{line-height:1.4}
+.ico{width:64px;height:64px;overflow:visible}
+.day-h{margin-top:48px;font-family:var(--hand);font-weight:700;font-size:34px;line-height:1;margin-bottom:-4px}
+.ph{background:#fff;padding:12px 12px 6px;box-shadow:0 2px 0 rgba(33,28,51,.25),0 14px 24px -12px rgba(33,28,51,.45);position:relative}
+.ph img{aspect-ratio:1280/853;width:100%;object-fit:cover}
+.ph figcaption{font-family:var(--hand);font-weight:700;font-size:26px;line-height:1.1;padding:8px 2px 4px}
+.ph .ov{position:absolute;left:12px;top:12px;width:calc(100% - 24px);aspect-ratio:1280/853;overflow:visible;pointer-events:none}
+.ph .ov .ln{stroke-width:3.5px}
+.cowph{rotate:2deg}
+.kidph{rotate:-3deg;width:66%;margin:-30px -3% 0 auto}
+
+/* отзывы */
+.rev{background:var(--pink);padding-top:120px;padding-bottom:130px}
+.rev-head{display:flex;align-items:baseline;gap:28px;flex-wrap:wrap}
+.rev-head .hand-note{font-family:var(--hand);font-weight:700;font-size:30px;rotate:-3deg}
+.rev-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:28px;margin-top:56px;align-items:start}
+.note{background:var(--paper);padding:28px 28px 22px;font-family:var(--hand);font-size:31px;line-height:1.2;position:relative;box-shadow:0 2px 0 rgba(33,28,51,.2),0 16px 26px -14px rgba(33,28,51,.5)}
+.note .who{display:block;font-family:var(--text);font-size:15px;line-height:1.4;margin-top:14px;color:var(--ink-soft)}
+.note .kid{width:110px;height:auto;display:block;margin:6px 0 -4px auto}
+.n1{grid-column:1/5;rotate:-2deg}
+.n2{grid-column:5/9;rotate:1.5deg;margin-top:70px}
+.n3{grid-column:9/13;rotate:-1deg;margin-top:16px}
+.dogph{grid-column:3/8;rotate:-2deg;margin-top:20px}
+.n4{grid-column:8/12;rotate:2deg;margin-top:90px}
+
+/* заказ */
+.order{padding-top:120px;padding-bottom:140px}
+.order-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
+.how{list-style:none;margin:36px 0 0;display:grid;gap:20px;max-width:46ch}
+.how li{display:grid;grid-template-columns:44px 1fr;gap:14px}
+.how b{font-family:var(--display);font-weight:400;font-size:28px;line-height:1}
+.deliv{margin-top:30px;max-width:46ch;color:var(--ink-soft)}
+.order .bottle{width:150px}
+.order .bottle-box{width:150px;margin:36px 0 0 30px;rotate:-6deg}
+form{background:var(--yolk);padding:40px;border-radius:30px 14px 36px 12px/14px 34px 12px 30px;position:relative}
+.fld{display:block;margin-bottom:22px}
+.fld span{display:block;font-weight:500;margin-bottom:6px}
+.fld input,.fld select{width:100%;border:0;border-bottom:3px solid var(--ink);background:transparent;padding:10px 2px;font-size:20px;border-radius:0;outline:none}
+.fld input::placeholder{color:#544C33;opacity:1}
+.fld input:focus,.fld select:focus{background:rgba(255,255,255,.5)}
+.fld input:user-invalid{border-bottom-color:#C2271D}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.chk{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.4;margin:4px 0 28px;cursor:pointer}
+.chk input{appearance:none;width:28px;height:28px;flex:none;border:3px solid var(--ink);border-radius:7px 10px 6px 9px;background:#fff;cursor:pointer;display:grid;place-items:center;margin-top:-2px}
+.chk input:checked{background:var(--grass)}
+.chk input:checked::after{content:"";width:12px;height:7px;border-left:3.5px solid var(--ink);border-bottom:3.5px solid var(--ink);rotate:-45deg;translate:0 -2px}
+.thanks{display:none;text-align:center;padding:20px 10px}
+.thanks .thx-box{width:150px;margin:0 auto}
+.thanks h3{font-family:var(--display);font-weight:400;font-size:42px;line-height:1;margin:18px 0 10px}
+form.done .fields{display:none}
+form.done .thanks{display:block}
+
+/* подвал */
+footer{background:var(--ink);color:var(--paper);padding-top:80px;padding-bottom:120px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+.foot h4{font-family:var(--hand);font-weight:700;font-size:30px;line-height:1;color:var(--yolk);margin-bottom:10px}
+.foot p{font-size:17px;line-height:1.6}
+.foot a{text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.big-name{font-family:var(--display);font-size:clamp(40px,8.4vw,128px);line-height:.9;letter-spacing:-.02em;color:var(--pink);margin-top:72px}
+.policy{font-size:14px;line-height:1.5;color:#C9C3DA;margin-top:28px;max-width:80ch}
+
+/* о стиле */
+.about-btn{position:fixed;left:16px;bottom:16px;z-index:80;background:var(--paper);border:3px solid var(--ink);font-weight:500;font-size:16px;padding:10px 18px;cursor:pointer;border-radius:30px 20px 34px 18px/20px 32px 18px 30px}
+.about{position:fixed;left:16px;bottom:76px;z-index:81;width:min(430px,calc(100vw - 32px));max-height:calc(100svh - 100px);overflow:auto;background:var(--paper);border:3px solid var(--ink);padding:26px 24px 22px;font-size:15px;line-height:1.5;display:none;border-radius:12px}
+.about.open{display:block}
+.about h3{font-family:var(--display);font-weight:400;font-size:26px;line-height:1;margin-bottom:10px}
+.about h4{font-family:var(--hand);font-weight:700;font-size:25px;line-height:1;margin:14px 0 4px}
+.about ul{padding-left:18px}
+.about .x{position:absolute;right:10px;top:8px;width:44px;height:44px;background:none;border:0;font-size:30px;line-height:1;cursor:pointer}
+
+.below{content-visibility:auto;contain-intrinsic-size:auto 1100px}
+
+@media (max-width:1100px){
+  .scoops{grid-template-columns:repeat(3,1fr)}
+  .scoops li:nth-child(n){margin-top:0}
+}
+@media (max-width:900px){
+  :root{--gut:32px}
+  .flav,.farm,.rev,.order,footer{padding-left:32px;padding-right:32px}
+  .hero-in{padding:8px 32px 4px}
+  .hero-in{grid-template-columns:1fr}
+  .hero-copy{padding:20px 0 10px}
+  .flav-head,.farm-grid,.order-grid{grid-template-columns:1fr}
+  .flav-grid{grid-template-columns:1fr;gap:30px}
+  .counter{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:14px;background:var(--paper);padding:8px 0;margin:0 calc(-1*var(--gut));padding-left:var(--gut);box-shadow:0 10px 12px -12px rgba(33,28,51,.5)}
+  .counter .bigcone-box{width:64px;flex:none}
+  .counter .now{font-size:30px;margin:0;min-height:0}
+  .foot{grid-template-columns:1fr 1fr}
+  .rev-grid{grid-template-columns:1fr;gap:36px}
+  .n1,.n2,.n3,.n4,.dogph{grid-column:1;margin-top:0}
+}
+@media (max-width:640px){
+  :root{--gut:18px}
+  .flav,.farm,.rev,.order,footer{padding-left:18px;padding-right:18px}
+  .hero-in{padding:8px 18px 4px}
+  body{font-size:17px}
+  .top{gap:12px}
+  .top nav{display:none}
+  .tel{margin-left:auto;font-size:16px}
+  .about-btn{left:10px;bottom:10px;font-size:14px;padding:7px 13px}
+  .logo{font-size:13px}
+  .logo-pic{width:30px;height:38px}
+  .lead{font-size:19px;margin:20px 0 16px}
+  .price{font-size:26px;margin-bottom:22px}
+  .hero h1 span{margin-left:0}
+  svg .ln,svg .sl{stroke-width:3.2px}
+  svg .thin{stroke-width:2px}
+  .flav,.farm,.rev,.order{padding-top:84px;padding-bottom:90px}
+  .scoops{grid-template-columns:1fr 1fr;gap:34px 14px}
+  .scoop .sn{font-size:17px}
+  .scoop .sd{font-size:15px}
+  .day div{grid-template-columns:48px 70px 1fr;gap:12px}
+  .ico{width:48px;height:48px}
+  .day dt{font-size:18px}
+  .kidph{width:78%;margin:-28px 0 0 auto}
+  .note{font-size:28px}
+  form{padding:28px 20px}
+  .two{grid-template-columns:1fr;gap:0}
+  .foot{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .boilbox.live .fr{animation:none}
+  .btn,.scoop svg,.counter .bigcone-box,.counter .scoopfill{transition:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#top" aria-label="Пломбир с Седанки, на главную"><svg class="logo-pic" viewBox="0 0 48 60" aria-hidden="true">
+  <path d="M10 26 L38 26 L24 56Z" fill="var(--waffle)" transform="translate(2 2)"/>
+  <path d="M8 26 C4 12 14 4 24 4 C36 4 44 14 40 26 C34 30 30 26 24 30 C18 26 14 30 8 26Z" fill="var(--pink)" transform="translate(2 2)"/>
+  <path class="ln thin" d="M8 26 C4 12 14 4 24 4 C36 4 44 14 40 26 C34 30 30 26 24 30 C18 26 14 30 8 26Z M10 28 L24 56 L38 28"/>
+</svg><span>Пломбир<br>с Седанки</span></a>
+  <nav aria-label="Разделы"><a href="#flavors">Вкусы</a><a href="#farm">Ферма</a><a href="#reviews">Отзывы</a><a href="#order">Заказ</a></nav>
+  <a class="tel" href="tel:+74232001919">+7 423 200-19-19</a>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <div class="hero-in">
+    <div class="hero-copy">
+      <h1 id="h1">Пломбир <span>с Седанки</span></h1>
+      <p class="lead">Мороженое из молока двадцати двух коров с Седанки. Молоко, сливки, сахар. Больше в составе ничего нет.</p>
+      <p class="price">вафельный стаканчик <b>190 ₽</b><br>банка 0,5 л <b>690 ₽</b></p>
+      <div class="cta"><a class="btn" href="#order">Заказать домой</a><a class="more" href="#flavors">Восемь вкусов</a></div>
+    </div>
+    <div class="scene-wrap"><svg class="scene boil" viewBox="0 0 720 690" role="img" aria-label="Рисунок: корова Зорька стоит на холме из пломбира с посыпкой, холм лежит в вафельном рожке, над ним солнце и чайки">
+  <defs><clipPath id="coneclip"><path d="M96 500 L626 500 L372 770Z"/></clipPath></defs>
+  <!-- облако -->
+  <path class="f" d="M70 118 C60 96 84 80 104 90 C110 66 146 62 160 82 C176 70 204 80 200 102 C218 108 214 132 196 134 L80 136 C62 134 58 122 70 118Z" fill="#fff"/>
+  <path class="ln" d="M70 118 C60 96 84 80 104 90 C110 66 146 62 160 82 C176 70 204 80 200 102 C218 108 214 132 196 134 L80 136 C62 134 58 122 70 118Z"/>
+  <!-- солнце -->
+  <circle class="f" cx="604" cy="112" r="52" fill="var(--yolk)"/>
+  <circle class="ln" cx="604" cy="112" r="52"/>
+  <path class="ln" d="M604 38 L602 18 M656 60 L670 46 M678 114 L700 116 M654 166 L668 182 M604 186 L606 206 M552 164 L538 180 M530 110 L508 108 M554 60 L540 46"/>
+  <!-- чайки -->
+  <path class="ln thin" d="M290 92 q14 -14 28 0 q14 -14 28 0 M440 60 q10 -10 20 0 q10 -10 20 0"/>
+  <!-- рожок -->
+  <path class="f" d="M96 500 L626 500 L372 770Z" fill="var(--waffle)"/>
+  <path class="sl thin" clip-path="url(#coneclip)" d="M-260 500 L40 800 M-260 500 L-560 800 M-214 500 L86 800 M-214 500 L-514 800 M-168 500 L132 800 M-168 500 L-468 800 M-122 500 L178 800 M-122 500 L-422 800 M-76 500 L224 800 M-76 500 L-376 800 M-30 500 L270 800 M-30 500 L-330 800 M16 500 L316 800 M16 500 L-284 800 M62 500 L362 800 M62 500 L-238 800 M108 500 L408 800 M108 500 L-192 800 M154 500 L454 800 M154 500 L-146 800 M200 500 L500 800 M200 500 L-100 800 M246 500 L546 800 M246 500 L-54 800 M292 500 L592 800 M292 500 L-8 800 M338 500 L638 800 M338 500 L38 800 M384 500 L684 800 M384 500 L84 800 M430 500 L730 800 M430 500 L130 800 M476 500 L776 800 M476 500 L176 800 M522 500 L822 800 M522 500 L222 800 M568 500 L868 800 M568 500 L268 800 M614 500 L914 800 M614 500 L314 800 M660 500 L960 800 M660 500 L360 800 M706 500 L1006 800 M706 500 L406 800 M752 500 L1052 800 M752 500 L452 800 M798 500 L1098 800 M798 500 L498 800 M844 500 L1144 800 M844 500 L544 800 M890 500 L1190 800 M890 500 L590 800 M936 500 L1236 800 M936 500 L636 800"/>
+  <path class="sl" d="M96 500 L372 770 M626 500 L372 770"/>
+  <!-- шарик-холм -->
+  <path class="f" d="M70 520 C40 420 130 330 250 306 C310 294 340 300 380 298 C480 292 600 330 650 420 C676 470 668 510 650 522 C640 534 628 530 622 548 C616 590 590 594 588 556 C586 534 556 540 536 536 C512 532 502 546 498 566 C492 616 462 618 460 572 C458 546 430 540 400 544 C372 548 352 540 340 552 C332 594 304 596 302 556 C300 538 272 536 244 540 C206 544 176 536 158 546 C148 586 122 590 120 552 C118 536 92 538 76 532 C70 530 68 526 70 520Z" fill="#fff"/>
+  <path class="ln" d="M70 520 C40 420 130 330 250 306 C310 294 340 300 380 298 C480 292 600 330 650 420 C676 470 668 510 650 522 C640 534 628 530 622 548 C616 590 590 594 588 556 C586 534 556 540 536 536 C512 532 502 546 498 566 C492 616 462 618 460 572 C458 546 430 540 400 544 C372 548 352 540 340 552 C332 594 304 596 302 556 C300 538 272 536 244 540 C206 544 176 536 158 546 C148 586 122 590 120 552 C118 536 92 538 76 532 C70 530 68 526 70 520Z"/>
+  <path class="ln thin" d="M132 404 C146 376 170 356 198 344 M560 352 C584 366 604 384 616 404"/>
+  <!-- посыпка -->
+  <g class="spr" stroke-linecap="round" stroke-width="9" fill="none">
+    <path d="M190 420 l16 -6" stroke="var(--pink)"/><path d="M262 372 l6 15" stroke="var(--grass)"/><path d="M330 440 l17 3" stroke="var(--sky)"/>
+    <path d="M430 400 l12 -11" stroke="var(--yolk)"/><path d="M520 448 l-5 16" stroke="var(--pink)"/><path d="M596 420 l15 6" stroke="var(--grass)"/>
+    <path d="M240 480 l14 9" stroke="var(--yolk)"/><path d="M400 488 l-15 6" stroke="var(--pink)"/><path d="M150 476 l4 -16" stroke="var(--sky)"/>
+    <path d="M480 352 l15 4" stroke="var(--sky)"/><path d="M330 340 l-14 -6" stroke="var(--yolk)"/><path d="M560 500 l14 -6" stroke="var(--sky)"/>
+  </g>
+  <!-- табличка -->
+  <path class="ln" d="M175 372 L178 444"/>
+  <path class="f" d="M114 326 L232 318 L236 362 L118 370Z" fill="var(--yolk)"/>
+  <path class="ln" d="M114 326 L232 318 L236 362 L118 370Z"/>
+  <text x="174" y="354" text-anchor="middle" class="hand" font-size="30" transform="rotate(-4 174 354)">Седанка</text>
+  <!-- корова -->
+  <path class="f" d="M305 190 C330 178 430 176 455 188 C468 205 468 240 455 255 C420 262 340 262 308 256 C296 235 296 205 305 190Z" fill="#fff"/>
+  <path class="f" d="M300 180 C298 160 285 148 266 150 C248 152 242 170 246 190 C249 208 262 218 280 216 C296 214 304 200 300 180Z" fill="#fff"/>
+  <path class="f" d="M248 200 C252 190 280 190 286 200 C288 212 276 218 266 218 C254 218 246 210 248 200Z" fill="var(--pink)"/>
+  <path class="f" d="M394 258 C396 274 418 276 422 260Z" fill="var(--pink)"/>
+  <circle class="f" cx="301" cy="230" r="8" fill="var(--yolk)"/>
+  <g fill="var(--ink)">
+    <path d="M362 196 C380 192 392 204 386 218 C378 230 358 226 356 212 C354 204 355 198 362 196Z"/>
+    <path d="M424 206 C440 202 450 216 442 228 C432 238 418 228 420 216Z"/>
+    <path d="M436 186 C446 184 456 190 452 198 C446 202 438 198 436 186Z"/>
+    <path d="M276 152 C284 150 294 158 290 166 C286 172 278 168 276 160Z"/>
+    <circle cx="260" cy="205" r="2.6"/><circle cx="274" cy="205" r="2.6"/>
+  </g>
+  <path class="ln" d="M305 190 C330 178 430 176 455 188 C468 205 468 240 455 255 C420 262 340 262 308 256 C296 235 296 205 305 190Z"/>
+  <path class="ln" d="M300 180 C298 160 285 148 266 150 C248 152 242 170 246 190 C249 208 262 218 280 216 C296 214 304 200 300 180Z"/>
+  <path class="ln thin" d="M248 200 C252 190 280 190 286 200 C288 212 276 218 266 218 C254 218 246 210 248 200Z"/>
+  <path class="ln" d="M298 164 C312 158 322 162 318 170 C312 174 304 172 298 170 M247 168 C236 160 226 164 230 172 C236 176 243 174 247 172"/>
+  <path class="ln thin" d="M282 151 C282 140 288 134 296 134 M260 152 C258 142 252 137 245 139"/>
+  <path class="ln thin" d="M257 174 q5 -5 10 0"/>
+  <path class="ln" d="M318 256 L316 302 M340 258 L340 300 M422 258 L423 297 M446 254 L449 296"/>
+  <path class="ln thin" d="M394 258 C396 274 418 276 422 260 M402 270 L402 278 M414 271 L414 279"/>
+  <path class="ln thin" d="M292 214 C296 220 304 222 310 218"/>
+  <circle class="ln thin" cx="301" cy="230" r="8"/>
+  <path class="ln" d="M458 196 C478 200 482 228 476 244"/>
+  <path class="ln thin" d="M470 244 C470 254 482 256 482 244 C482 238 474 238 470 244Z"/>
+  <!-- подпись -->
+  <text x="352" y="150" class="hand" font-size="30" transform="rotate(-5 352 150)">это Зорька</text>
+  <path class="ln thin" d="M412 156 C420 162 422 170 418 178"/>
+</svg></div>
+  </div>
+</section>
+
+<section class="flav" id="flavors" aria-labelledby="h-fl">
+  <div class="wrap">
+    <div class="flav-head">
+      <h2 class="h2" id="h-fl">Восемь вкусов, одна цена</h2>
+      <p>Нажмите на шарик, и он переедет в стаканчик, а в форме заказа сразу выберется этот вкус. Стаканчик 190 ₽, банка 0,5 л 690 ₽, любой вкус.</p>
+    </div>
+    <div class="flav-grid">
+      <div class="counter" id="counter" data-k="0" aria-live="polite">
+        <div class="bigcone-box"><svg class="bigcone boil" viewBox="0 0 142 150" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L71 148Z" fill="var(--waffle)"/>
+  <path class="sl thin" d="M40 86 L80 128 M62 86 L92 116 M84 86 L102 104 M102 86 L62 128 M80 86 L52 114 M58 86 L42 102"/>
+  <path class="sl" d="M24 84 L118 84 L71 148Z"/>
+  <path class="f scoopfill" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#fff"/>
+  <g class="inc" data-k="0"><g fill="var(--ink)"><circle cx="52" cy="44" r="2"/><circle cx="84" cy="36" r="2"/><circle cx="96" cy="58" r="2"/><circle cx="62" cy="64" r="2"/></g></g><g class="inc" data-k="1"><g fill="#B97A3E" stroke="var(--ink)" stroke-width="2"><path d="M48 44 c6 -6 12 0 8 6 c-4 4 -10 2 -8 -6Z"/><path d="M84 32 c6 -4 12 2 7 8 c-4 3 -10 0 -7 -8Z"/><path d="M92 60 c6 -5 12 1 7 7 c-4 3 -10 0 -7 -7Z"/><path d="M60 66 c5 -5 11 1 7 6 c-4 3 -9 0 -7 -6Z"/></g></g><g class="inc" data-k="2"><g fill="#4B2E8F" stroke="var(--ink)" stroke-width="2"><ellipse cx="54" cy="44" rx="5" ry="9" transform="rotate(-30 54 44)"/><ellipse cx="88" cy="40" rx="5" ry="9" transform="rotate(20 88 40)"/><ellipse cx="74" cy="64" rx="5" ry="9" transform="rotate(70 74 64)"/></g></g><g class="inc" data-k="3"><g fill="#E8413A" stroke="var(--ink)" stroke-width="2"><circle cx="78" cy="40" r="5"/><circle cx="88" cy="46" r="5"/><circle cx="78" cy="52" r="5"/><circle cx="50" cy="60" r="4.5"/><circle cx="58" cy="66" r="4.5"/></g></g><g class="inc" data-k="4"><path d="M44 52 C52 36 70 50 64 58 C58 66 46 56 56 44 C66 32 92 36 96 54 C98 64 88 70 82 62" fill="none" stroke="#8A4E1C" stroke-width="4" stroke-linecap="round"/></g><g class="inc" data-k="5"><g><path d="M72 30 C84 28 94 38 88 52 C84 60 76 64 72 64 C66 60 58 52 58 42 C58 34 64 30 72 30Z" fill="#E8413A" stroke="var(--ink)" stroke-width="2"/><g fill="var(--yolk)"><circle cx="68" cy="40" r="1.6"/><circle cx="78" cy="42" r="1.6"/><circle cx="72" cy="52" r="1.6"/><circle cx="82" cy="50" r="1.6"/></g><path d="M68 30 l-6 -8 M74 30 l2 -9 M80 32 l7 -6" stroke="#2E8B47" stroke-width="3" stroke-linecap="round"/></g></g><g class="inc" data-k="6"><g fill="#2B160C"><path d="M50 40 l9 -2 l-1 8 l-9 1Z"/><path d="M84 34 l9 1 l-2 8 l-8 -2Z"/><path d="M94 56 l8 2 l-3 7 l-7 -3Z"/><path d="M60 62 l9 0 l-2 7 l-8 -1Z"/></g></g><g class="inc" data-k="7"><g><path d="M30 60 C50 46 70 70 92 52 C102 44 110 46 116 52" fill="none" stroke="var(--waffle)" stroke-width="6" stroke-linecap="round"/><g fill="#fff" stroke="var(--ink)" stroke-width="1.6"><rect x="54" y="30" width="6" height="6" transform="rotate(20 57 33)"/><rect x="86" y="32" width="6" height="6" transform="rotate(-15 89 35)"/><rect x="70" y="40" width="5" height="5"/></g></g></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg></div>
+        <p class="now" id="now">пломбир</p>
+      </div>
+      <ul class="scoops" id="scoops">
+<li><button class="scoop" type="button" data-i="0" aria-pressed="true">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#FFFFFF"/>
+  <g fill="var(--ink)"><circle cx="52" cy="44" r="2"/><circle cx="84" cy="36" r="2"/><circle cx="96" cy="58" r="2"/><circle cx="62" cy="64" r="2"/></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Пломбир</span>
+  <span class="sd">Классика 15% жирности. Сливки, молоко, сахар и всё.</span>
+</button></li>
+<li><button class="scoop" type="button" data-i="1" aria-pressed="false">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#F3DDB8"/>
+  <g fill="#B97A3E" stroke="var(--ink)" stroke-width="2"><path d="M48 44 c6 -6 12 0 8 6 c-4 4 -10 2 -8 -6Z"/><path d="M84 32 c6 -4 12 2 7 8 c-4 3 -10 0 -7 -8Z"/><path d="M92 60 c6 -5 12 1 7 7 c-4 3 -10 0 -7 -7Z"/><path d="M60 66 c5 -5 11 1 7 6 c-4 3 -9 0 -7 -6Z"/></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Кедровый орех</span>
+  <span class="sd">Орехи из тайги под Партизанском, слегка обжаренные.</span>
+</button></li>
+<li><button class="scoop" type="button" data-i="2" aria-pressed="false">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#C3AEF5"/>
+  <g fill="#4B2E8F" stroke="var(--ink)" stroke-width="2"><ellipse cx="54" cy="44" rx="5" ry="9" transform="rotate(-30 54 44)"/><ellipse cx="88" cy="40" rx="5" ry="9" transform="rotate(20 88 40)"/><ellipse cx="74" cy="64" rx="5" ry="9" transform="rotate(70 74 64)"/></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Жимолость</span>
+  <span class="sd">Кислая дальневосточная ягода, сиреневая и терпкая.</span>
+</button></li>
+<li><button class="scoop" type="button" data-i="3" aria-pressed="false">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#FFE47A"/>
+  <g fill="#E8413A" stroke="var(--ink)" stroke-width="2"><circle cx="78" cy="40" r="5"/><circle cx="88" cy="46" r="5"/><circle cx="78" cy="52" r="5"/><circle cx="50" cy="60" r="4.5"/><circle cx="58" cy="66" r="4.5"/></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Лимонник и мёд</span>
+  <span class="sd">Приморский лимонник, бодрит лучше кофе.</span>
+</button></li>
+<li><button class="scoop" type="button" data-i="4" aria-pressed="false">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#EDB06A"/>
+  <path d="M44 52 C52 36 70 50 64 58 C58 66 46 56 56 44 C66 32 92 36 96 54 C98 64 88 70 82 62" fill="none" stroke="#8A4E1C" stroke-width="4" stroke-linecap="round"/>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Варёная сгущёнка</span>
+  <span class="sd">Варим сами четыре часа, тянется за ложкой.</span>
+</button></li>
+<li><button class="scoop" type="button" data-i="5" aria-pressed="false">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#FF9CC4"/>
+  <g><path d="M72 30 C84 28 94 38 88 52 C84 60 76 64 72 64 C66 60 58 52 58 42 C58 34 64 30 72 30Z" fill="#E8413A" stroke="var(--ink)" stroke-width="2"/><g fill="var(--yolk)"><circle cx="68" cy="40" r="1.6"/><circle cx="78" cy="42" r="1.6"/><circle cx="72" cy="52" r="1.6"/><circle cx="82" cy="50" r="1.6"/></g><path d="M68 30 l-6 -8 M74 30 l2 -9 M80 32 l7 -6" stroke="#2E8B47" stroke-width="3" stroke-linecap="round"/></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Клубника с Седанки</span>
+  <span class="sd">Ягоды с соседних грядок, кусочками.</span>
+</button></li>
+<li><button class="scoop" type="button" data-i="6" aria-pressed="false">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#8A5638"/>
+  <g fill="#2B160C"><path d="M50 40 l9 -2 l-1 8 l-9 1Z"/><path d="M84 34 l9 1 l-2 8 l-8 -2Z"/><path d="M94 56 l8 2 l-3 7 l-7 -3Z"/><path d="M60 62 l9 0 l-2 7 l-8 -1Z"/></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Тёмный шоколад</span>
+  <span class="sd">Какао 70%, горчит по-взрослому.</span>
+</button></li>
+<li><button class="scoop" type="button" data-i="7" aria-pressed="false">
+  <svg viewBox="0 0 142 140" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L106 128 L36 128Z" fill="var(--waffle)"/>
+  <path class="ln thin" d="M50 86 L56 126 M72 86 L72 128 M94 86 L88 126"/><path class="ln" d="M24 84 L118 84 L106 128 L36 128Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="#A9DDF6"/>
+  <g><path d="M30 60 C50 46 70 70 92 52 C102 44 110 46 116 52" fill="none" stroke="var(--waffle)" stroke-width="6" stroke-linecap="round"/><g fill="#fff" stroke="var(--ink)" stroke-width="1.6"><rect x="54" y="30" width="6" height="6" transform="rotate(20 57 33)"/><rect x="86" y="32" width="6" height="6" transform="rotate(-15 89 35)"/><rect x="70" y="40" width="5" height="5"/></g></g>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+</svg>
+  <span class="sn">Морская соль</span>
+  <span class="sd">Карамель и соль с Японского моря.</span>
+</button></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="farm below" id="farm" aria-labelledby="h-farm">
+  <div class="wrap farm-grid">
+    <div>
+      <h2 class="h2" id="h-farm">Откуда молоко</h2>
+      <p class="lead">Из маленькой фермы на Седанке, двадцать минут от центра Владивостока. У каждой коровы есть имя и свой луг у речки.</p>
+      <p>Сливки 33%, сахар и немного сухого молока с той же фермы. Морозим маленькими партиями по 40 литров, поэтому пломбир тает быстро и пахнет молоком. Так и должно быть.</p>
+      <h3 class="day-h">Один день пломбира</h3>
+      <dl class="day">
+        <div><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="f" d="M14 22 L50 22 L46 56 L18 56Z" fill="var(--sky)"/><path class="ln" d="M14 22 L50 22 L46 56 L18 56Z M14 22 C14 6 50 6 50 22"/><path class="ln thin" d="M20 32 C28 36 38 36 46 32"/></svg><dt>06:00</dt><dd>Доим Зорьку и ещё двадцать одну корову.</dd></div>
+        <div><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="f" d="M10 26 L54 26 L52 56 L12 56Z" fill="var(--yolk)"/><path class="ln" d="M10 26 L54 26 L52 56 L12 56Z M4 28 L10 28 M54 28 L60 28 M18 20 L46 20"/><path class="ln thin" d="M24 14 C20 8 28 6 24 0 M38 14 C34 8 42 6 38 0"/></svg><dt>10:00</dt><dd>Молоко в цехе на Второй Речке. Пастеризуем и варим смесь.</dd></div>
+        <div><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><path class="ln" d="M32 6 L32 58 M10 18 L54 46 M54 18 L10 46"/><path class="ln thin" d="M26 10 L32 16 L38 10 M26 54 L32 48 L38 54"/></svg><dt>12:00</dt><dd>Морозим партию, раскладываем по стаканчикам и банкам.</dd></div>
+        <div><svg class="ico" viewBox="0 0 64 64" aria-hidden="true"><circle class="f" cx="16" cy="44" r="11" fill="var(--pink)"/><circle class="ln" cx="16" cy="44" r="11"/><circle class="ln" cx="50" cy="44" r="11"/><path class="ln" d="M16 44 L28 24 L44 24 L50 44 M28 24 L34 44 L44 24 M24 18 L32 18"/><path class="f" d="M38 6 L58 6 L58 22 L38 22Z" fill="var(--yolk)"/><path class="ln thin" d="M38 6 L58 6 L58 22 L38 22Z"/></svg><dt>14:00</dt><dd>Курьер везёт первые заказы по городу.</dd></div>
+      </dl>
+    </div>
+    <div>
+      <figure class="ph cowph">
+        <img src="img/cow.webp" alt="Рыжая корова с белой полосой на морде смотрит в камеру" loading="lazy" decoding="async" width="720" height="480">
+        <svg class="ov" viewBox="0 0 100 66.6" preserveAspectRatio="none" aria-hidden="true">
+          <path class="f" d="M33 9 L36 2 L41 8 L46 1 L50 8 L55 1 L58 9 L63 3 L64 11 C55 9 42 9 33 9Z" fill="var(--yolk)" style="transform:translate(.8px,.6px)"/>
+          <path class="ln" d="M33 9 L36 2 L41 8 L46 1 L50 8 L55 1 L58 9 L63 3 L64 11 C55 9 42 9 33 9Z"/>
+          <path d="M79 34 C79 28 87 24 93 26 C98 28 98 36 93 38 C89 40 85 38 83 40 L79 44 L81 38 C79 37 79 36 79 34Z" fill="#fff"/>
+          <path class="ln" d="M79 34 C79 28 87 24 93 26 C98 28 98 36 93 38 C89 40 85 38 83 40 L79 44 L81 38 C79 37 79 36 79 34Z"/>
+          <text x="88" y="34.4" text-anchor="middle" class="hand" font-size="5.6">му!</text>
+        </svg>
+        <figcaption>Зорька, любит клубничный</figcaption>
+      </figure>
+      <figure class="ph kidph">
+        <img src="img/kid-yellow-hat.webp" alt="Ребёнок в жёлтой шапке ест за маленьким столиком на траве" loading="lazy" decoding="async" width="720" height="480">
+        <figcaption>Варя, 5 лет, главный дегустатор</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="rev below" id="reviews" aria-labelledby="h-rev">
+  <div class="wrap">
+    <div class="rev-head"><h2 class="h2" id="h-rev">Нам пишут</h2><span class="hand-note">орфографию детей сохранили</span></div>
+    <div class="rev-grid">
+      <blockquote class="note n1">Самое вкуснае марожиное! Кедровое лутше чем у бабушки (бабушке не говорите)
+        <span class="who">Тимофей, 8 лет, Эгершельд</span><svg class="kid" viewBox="0 0 120 110" aria-hidden="true"><path class="f" d="M30 50 C28 30 46 18 60 18 C80 18 94 32 90 52 C80 58 70 52 60 58 C48 62 40 54 30 50Z" fill="var(--pink)"/><path class="ln thin" d="M30 50 C28 30 46 18 60 18 C80 18 94 32 90 52 C80 58 70 52 60 58 C48 62 40 54 30 50Z M32 54 L60 104 L88 56 M50 40 q4 -5 8 0 M66 38 q4 -5 8 0"/></svg></blockquote>
+      <blockquote class="note n2">Заказывали банку жимолости на день рожденья. Привезли через полтора часа, ещё в инее. Дети съели раньше торта.
+        <span class="who">Аня, мама троих, Седанка</span></blockquote>
+      <blockquote class="note n3">Я когда ем пломбир с седанки я думаю про коров. Им наверно приятно.
+        <span class="who">Лиза, 6 лет (писала мама)</span><svg class="kid" viewBox="0 0 120 110" aria-hidden="true"><path class="f" d="M18 56 C18 38 36 30 60 32 C84 34 98 46 94 62 C88 78 44 82 26 74Z" fill="#fff"/><g fill="var(--ink)"><path d="M40 44 c8 -2 12 6 6 10 c-6 2 -10 -6 -6 -10Z"/><path d="M70 56 c8 -2 12 6 6 10 c-6 2 -10 -6 -6 -10Z"/></g><path class="ln thin" d="M18 56 C18 38 36 30 60 32 C84 34 98 46 94 62 C88 78 44 82 26 74 C20 70 18 62 18 56Z M30 78 L28 102 M84 74 L86 100 M48 78 L48 102 M70 78 L70 102 M18 56 C8 50 8 40 16 38"/></svg></blockquote>
+      <figure class="ph dogph">
+        <img src="img/dog-shake.webp" alt="Рыжая мокрая собака отряхивается, шерсть разлетается" loading="lazy" decoding="async" width="720" height="480">
+        <figcaption>Ричи так встречает курьера</figcaption>
+      </figure>
+      <blockquote class="note n4">Взяли солёную карамель и сгущёнку. Муж сказал, что как в детстве, только лучше. Теперь берём каждую пятницу.
+        <span class="who">Ольга, Чуркин</span></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="order below" id="order" aria-labelledby="h-ord">
+  <div class="wrap order-grid">
+    <div>
+      <h2 class="h2" id="h-ord">Заказать пломбир</h2>
+      <ol class="how">
+        <li><b>1</b><span>Выберите вкус и что везти: стаканчики или банку.</span></li>
+        <li><b>2</b><span>Оставьте телефон. Перезвоним за 15 минут и уточним адрес.</span></li>
+        <li><b>3</b><span>Привезём в термосумке со льдом за два часа, если закажете до 19:00.</span></li>
+      </ol>
+      <p class="deliv">Доставка по Владивостоку бесплатно от 1500 ₽, иначе 250 ₽. На Русский остров возим по субботам. Самовывоз: Вторая Речка, ул. Русская, 57.</p>
+      <div class="bottle-box"><svg class="bottle boil" viewBox="0 0 180 300" aria-hidden="true">
+  <path class="f" d="M70 20 L110 20 L112 64 C140 90 150 120 150 160 L150 270 C150 284 140 290 126 290 L54 290 C40 290 30 284 30 270 L30 160 C30 120 40 90 68 64Z" fill="#fff"/>
+  <path class="f" d="M66 8 L114 8 L114 24 L66 24Z" fill="var(--grass)"/>
+  <path class="f" d="M30 170 L150 170 L150 236 L30 236Z" fill="var(--sky)"/>
+  <path class="ln" d="M70 24 L68 64 C40 90 30 120 30 160 L30 270 C30 284 40 290 54 290 L126 290 C140 290 150 284 150 270 L150 160 C150 120 140 90 112 64 L110 24 M66 8 L114 8 L114 24 L66 24Z"/>
+  <path class="ln thin" d="M30 170 L150 170 M30 236 L150 236"/>
+  <text x="90" y="212" text-anchor="middle" class="hand" font-size="34" transform="rotate(-5 90 212)">молоко</text>
+  <path class="ln thin" d="M52 110 C50 128 48 140 48 154"/>
+</svg></div>
+    </div>
+    <form id="orderForm" novalidate>
+      <div class="fields">
+        <label class="fld"><span>Как вас зовут</span><input name="name" required autocomplete="name" placeholder="Например, Ольга"></label>
+        <label class="fld"><span>Телефон</span><input name="phone" type="tel" required autocomplete="tel" placeholder="+7 900 000-00-00" pattern="[0-9+()\s\-]{10,}"></label>
+        <div class="two">
+          <label class="fld"><span>Вкус</span><select name="flavor" id="flavorSelect"><option>Пломбир</option><option>Кедровый орех</option><option>Жимолость</option><option>Лимонник и мёд</option><option>Варёная сгущёнка</option><option>Клубника с Седанки</option><option>Тёмный шоколад</option><option>Морская соль</option></select></label>
+          <label class="fld"><span>Что везём</span><select name="size"><option>Стаканчики, 190 ₽</option><option>Банка 0,5 л, 690 ₽</option><option>И то, и другое</option></select></label>
+        </div>
+        <label class="chk"><input type="checkbox" name="agree" required><span>Согласен на обработку персональных данных по <a href="#policy">Политике конфиденциальности</a></span></label>
+        <button class="btn" type="submit">Жду пломбир</button>
+      </div>
+      <div class="thanks" role="status" aria-live="polite">
+        <div class="thx-box"><svg class="thx boil" viewBox="0 0 142 150" aria-hidden="true">
+  <path class="f" d="M24 84 L118 84 L71 148Z" fill="var(--waffle)"/>
+  <path class="sl" d="M24 84 L118 84 L71 148Z"/>
+  <path class="f" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z" fill="var(--pink)"/>
+  <path class="ln" d="M22 70 C14 38 40 14 70 14 C102 14 128 38 120 70 C114 80 106 74 100 82 C94 92 84 80 76 86 C68 94 58 82 50 88 C40 94 32 80 26 84 C22 86 20 78 22 70Z"/>
+  <path class="ln thin" d="M58 56 q5 -6 10 0 M78 56 q5 -6 10 0 M60 68 q12 10 24 0"/>
+</svg></div>
+        <h3>Спасибо!</h3>
+        <p>Заказ у нас. Перезвоним за 15 минут.</p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><h4>Пломбир с Седанки</h4><p>Фермерское мороженое во Владивостоке. Молоко с Седанки, цех на Второй Речке. С 2019 года.</p></div>
+      <div><h4>Звоните</h4><p><a href="tel:+74232001919">+7 423 200-19-19</a><br>каждый день 10:00-21:00</p></div>
+      <div><h4>Пишите</h4><p><a href="https://t.me/" rel="noopener">Телеграм @plombir_sedanka</a><br><a href="mailto:hello@plombir-sedanka.ru">hello@plombir-sedanka.ru</a></p></div>
+      <div><h4>Заходите</h4><p>ул. Русская, 57, Вторая Речка<br>самовывоз 10:00-20:00</p></div>
+    </div>
+    <p class="big-name" aria-hidden="true">пломбир с седанки</p>
+    <p class="policy" id="policy">Политика конфиденциальности: имя и телефон нужны только чтобы привезти заказ. Не передаём третьим лицам и удаляем через 30 дней. ИП Седанкина М. А., ИНН 253600000000. Сайт учебный, бренд вымышленный.</p>
+  </div>
+</footer>
+
+<button class="about-btn" id="aboutBtn" aria-expanded="false" aria-controls="about">О стиле</button>
+<aside class="about" id="about" aria-label="О стиле">
+  <button class="x" id="aboutX" aria-label="Закрыть">×</button>
+  <h3>Naive design</h3>
+  <h4>Признаки</h4>
+  <ul>
+    <li>Рисунки как у иллюстратора детской книжки: один толстый маркер, плоские цвета, заливка напечатана со сдвигом, как в ризографии</li>
+    <li>Линия «дышит» (line boil из мультипликации): три заранее нарисованных кадра контура сменяются 3,5 раза в секунду</li>
+    <li>Детский почерк, записки покупателей, фото с каракулями</li>
+    <li>Жирный гротеск рядом с рукописным</li>
+  </ul>
+  <h4>Шрифты</h4><p>Dela Gothic One (заголовки), Onest (текст), Caveat (почерк)</p>
+  <h4>Библиотеки</h4><p>Никаких. Кадры линии считаются один раз при загрузке, переключаются CSS-анимацией прозрачности на видеокарте и стоят на паузе, пока рисунок за экраном.</p>
+  <h4>Эффекты reactbits</h4><p>Сознательно ни одного. Вместо шести мелких фокусов одна сцена: холм-шарик с коровой и стаканчик, который перекрашивается под вкус.</p>
+  <h4>Что изменилось</h4><p>Убраны живые SVG-фильтры шума (было 11 кадров в секунду в покое), пружинные появления, прыгающая кнопка, бегущая строка, искры от клика и счётчики. Чего здесь нет: одинаковых карточек, обрезки краёв через clip-path, цифр-метрик ради цифр.</p>
+  <h4>Референсы</h4><p>Crémoir (мороженое из Лилля), Good Boy Creative Agency, книжки Оливера Джефферса, ризографические плакаты</p>
+</aside>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NAMES = ['Пломбир', 'Кедровый орех', 'Жимолость', 'Лимонник и мёд', 'Варёная сгущёнка', 'Клубника с Седанки', 'Тёмный шоколад', 'Морская соль'];
+  var COLORS = ['#FFFFFF', '#F3DDB8', '#C3AEF5', '#FFE47A', '#EDB06A', '#FF9CC4', '#8A5638', '#A9DDF6'];
+
+  /* вкусы */
+  var counter=document.getElementById('counter'), now=document.getElementById('now'),
+      fill=counter.querySelector('.scoopfill'), sel=document.getElementById('flavorSelect'), t;
+  document.querySelectorAll('.scoop').forEach(function(b){
+    b.addEventListener('click',function(){
+      var i=+b.dataset.i;
+      document.querySelectorAll('.scoop[aria-pressed="true"]').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      counter.dataset.k=i; fill.setAttribute('fill',COLORS[i]); now.textContent=NAMES[i].toLowerCase(); sel.value=NAMES[i];
+      counter.classList.add('plop'); clearTimeout(t); t=setTimeout(function(){counter.classList.remove('plop')},260);
+    });
+  });
+
+  /* о стиле */
+  var ab=document.getElementById('aboutBtn'), ap=document.getElementById('about');
+  function tog(v){ap.classList.toggle('open',v); ab.setAttribute('aria-expanded',v); if(v) ap.querySelector('.x').focus();}
+  ab.onclick=function(){tog(!ap.classList.contains('open'))};
+  document.getElementById('aboutX').onclick=function(){tog(false); ab.focus()};
+  addEventListener('keydown',function(e){if(e.key==='Escape'&&ap.classList.contains('open')){tog(false);ab.focus()}});
+
+  /* якоря: плавная прокрутка только по клику (не через scroll-behavior, чтобы не мешать скроллу страницы) */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){
+    var id=a.getAttribute('href'), el=id.length>1&&document.querySelector(id); if(!el) return;
+    e.preventDefault(); el.scrollIntoView({behavior:reduce?'auto':'smooth'}); history.replaceState(null,'',id);
+  })});
+
+  /* форма */
+  var form=document.getElementById('orderForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return}
+    form.classList.add('done');
+  });
+
+  /* «дышащая» линия: три кадра контуров считаются один раз, дальше только CSS */
+  if(reduce) return;
+  var seed=7; function rnd(){seed=(seed*16807)%2147483647; return seed/2147483647-.5}
+  function jit(d,a){
+    var cmd='';
+    return d.replace(/([MLCQSTHVZmlcqsthvz])|(-?\d*\.?\d+)/g,function(m,c){
+      if(c){cmd=c;return c}
+      var k=cmd===cmd.toLowerCase()?a*.45:a;
+      return (+m+rnd()*2*k).toFixed(1);
+    });
+  }
+  var NS='http://www.w3.org/2000/svg';
+  var boxes=[];
+  document.querySelectorAll('svg.boil').forEach(function(svg){
+    var lines=svg.querySelectorAll('.ln'); if(!lines.length) return;
+    var box=document.createElement('span'); box.className='boilbox';
+    svg.parentNode.insertBefore(box,svg); box.appendChild(svg);
+    var vb=svg.getAttribute('viewBox'), amp=+vb.split(' ')[2]>400?1.9:1.1;
+    for(var f=0;f<3;f++){
+      var fr=document.createElementNS(NS,'svg'); fr.setAttribute('viewBox',vb); fr.setAttribute('class','fr fr'+f); fr.setAttribute('aria-hidden','true');
+      lines.forEach(function(l){
+        var c=l.cloneNode(false);
+        if(f>0){
+          if(c.tagName==='path') c.setAttribute('d',jit(c.getAttribute('d'),amp));
+          else ['cx','cy','r'].forEach(function(at){c.setAttribute(at,(+c.getAttribute(at)+rnd()*amp*1.4).toFixed(1))});
+        }
+        fr.appendChild(c);
+      });
+      box.appendChild(fr);
+    }
+    lines.forEach(function(l){l.remove()});
+    boxes.push(box);
+  });
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('live',e.isIntersecting)})});
+  boxes.forEach(function(b){io.observe(b)});
+})();
+</script>
+</body>
+</html>

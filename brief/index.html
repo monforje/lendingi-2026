@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Бриф группы</title>
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+/* Сквозной бриф пары. Слева поля по блокам лекции, справа собирается готовый промпт.
+   Бумага, чернила, ультрамарин и лайм, как в презентации. */
+:root{--paper:#EFEFEB;--paper2:#E3E3DD;--ink:#121212;--ink2:#55554F;--line:#C9C9C1;--blue:#2335FF;--lime:#C6F432;--card:#fff;--code:#121212;--codefg:#E9F5D5;
+ --fd:'Unbounded','Arial Black',sans-serif;--ft:'Onest','Manrope',Arial,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121212;--paper2:#1c1c1b;--ink:#EDEDE7;--ink2:#a3a39b;--line:#333331;--blue:#7d88ff;--card:#1a1a19;--code:#050505;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#121212;--paper2:#1c1c1b;--ink:#EDEDE7;--ink2:#a3a39b;--line:#333331;--blue:#7d88ff;--card:#1a1a19;--code:#050505;color-scheme:dark}
+*{box-sizing:border-box}
+html{font-size:17px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.5 var(--ft)}
+body.big{font-size:1.25rem}
+.wrap{max-width:1500px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+h1{font:900 clamp(40px,7vw,96px)/.86 var(--fd);letter-spacing:-.05em;margin:0}
+.sub{color:var(--ink2);max-width:52ch;margin:10px 0 0}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+button{font:600 .82rem/1 var(--fm);border:1.5px solid var(--ink);background:transparent;color:var(--ink);padding:11px 14px;cursor:pointer;border-radius:999px}
+button:hover{background:var(--ink);color:var(--paper)}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.progress{height:6px;background:var(--line);margin:0 0 28px;position:relative}
+.progress i{position:absolute;inset:0;background:var(--blue);transform-origin:left;transform:scaleX(var(--p,0));transition:transform .4s}
+.grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:36px;align-items:start}
+.fields{display:flex;flex-direction:column;gap:0}
+.f{border-top:2px solid var(--ink);padding:16px 0 22px;display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px}
+.f .n{font:800 1.9rem/1 var(--fd);color:var(--blue)}
+.f.done .n{color:var(--ink)}
+.f.done .n::after{content:"";display:inline-block;width:.42em;height:.42em;background:var(--lime);margin-left:6px;vertical-align:.5em;border-radius:50%}
+.f label{display:block;font:700 1.12rem/1.2 var(--ft);margin-bottom:2px}
+.f .when{font:500 .72rem/1 var(--fm);text-transform:uppercase;letter-spacing:.06em;color:var(--ink2)}
+.f .q{margin:6px 0 10px;color:var(--ink2);font-size:.95rem}
+.f textarea{width:100%;min-height:52px;resize:vertical;font:400 1rem/1.45 var(--ft);color:var(--ink);background:var(--card);border:1.5px solid var(--line);padding:11px 13px;border-radius:0}
+.f textarea:focus{border-color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.chips button{font:500 .78rem/1 var(--ft);padding:8px 11px;border-color:var(--line);color:var(--ink2)}
+.chips button:hover{border-color:var(--ink);color:var(--paper);background:var(--ink)}
+.out{position:sticky;top:max(16px,env(safe-area-inset-top,0px));display:flex;flex-direction:column;gap:12px}
+.out .head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.out h2{font:800 1.5rem/1 var(--fd);margin:0;letter-spacing:-.02em}
+pre{margin:0;background:var(--code);color:var(--codefg);font:400 .86rem/1.6 var(--fm);padding:22px 24px;white-space:pre-wrap;word-break:break-word;max-height:72vh;overflow:auto}
+pre .empty{color:#8a8a80;background:#2a2a28;padding:0 4px}
+pre .fill{color:#121212;background:var(--lime);padding:0 4px}
+.hint{font:500 .78rem/1.4 var(--fm);color:var(--ink2)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 18px;font:600 .85rem var(--fm);border-radius:999px;opacity:0;transition:opacity .25s;pointer-events:none}
+.toast.on{opacity:1}
+@media (max-width:980px){.grid{grid-template-columns:1fr}.out{position:static}pre{max-height:none}}
+@media (max-width:480px){.f{grid-template-columns:40px minmax(0,1fr)}.f .n{font-size:1.4rem}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <header>
+  <div>
+   <h1>Бриф группы</h1>
+   <p class="sub">Заполняем вместе по ходу пары. К блоку про нейросети здесь будет готовый промпт: копируем и отправляем в Lovable, Google AI Studio, ChatGPT или Claude.</p>
+  </div>
+  <div class="tools">
+   <button id="bExample" type="button">Пример: барбершоп</button>
+   <button id="bBig" type="button">Крупный текст</button>
+   <button id="bClear" type="button">Очистить</button>
+  </div>
+ </header>
+ <div class="progress"><i id="prog"></i></div>
+ <div class="grid">
+  <div class="fields" id="fields"></div>
+  <aside class="out">
+   <div class="head"><h2>Готовый промпт</h2><button class="primary" id="bCopy" type="button">Скопировать промпт</button></div>
+   <pre id="prompt" aria-live="polite"></pre>
+   <p class="hint">Серые места еще не заполнены. Ответы сохраняются в этом браузере.</p>
+  </aside>
+ </div>
+</div>
+<div class="toast" id="toast">Скопировано</div>
+
+<script>
+// Поля брифа. block: на каком блоке лекции заполняем; key: имя в промпте.
+const F=[
+ {id:'biz',  block:'Блок 01 · Зачем сайт',   label:'Бизнес',          q:'Что продаем, как называется, где находится?', chips:['Барбершоп «Якорь», Владивосток','Кофейня у моря','Репетитор английского онлайн','Кондитерская на заказ','Фотограф на свадьбы']},
+ {id:'aud',  block:'Блок 01 · Зачем сайт',   label:'Аудитория',       q:'Кто клиент, сколько лет, чего хочет, чего боится?', chips:['Мужчины 20-40, ценят время','Студенты 17-23, мало денег','Мамы с детьми 3-7 лет','Владельцы малого бизнеса']},
+ {id:'usp',  block:'Блок 01 · Зачем сайт',   label:'Почему у нас',    q:'Чем отличаемся? Только факты: сроки, цены, опыт, место.', chips:['Быстрее всех в городе','Дешевле на 20%','Работаем 24/7','Вид на море']},
+ {id:'type', block:'Блок 03 · Виды сайтов',  label:'Тип сайта и действие', q:'Какой сайт и что человек должен сделать?', chips:['Лендинг: записаться онлайн','Лендинг: оставить телефон','Предзаказ: оставить почту','Ивент: зарегистрироваться']},
+ {id:'offer',block:'Блок 04 · Лендинги',     label:'Оффер и заголовок', q:'Что получит + за какой срок + почему без риска. Заголовок до 8 слов.', chips:['Стрижка за 40 минут. Без очереди','Первый урок бесплатно','Торт к выходным за 2 дня']},
+ {id:'blocks',block:'Блок 04 · Лендинги',    label:'Блоки страницы',  q:'Какие блоки нужны сверху вниз? Отметьте 7-9.', chips:['Первый экран','Доверие и рейтинг','Боль клиента','Услуги с ценами','Как это работает','Отзывы','FAQ','Гарантии','Форма заявки','Контакты и карта'], multi:true},
+ {id:'trend',block:'Блок 05 · Дизайн',       label:'Тренд и настроение', q:'Голосуем за один тренд 2026.', chips:['Oversize типографика','Editorial','Модульная сетка','Bento','New Rococo','ASCII','Punk grunge','Naive','Trinket']},
+ {id:'look', block:'Блок 05 · Дизайн',       label:'Шрифты и цвета',  q:'Два шрифта с кириллицей и 2-3 цвета в HEX.', chips:['Unbounded + Onest','Cormorant + Onest','Dela Gothic One + Manrope','JetBrains Mono + Playfair','#121212, #F1F0EB, #FF4D00','#1F3B2D, #F6F1EA, #E8C9C1']},
+ {id:'motion',block:'Блок 05 · Дизайн',      label:'Микроанимации',   q:'2-3 эффекта, не больше. Названия из reactbits.dev.', chips:['Split Text в заголовке','Magnet на кнопке','Бегущая строка','Count Up у цифр','Scroll Reveal'], multi:true},
+ {id:'tech', block:'Блок 06-08 · Код',       label:'Технически',      q:'Во что собрать сайт, чтобы залить на GitHub Pages?', chips:['Один файл index.html, CSS и JS внутри','React + Vite, потом npm run build','Astro, статический сайт']},
+ {id:'seo',  block:'Блок 09 · SEO',          label:'SEO',             q:'Title до 60 символов и описание до 160.', chips:['Барбершоп во Владивостоке | Стрижка за 40 минут']},
+ {id:'law',  block:'Блок 10 · Закон',        label:'Форма и 152-ФЗ',  q:'Какие поля в форме? Чекбокс согласия обязателен.', chips:['Имя и телефон + чекбокс согласия','Имя, телефон, выбор услуги + чекбокс']},
+ {id:'ban',  block:'Блок 05 · Анти-ИИ',      label:'Чего не должно быть', q:'Запреты, чтобы не получить ИИ-шаблон.', chips:['фиолетовые градиенты','шрифт Inter','эмодзи','иконки в кружках','три одинаковые карточки','всё по центру','стекло и свечение','тексты «в современном мире»'], multi:true},
+];
+const EX={biz:'Барбершоп «Якорь», Владивосток, у набережной',aud:'Мужчины 20-40 лет, ценят время, не любят ждать в очереди',usp:'Стрижка за 40 минут с точным временем записи, мастера с опытом от 5 лет, кофе и вид на море',type:'Лендинг: онлайн-запись на стрижку',offer:'Стрижка за 40 минут. Без очереди. С видом на море',blocks:'Первый экран, Доверие и рейтинг, Услуги с ценами, Как это работает, Отзывы, FAQ, Форма заявки, Контакты и карта',trend:'Oversize типографика, морское и брутальное настроение',look:'Unbounded + Onest; #0E2A47, #F2F0EA, #C8742B',motion:'Split Text в заголовке, Magnet на кнопке, Count Up у цифр',tech:'Один файл index.html, CSS и JS внутри',seo:'Барбершоп «Якорь» во Владивостоке | Стрижка за 40 минут',law:'Имя, телефон, выбор услуги + чекбокс согласия',ban:'фиолетовые градиенты, шрифт Inter, эмодзи, иконки в кружках, три одинаковые карточки, всё по центру'};
+
+const KEY='brief-v1';let S={};
+try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){S={}}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const box=document.getElementById('fields');
+F.forEach((f,i)=>{
+  const d=document.createElement('div');d.className='f';d.id='f-'+f.id;
+  d.innerHTML=`<span class="n">${String(i+1).padStart(2,'0')}</span><div><span class="when">${f.block}</span><label for="t-${f.id}">${f.label}</label><p class="q">${f.q}</p><textarea id="t-${f.id}" rows="2"></textarea><div class="chips"></div></div>`;
+  const ta=d.querySelector('textarea');ta.value=S[f.id]||'';
+  ta.addEventListener('input',()=>{S[f.id]=ta.value;save();render()});
+  const ch=d.querySelector('.chips');
+  f.chips.forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.addEventListener('click',()=>{
+    if(f.multi&&ta.value.trim()){const parts=ta.value.split(/,\s*/).map(s=>s.trim()).filter(Boolean);if(!parts.includes(c))parts.push(c);ta.value=parts.join(', ')}else ta.value=c;
+    S[f.id]=ta.value;save();render();});ch.appendChild(b)});
+  box.appendChild(d);
+});
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function v(id,ph){const x=(S[id]||'').trim();return x?`<span class="fill">${esc(x)}</span>`:`<span class="empty">[${ph}]</span>`}
+function plain(id,ph){const x=(S[id]||'').trim();return x||`[${ph}]`}
+function build(fn){return `Создай одностраничный сайт на русском языке.
+
+БИЗНЕС: ${fn('biz','бизнес')}
+АУДИТОРИЯ: ${fn('aud','кто клиент')}
+ПОЧЕМУ У НАС: ${fn('usp','отличие')}
+ТИП И ЦЕЛЕВОЕ ДЕЙСТВИЕ: ${fn('type','что сделать на сайте')}
+ОФФЕР ДЛЯ ПЕРВОГО ЭКРАНА: ${fn('offer','заголовок до 8 слов')}
+
+СТРУКТУРА СВЕРХУ ВНИЗ: ${fn('blocks','блоки')}
+
+СТИЛЬ: ${fn('trend','тренд')}
+ШРИФТЫ И ЦВЕТА: ${fn('look','шрифты Google Fonts с кириллицей и HEX')}
+МИКРОАНИМАЦИИ (не больше трех, уважай prefers-reduced-motion): ${fn('motion','эффекты')}
+Mobile first: идеально на ширине 375px, текст от 16px, кнопки от 44px.
+
+ТЕХНИЧЕСКИ: ${fn('tech','формат')}. Сайт должен открываться на GitHub Pages: только относительные пути, никаких серверов и ключей в коде.
+SEO: ${fn('seo','title и description')}, один H1, alt у картинок, Open Graph.
+ФОРМА: ${fn('law','поля')}. Чекбокс согласия на обработку персональных данных обязателен и не отмечен заранее, рядом ссылка на политику конфиденциальности. После отправки показать «Спасибо».
+
+НЕ ИСПОЛЬЗУЙ: ${fn('ban','запреты')}.
+Цены, отзывы и цифры пометь как [ЗАМЕНИТЬ], я вставлю реальные.`}
+function render(){
+  document.getElementById('prompt').innerHTML=build(v);
+  let n=0;F.forEach(f=>{const ok=!!(S[f.id]||'').trim();document.getElementById('f-'+f.id).classList.toggle('done',ok);if(ok)n++});
+  document.getElementById('prog').style.setProperty('--p',n/F.length);
+}
+render();
+const toast=m=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1600)};
+document.getElementById('bCopy').addEventListener('click',()=>{
+  const txt=build(plain);
+  navigator.clipboard.writeText(txt).then(()=>toast('Промпт скопирован'),()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('prompt'));const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Выделено: нажмите Ctrl+C')});
+});
+document.getElementById('bClear').addEventListener('click',()=>{if(!document.getElementById('bClear').dataset.arm){document.getElementById('bClear').dataset.arm=1;document.getElementById('bClear').textContent='Точно очистить?';setTimeout(()=>{delete document.getElementById('bClear').dataset.arm;document.getElementById('bClear').textContent='Очистить'},2500);return}
+  S={};save();document.querySelectorAll('.f textarea').forEach(t=>t.value='');render();document.getElementById('bClear').textContent='Очистить';delete document.getElementById('bClear').dataset.arm});
+document.getElementById('bExample').addEventListener('click',()=>{S={...EX};save();F.forEach(f=>document.getElementById('t-'+f.id).value=S[f.id]||'');render();toast('Заполнен пример')});
+document.getElementById('bBig').addEventListener('click',()=>document.body.classList.toggle('big'));
+// переход к полю по якорю #f-offer и т.п.
+if(location.hash){const el=document.querySelector(location.hash);if(el)el.scrollIntoView()}
+</script>
+</body>
+</html>

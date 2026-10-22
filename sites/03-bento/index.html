@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>МАЯК, обжарочная у Токаревского маяка</title>
+<meta name="description" content="Обжарочная и кофейня МАЯК у Токаревского маяка во Владивостоке. Свежая обжарка по четвергам, предзаказ зерна, мастер-классы.">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<style>
+:root{
+  --box:#0f171c;          /* сама коробка: тёмный лакированный лоток */
+  --night:#1b2a33;        /* ночное море */
+  --night2:#24394a;
+  --sea:#3d6878;
+  --foam:#b9cdd1;
+  --paper:#f1efe7;        /* бумажная этикетка */
+  --paper2:#e6e3d8;
+  --fog:#d9ddd6;
+  --lamp:#ffc928;         /* огонь маяка */
+  --signal:#c8361f;       /* сигнальный красный, только точечно */
+  --ink:#10191e;
+  --muted:#4f5c61;
+  --gap:8px;
+  --in:16px;              /* скругление отсека */
+  --out:24px;             /* скругление коробки = отсек + стенка */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:'Onest',system-ui,sans-serif;color:var(--ink);background:linear-gradient(rgba(217,221,214,.72),rgba(217,221,214,.72)),url(../../assets/grain.png) var(--fog);overflow-x:hidden;line-height:1.5;font-size:16px}
+::selection{background:var(--lamp);color:var(--ink)}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+:focus-visible{outline:3px solid var(--lamp);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1420px;margin:0 auto;padding:0 16px}
+.d{font-family:'Unbounded',sans-serif}
+.hand{font-family:'Caveat',cursive;font-weight:700}
+
+/* ---------- шапка ---------- */
+header.top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 8px 16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Unbounded';font-weight:900;font-size:20px}
+.logo svg{width:24px;height:32px}
+nav.menu{display:flex;gap:28px;font-weight:500;font-size:15px}
+nav.menu a{text-decoration:none;padding:8px 0}
+nav.menu a:hover{text-decoration:underline}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border-radius:12px;background:var(--lamp);color:var(--ink);font-weight:700;font-size:15px;text-decoration:none;transition:transform .2s cubic-bezier(.2,.8,.2,1),background-color .2s}
+.btn:hover{background:#ffd54f;transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn.ink{background:var(--ink);color:var(--paper)}
+.btn.ink:hover{background:#26343b}
+
+/* ---------- КОРОБКА БЕНТО ---------- */
+.box{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(0,auto);gap:var(--gap);padding:var(--gap);background:var(--box);border-radius:var(--out);box-shadow:0 30px 60px -30px rgba(16,25,30,.55)}
+.t{position:relative;border-radius:var(--in);overflow:hidden;min-width:0;padding:24px}
+.t h2,.t h3{font-family:'Unbounded';letter-spacing:-.02em;line-height:1.05}
+
+/* hero: ночь, маяк и луч */
+.t-hero{grid-column:1/8;grid-row:1/3;min-height:600px;background:linear-gradient(180deg,#152029 0%,var(--night) 55%,var(--night2) 100%);color:var(--paper);padding:40px 40px 0;display:flex;flex-direction:column;isolation:isolate}
+.t-hero h1{font-family:'Unbounded';font-weight:900;font-size:clamp(46px,5.4vw,82px);line-height:.92;letter-spacing:-.035em;max-width:7.5ch;position:relative;z-index:2}
+.t-hero h1 em{font-style:normal;color:var(--lamp)}
+.t-hero .lead{color:#cdd8da;font-size:18px;line-height:1.55;max-width:31ch;margin-top:24px;position:relative;z-index:2}
+.t-hero .cta{display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:30px;position:relative;z-index:2}
+.t-hero .cta a.link{color:var(--paper);font-weight:500;padding:10px 0}
+.lh{position:absolute;right:9%;bottom:64px;width:150px;z-index:1}
+.lamp-glow{position:absolute;right:calc(9% + 75px);bottom:calc(64px + 264px);width:180px;height:180px;margin:0 -90px -90px 0;border-radius:50%;background:radial-gradient(circle,rgba(255,214,90,.55),rgba(255,214,90,0) 65%);z-index:0;pointer-events:none}
+/* луч: один слой, крутится только transform, без blur и перерисовки */
+.beam{position:absolute;right:calc(9% + 75px);bottom:calc(64px + 264px);width:min(860px,120vw);height:260px;margin-bottom:-130px;z-index:0;pointer-events:none;transform-origin:100% 50%;will-change:transform;
+  background:linear-gradient(to left,rgba(255,214,90,.5),rgba(255,214,90,.16) 45%,rgba(255,214,90,0) 85%);
+  clip-path:polygon(0 0,100% 47%,100% 53%,0 100%);
+  transform:rotate(14deg);transition:transform 2.2s cubic-bezier(.45,0,.55,1)}
+.beam.swing{transform:rotate(-5deg)}
+.sea{position:relative;margin:auto -40px 0;height:92px;z-index:2}
+.sea svg{display:block;width:100%;height:100%}
+
+/* часы: жёлтый отсек */
+.t-clock{grid-column:8/10;grid-row:1;background:var(--lamp);display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.t-clock .now{font-size:15px;font-weight:500}
+.clock{font-family:'Unbounded';font-weight:900;font-size:clamp(40px,3.5vw,54px);line-height:.9;letter-spacing:-.05em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.t-clock .st{font-size:15px;line-height:1.4;font-weight:500;max-width:22ch}
+.t-clock .st b{font-weight:700}
+
+/* карта гостя: картонка со штампами */
+.t-card{grid-column:8/10;grid-row:2;background:var(--paper);cursor:pointer;user-select:none;-webkit-user-select:none}
+.t-card h2{font-size:19px;font-weight:700;max-width:12ch}
+.stamps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px;max-width:236px}
+.stamps i{aspect-ratio:1;border-radius:50%;border:1.5px dashed rgba(16,25,30,.35);display:grid;place-items:center}
+.stamps i svg{width:72%;height:72%;opacity:0;transform:scale(1.5) rotate(var(--r,0deg));transition:opacity .18s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.stamps i.on{border-color:transparent}
+.stamps i.on svg{opacity:1;transform:scale(1) rotate(var(--r,0deg))}
+.stamps i.gift{background:var(--lamp);border:0;font-family:'Unbounded';font-weight:900;font-size:13px}
+.stamps i.gift.on{background:var(--signal);color:#fff}
+.t-card p{font-size:14.5px;color:var(--muted);margin-top:14px;line-height:1.4}
+
+/* фото */
+.t-photo{grid-column:10/13;grid-row:1/3;padding:0;background:#6b3a1f;display:flex;flex-direction:column}
+.t-photo img{flex:1 1 auto;width:100%;height:0;min-height:300px;object-fit:cover;object-position:35% 60%}
+.t-photo figcaption{background:var(--paper);padding:16px 20px 18px;font-size:15px;line-height:1.45}
+.t-photo figcaption b{display:block;font-size:16px}
+
+/* меню: доска у стойки */
+.t-menu{grid-column:1/6;grid-row:3/5;background:var(--paper);padding:30px 32px}
+.t-menu h2{font-size:36px;font-weight:900}
+.tabs{display:flex;gap:22px;margin:18px 0 6px;border-bottom:1.5px solid var(--ink)}
+.tabs button{padding:10px 0 9px;font-weight:700;font-size:15px;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1.5px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.mlist{list-style:none}
+.mlist li{padding:13px 0 12px;border-bottom:1px solid rgba(16,25,30,.12)}
+.mlist .row{display:flex;align-items:baseline;gap:8px;font-weight:700;font-size:18px}
+.mlist .row::after{content:"";order:2;flex:1;border-bottom:2px dotted rgba(16,25,30,.35);transform:translateY(-4px)}
+.mlist .pr{order:3;font-family:'Unbounded';font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
+.mlist .ds{font-size:14.5px;color:var(--muted);margin-top:2px}
+.t-menu .oat{margin-top:16px;font-size:24px;color:var(--signal);line-height:1}
+
+/* зерно недели: этикетка пачки */
+.t-bean{grid-column:6/9;grid-row:3/5;background:#e8e2d2;display:flex;align-items:center;justify-content:center;padding:28px}
+.label{position:relative;background:var(--paper);width:100%;max-width:340px;padding:30px 26px 24px;border-radius:4px;box-shadow:0 1px 0 rgba(16,25,30,.08),0 18px 30px -18px rgba(16,25,30,.35);text-align:center}
+.label .who{font-size:14px;font-weight:500;color:var(--muted)}
+.label h2{font-family:'Unbounded';font-weight:900;font-size:30px;line-height:1;letter-spacing:-.03em;margin-top:10px}
+.label h2 span{display:block;font-weight:400;font-size:17px;letter-spacing:0;margin-top:8px}
+.label .notes{font-size:15.5px;line-height:1.45;margin:16px auto 0;max-width:24ch}
+.cup{display:grid;gap:7px;margin:20px 0 0;text-align:left}
+.cup div{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px;font-size:14px}
+.cup s{display:flex;gap:3px;text-decoration:none}
+.cup s i{flex:1;height:8px;border-radius:2px;background:rgba(16,25,30,.12)}
+.cup s i.f{background:var(--ink)}
+.label .price{display:flex;justify-content:space-between;align-items:baseline;margin-top:20px;padding-top:14px;border-top:1.5px solid var(--ink);font-size:14.5px}
+.label .price b{font-family:'Unbounded';font-weight:900;font-size:26px;letter-spacing:-.03em}
+.date-stamp{position:absolute;right:-14px;top:-16px;transform:rotate(9deg);border:2px solid var(--signal);color:var(--signal);border-radius:6px;padding:5px 9px 4px;font-family:'Unbounded';font-weight:700;font-size:12px;line-height:1.2;text-align:center;background:rgba(241,239,231,.9)}
+.left{display:block;margin-top:10px;font-size:22px;color:var(--signal);line-height:1}
+
+/* ветер */
+.t-wind{grid-column:9/11;grid-row:3;background:var(--sea);color:#fff;display:flex;flex-direction:column;gap:12px}
+.t-wind .top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.t-wind .v{font-family:'Unbounded';font-weight:900;font-size:50px;line-height:.9;letter-spacing:-.04em}
+.t-wind .v small{font-size:16px;font-weight:400;letter-spacing:0}
+.compass{width:56px;height:56px;flex:none}
+.t-wind p{font-size:15px;line-height:1.45}
+.t-wind .ex{font-size:12.5px;color:#e2ecee;margin-top:auto}
+
+/* кружки */
+.t-cups{grid-column:11/13;grid-row:3;padding:0;background:#c9c9c4;min-height:250px}
+.t-cups img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.t-cups figcaption{position:absolute;left:10px;right:10px;bottom:10px;background:var(--paper);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.35}
+
+/* карта */
+.t-map{grid-column:9/13;grid-row:4;background:#e9ece6;padding:0;display:grid;grid-template-columns:1fr 1.25fr;min-height:280px}
+.t-map .txt{padding:22px 4px 22px 22px;display:flex;flex-direction:column;gap:10px}
+.t-map h2{font-size:22px;font-weight:700}
+.t-map p{font-size:14.5px;line-height:1.45;color:var(--muted)}
+.t-map p b{color:var(--ink)}
+.t-map svg{width:100%;height:100%;display:block}
+
+/* плеер */
+.t-play{grid-column:1/5;grid-row:5;background:var(--ink);color:var(--paper)}
+.np{display:flex;align-items:center;gap:14px}
+.pbtn{width:48px;height:48px;border-radius:50%;background:var(--lamp);display:grid;place-items:center;flex:none;transition:transform .2s}
+.pbtn:hover{transform:scale(1.06)}
+.pbtn svg{width:16px;height:16px}
+.np .tt{font-weight:700;font-size:17px;line-height:1.25}
+.np .ar{font-size:14px;color:#a9b6ba}
+.tracks{list-style:none;margin-top:16px}
+.tracks li{border-top:1px solid rgba(241,239,231,.12)}
+.tracks button{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:9px 0;font-size:14.5px;color:#d6dddf}
+.tracks button span:last-child{color:#a9b6ba;font-variant-numeric:tabular-nums}
+.tracks button:hover{color:#fff}
+.tracks li.cur button{color:var(--lamp)}
+
+/* отзывы */
+.t-rev{grid-column:5/9;grid-row:5;background:var(--paper);display:flex;flex-direction:column}
+.t-rev blockquote{font-size:21px;line-height:1.4;letter-spacing:-.01em}
+.t-rev blockquote[hidden]{display:none}
+.t-rev cite{display:block;font-style:normal;font-size:14.5px;color:var(--muted);margin-top:12px}
+.t-rev .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:20px}
+.t-rev .score{font-size:14.5px;color:var(--muted)}
+.t-rev .score b{font-family:'Unbounded';font-weight:900;font-size:26px;color:var(--ink);letter-spacing:-.03em;margin-right:6px}
+.qnav{display:flex;gap:6px}
+.qnav button{width:44px;height:44px;border-radius:10px;border:1.5px solid var(--ink);display:grid;place-items:center}
+.qnav button:hover{background:var(--ink);color:var(--paper)}
+.qnav svg{width:16px;height:16px}
+
+/* мини-предзаказ */
+.t-pre{grid-column:9/13;grid-row:5;background:var(--lamp);display:flex;flex-direction:column;gap:14px}
+.t-pre h2{font-size:26px;font-weight:900}
+.t-pre p{font-size:15px;margin-top:-6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{min-height:40px;padding:0 14px;border-radius:10px;border:1.5px solid var(--ink);font-weight:700;font-size:14px;transition:background-color .15s,color .15s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--lamp)}
+.t-pre .sum{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto}
+.t-pre .sum b{font-family:'Unbounded';font-weight:900;font-size:34px;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+
+/* ---------- второй ярус: история ---------- */
+section{padding:110px 0}
+.sec-h{font-family:'Unbounded';font-weight:900;font-size:clamp(36px,5vw,68px);line-height:.95;letter-spacing:-.035em}
+.box.story{margin-top:0}
+.t-story{grid-column:1/6;background:var(--paper);padding:36px}
+.t-story p{font-size:18px;line-height:1.6;margin-top:22px;max-width:44ch}
+.t-story .hand{display:block;font-size:26px;color:var(--signal);margin-top:18px;line-height:1.1}
+.t-curve{grid-column:6/13;background:var(--night);color:var(--paper);padding:30px}
+.t-curve h3{font-family:'Onest';font-weight:700;font-size:17px;letter-spacing:0}
+.t-curve h3 span{font-weight:400;color:var(--foam)}
+.t-curve svg{width:100%;height:auto;display:block;margin-top:12px}
+.yr{grid-column:span 3;background:var(--paper2);padding:24px}
+.yr b{font-family:'Unbounded';font-weight:900;font-size:36px;letter-spacing:-.04em;line-height:1;display:block}
+.yr p{font-size:15.5px;line-height:1.5;margin-top:10px}
+.yr.now{background:var(--lamp)}
+
+/* мастер-классы */
+.mc{background:var(--paper)}
+.mc-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.mc-head p{max-width:38ch;font-size:17px;color:var(--muted)}
+.mc-row{display:grid;grid-template-columns:150px 1fr 170px 130px 150px;gap:24px;align-items:center;padding:26px 8px;border-top:1.5px solid var(--ink);position:relative;isolation:isolate}
+.mc-row:last-child{border-bottom:1.5px solid var(--ink)}
+.mc-row::before{content:"";position:absolute;inset:0;background:var(--lamp);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.2,.7,.2,1);z-index:-1}
+.mc-row:hover::before{transform:scaleY(1)}
+.mc-date{font-family:'Unbounded';font-weight:900;font-size:32px;line-height:.9;letter-spacing:-.04em}
+.mc-date small{display:block;font-family:'Onest';font-size:14px;font-weight:400;letter-spacing:0;margin-top:8px}
+.mc-t{font-weight:700;font-size:21px;line-height:1.3}
+.mc-t span{display:block;font-weight:400;font-size:15.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+.mc-seats{font-size:14.5px}
+.mc-pr{font-family:'Unbounded';font-weight:700;font-size:21px}
+.mc-row .btn{justify-self:end}
+
+/* предзаказ */
+.order{background:var(--night);color:var(--paper)}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.order-grid > div > p{color:#cdd8da;font-size:18px;margin-top:22px;max-width:40ch}
+.order ol{margin-top:30px;padding-left:0;list-style:none;display:grid;gap:14px;counter-reset:s}
+.order ol li{display:flex;gap:14px;align-items:baseline;font-size:16px;color:#dde5e6;counter-increment:s}
+.order ol li::before{content:counter(s);font-family:'Unbounded';font-weight:700;color:var(--lamp);font-size:15px;min-width:16px}
+form.f{background:var(--paper);color:var(--ink);border-radius:var(--out);padding:32px;display:grid;gap:16px}
+.f label.fl{display:grid;gap:6px;font-weight:700;font-size:14.5px}
+.f input[type=text],.f input[type=tel],.f select{font:500 16px 'Onest';padding:13px 14px;border-radius:10px;border:1.5px solid rgba(16,25,30,.3);background:#fff;color:var(--ink);width:100%}
+.f input::placeholder{color:#69767b}
+.f input:focus,.f select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(255,201,40,.7)}
+.f .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f .agree{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.45}
+.f .agree input{width:20px;height:20px;accent-color:var(--ink);flex:none;margin-top:1px}
+.f button[type=submit]{justify-self:start;min-height:52px;padding:0 28px;font-size:16px}
+.thanks{display:none;padding:12px 0}
+.thanks h3{font-family:'Unbounded';font-weight:900;font-size:34px;line-height:1;letter-spacing:-.03em}
+.thanks p{margin-top:12px;color:var(--muted)}
+form.f.done > *:not(.thanks){display:none}
+form.f.done .thanks{display:block}
+
+footer{background:var(--box);color:#c5cfd2;padding:64px 0 34px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px;font-size:15px;line-height:1.6}
+.foot h4{font-family:'Unbounded';font-weight:700;font-size:15px;color:var(--lamp);margin-bottom:10px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--lamp);text-decoration:underline}
+.legal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13.5px;color:#9aa7ab;margin-top:50px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1)}
+
+/* о стиле */
+.about-btn{position:fixed;left:16px;bottom:16px;z-index:100;min-height:44px;padding:0 16px;border-radius:12px;background:var(--ink);color:var(--paper);font-weight:700;font-size:14px;box-shadow:0 10px 24px -8px rgba(16,25,30,.5)}
+.about-btn:hover{background:#26343b}
+.about{position:fixed;left:16px;bottom:70px;z-index:101;width:min(430px,calc(100vw - 32px));max-height:calc(100vh - 100px);overflow:auto;background:var(--paper);color:var(--ink);border-radius:var(--out);padding:26px;display:none;box-shadow:0 30px 60px rgba(0,0,0,.35);border:8px solid var(--box)}
+.about.open{display:block}
+.about h2{font-family:'Unbounded';font-weight:900;font-size:26px;letter-spacing:-.03em}
+.about h3{font-weight:700;font-size:15px;margin:16px 0 6px}
+.about ul{font-size:14.5px;line-height:1.45;display:grid;gap:5px;padding-left:18px}
+.about li::marker{color:var(--signal)}
+.about p{font-size:14.5px;line-height:1.45}
+.about .no{background:var(--lamp);border-radius:10px;padding:10px 12px;margin-top:14px}
+.about a{color:var(--ink)}
+.about .x{position:absolute;top:12px;right:12px;width:40px;height:40px;border-radius:10px;font-size:20px}
+.about .x:hover{background:var(--paper2)}
+
+
+/* ---------- адаптив ---------- */
+@media (max-width:1100px){
+  .box{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .t-hero{grid-column:1/-1;grid-row:auto;min-height:560px}
+  .t-clock{grid-column:1/4;grid-row:auto}
+  .t-card{grid-column:4/7;grid-row:auto}
+  .t-photo{grid-column:1/4;grid-row:auto}
+  .t-wind{grid-column:4/7;grid-row:auto}
+  .t-menu{grid-column:1/-1;grid-row:auto}
+  .t-bean{grid-column:1/4;grid-row:auto}
+  .t-cups{grid-column:4/7;grid-row:auto}
+  .t-map{grid-column:1/-1;grid-row:auto}
+  .t-play{grid-column:1/4;grid-row:auto}
+  .t-rev{grid-column:4/7;grid-row:auto}
+  .t-pre{grid-column:1/-1;grid-row:auto}
+  .t-story,.t-curve{grid-column:1/-1}
+  .order-grid{grid-template-columns:1fr;gap:40px}
+  .mc-row{grid-template-columns:120px 1fr 120px}
+  .mc-seats{grid-column:2}
+  .mc-row .btn{grid-column:3;grid-row:1}
+  .foot{grid-template-columns:1fr 1fr}
+  nav.menu{display:none}
+}
+@media (max-width:640px){
+  :root{--gap:6px;--in:14px;--out:20px}
+  .wrap{padding:0 10px}
+  header.top{padding:14px 6px}
+  header .btn{min-height:44px;padding:0 14px;font-size:14px}
+  .box{grid-template-columns:1fr 1fr}
+  .t{padding:18px}
+  .t-hero{grid-column:1/-1;min-height:0;padding:28px 22px 0}
+  .t-hero h1{font-size:46px}
+  .t-hero .lead{font-size:16.5px;max-width:23ch}
+  .lh{width:84px;right:16px;bottom:58px}
+  .lamp-glow,.beam{right:58px;bottom:206px}
+  .sea{margin:22px -22px 0;height:70px}
+  .t-clock,.t-card,.t-wind,.t-cups{grid-column:span 1}
+  .clock{font-size:42px}
+  .t-clock .st,.t-clock .now{font-size:14px}
+  .t-card h2{font-size:16px}
+  .stamps{gap:5px;margin-top:12px}
+  .t-card p{font-size:14px}
+  .t-photo{grid-column:1/-1;padding:0}
+  .t-cups,.t-map{padding:0}
+  .t-photo img{min-height:0;height:260px;flex:none}
+  .t-menu{grid-column:1/-1;padding:22px 18px}
+  .t-menu h2{font-size:30px}
+  .t-bean{grid-column:1/-1;padding:28px 18px}
+  .t-wind .v{font-size:38px}
+  .compass{width:40px;height:40px}
+  .t-wind p{font-size:14px}
+  .t-cups{min-height:240px}
+  .t-map{grid-template-columns:1fr}
+  .t-map svg{height:220px}
+  .t-map .txt{padding:20px 18px 6px}
+  .t-play,.t-rev,.t-pre{grid-column:1/-1}
+  .t-rev blockquote{font-size:18px}
+  section{padding:72px 0}
+  .t-story{padding:24px 20px}
+  .t-story p{font-size:17px}
+  .t-curve{padding:20px 16px}
+  .yr{grid-column:1/-1}
+  .mc-row{grid-template-columns:1fr auto;gap:12px;padding:22px 4px}
+  .mc-date{grid-column:1}
+  .mc-pr{grid-column:2;grid-row:1;text-align:right}
+  .mc-t{grid-column:1/-1}
+  .mc-seats{grid-column:1}
+  .mc-row .btn{grid-column:2;grid-row:auto}
+  form.f{padding:20px}
+  .f .two{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .about-btn{left:auto;right:12px;bottom:12px}
+  .about{left:12px;bottom:66px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="top">
+  <a class="logo" href="#" aria-label="МАЯК, на главную">
+    <svg viewBox="0 0 26 34" aria-hidden="true"><path d="M13 1.5 9.2 7h7.6z" fill="#c8361f"/><rect x="8.5" y="7" width="9" height="5" rx="1" fill="#ffc928" stroke="#10191e" stroke-width="1.4"/><path d="M9 12h8l2.6 20H6.4z" fill="#f1efe7" stroke="#10191e" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 19.5h10M7.3 25.5h11.4" stroke="#10191e" stroke-width="1.4"/></svg>
+    МАЯК
+  </a>
+  <nav class="menu" aria-label="Разделы"><a href="#menu">Меню</a><a href="#story">Обжарка</a><a href="#mc">Мастер-классы</a><a href="#map">Как добраться</a></nav>
+  <a class="btn" href="#order">Предзаказ зерна</a>
+</header>
+
+<!-- Коробка бенто: один лоток с отсеками разного размера и разного материала -->
+<main class="box" id="top">
+
+  <article class="t t-hero" id="hero">
+    <div class="lamp-glow" aria-hidden="true"></div>
+    <div class="beam" aria-hidden="true"></div>
+    <h1>Кофе на краю <em>города</em></h1>
+    <p class="lead">Обжариваем зерно в трёхстах метрах от Токаревского маяка на Эгершельде. Берите стакан и идите по косе: 800 метров, ровно на один капучино.</p>
+    <div class="cta">
+      <a class="btn" href="#order">Предзаказать зерно</a>
+      <a class="link" href="#menu">Что у нас в меню</a>
+    </div>
+    <svg class="lh" viewBox="0 0 110 230" aria-hidden="true">
+      <path d="M55 4 41 24h28z" fill="#c8361f"/>
+      <rect x="39" y="24" width="32" height="24" rx="2" fill="#ffc928" stroke="#f1efe7" stroke-width="2"/>
+      <path d="M39 36h32M55 24v24" stroke="#1b2a33" stroke-width="1.5"/>
+      <path d="M33 48h44v6H33z" fill="#f1efe7"/>
+      <path d="M40 54h30l9 142H31z" fill="#f1efe7"/>
+      <path d="M38.4 82h33.2l1.7 27H36.7zM35.2 134h39.6l1.7 28H33.5z" fill="#c8361f"/>
+      <rect x="50" y="172" width="10" height="24" rx="5" fill="#1b2a33"/>
+      <path d="M12 196c20-6 66-6 86 0l6 34H6z" fill="#24394a"/>
+    </svg>
+    <div class="sea" aria-hidden="true">
+      <svg viewBox="0 0 800 100" preserveAspectRatio="none">
+        <path fill="#24394a" d="M0 100V40C70 26 130 50 210 38S350 18 430 34 600 52 690 34 770 30 800 36V100Z"/>
+        <path fill="#3d6878" d="M0 100V62C90 50 170 70 260 58S420 44 520 60 690 70 800 56V100Z"/>
+        <path fill="#0f171c" d="M0 100V84C120 76 230 90 360 82S600 74 800 84V100Z"/>
+      </svg>
+    </div>
+  </article>
+
+  <article class="t t-clock" aria-live="polite">
+    <p class="now">Во Владивостоке</p>
+    <div class="clock" id="clock">8:00</div>
+    <p class="st" id="st"><b>Открыто каждый день</b> с 8:00 до 22:00</p>
+  </article>
+
+  <article class="t t-card" id="loyal" role="button" tabindex="0" aria-label="Карта гостя: поставить штамп за чашку">
+    <h2>Седьмая чашка от нас</h2>
+    <div class="stamps" id="stamps">
+      <i class="on" style="--r:-8deg"></i><i class="on" style="--r:12deg"></i><i class="on" style="--r:-3deg"></i><i class="on" style="--r:7deg"></i><i class="on" style="--r:-14deg"></i><i class="on" style="--r:4deg"></i><i class="gift">7</i><i style="visibility:hidden"></i>
+    </div>
+    <p id="loyHint">Нажмите, чтобы поставить штамп. Осталась одна чашка.</p>
+  </article>
+
+  <figure class="t t-photo">
+    <img src="../../assets/photos/coffee-cookies.webp" width="1280" height="853" alt="Крекеры на деревянной подставке, керамические чашки и ложка с кофейными зёрнами" fetchpriority="high">
+    <figcaption><b>Крекер к фильтру</b>До 11:00 к любому фильтру кладём солёный крекер. Просто так.</figcaption>
+  </figure>
+
+  <article class="t t-menu" id="menu">
+    <h2>Что налить</h2>
+    <div class="tabs" role="tablist" aria-label="Разделы меню">
+      <button role="tab" aria-selected="true" aria-controls="mlist" data-t="esp">Эспрессо</button>
+      <button role="tab" aria-selected="false" aria-controls="mlist" data-t="filt">Фильтр</button>
+      <button role="tab" aria-selected="false" aria-controls="mlist" data-t="des">Десерты</button>
+    </div>
+    <ul class="mlist" id="mlist" role="tabpanel">
+      <li><div class="row"><span>Эспрессо</span><span class="pr">180 ₽</span></div><div class="ds">Бразилия Моджиана, 30 мл</div></li>
+      <li><div class="row"><span>Капучино</span><span class="pr">260 ₽</span></div><div class="ds">250 мл, можно на овсяном</div></li>
+      <li><div class="row"><span>Флэт уайт</span><span class="pr">290 ₽</span></div><div class="ds">двойной ристретто</div></li>
+      <li><div class="row"><span>Раф на морской соли</span><span class="pr">340 ₽</span></div><div class="ds">соль с острова Попова</div></li>
+      <li><div class="row"><span>Тоник эспрессо</span><span class="pr">320 ₽</span></div><div class="ds">с юдзу и розмарином</div></li>
+    </ul>
+    <p class="oat hand">Овсяное молоко без доплаты</p>
+  </article>
+
+  <article class="t t-bean">
+    <!-- impeccable-disable nested-cards: этикетка пачки лежит в отсеке коробки как физический предмет, это и есть содержимое отсека -->
+    <div class="label">
+      <span class="date-stamp">обжарено<br>16.10</span>
+      <p class="who">Зерно недели</p>
+      <h2>Эфиопия<span>Гуджи Ханджа</span></h2>
+      <p class="notes">Черника, бергамот, тёмный шоколад и мёд. Натуральная обработка, 2 100 м, под фильтр.</p>
+      <div class="cup" aria-label="Профиль вкуса по шкале из десяти">
+        <div><span>Кислотность</span><s aria-label="8 из 10"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></s></div>
+        <div><span>Сладость</span><s aria-label="7 из 10"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></s></div>
+        <div><span>Тело</span><s aria-label="5 из 10"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i></i><i></i></s></div>
+        <div><span>Послевкусие</span><s aria-label="9 из 10"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></s></div>
+      </div>
+      <div class="price"><span>пачка 250 г</span><b>950 ₽</b></div>
+      <span class="left hand">осталось 14 пачек</span>
+    </div>
+  </article>
+
+  <article class="t t-wind">
+    <div class="top">
+      <div class="v">7<small> м/с</small></div>
+      <svg class="compass" viewBox="0 0 54 54" role="img" aria-label="Ветер северо-западный"><circle cx="27" cy="27" r="25" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/><text x="27" y="12" text-anchor="middle" font-size="8" fill="#fff" font-family="Onest" font-weight="700">С</text><g transform="rotate(135 27 27)"><path d="M27 12l5 15h-10z" fill="#ffc928"/><path d="M27 42l-5-15h10z" fill="#fff" opacity=".6"/></g></svg>
+    </div>
+    <p>Северо-западный, порывы до 11. Вода +14°, воздух +11°. Крышку на стакан держим наготове.</p>
+    <p class="ex">Пример данных для макета, не реальная погода</p>
+  </article>
+
+  <figure class="t t-cups">
+    <img src="../../assets/photos/cups-bw.webp" width="853" height="1280" alt="Чёрно-белое фото: три керамические кружки и стакан воды на белом столе" loading="lazy" decoding="async">
+    <figcaption>Кружки лепит керамистка с Русского. У стойки, 1&nbsp;200&nbsp;₽</figcaption>
+  </figure>
+
+  <article class="t t-map" id="map">
+    <div class="txt">
+      <h2>Как дойти</h2>
+      <p><b>ул. Токаревская, 4.</b> От остановки «Маяк» вниз к воде, жёлтый домик у начала косы. Четыре минуты пешком.</p>
+      <p>В прилив коса уходит под воду, сверьтесь с таблицей приливов.</p>
+    </div>
+    <svg viewBox="0 0 320 260" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Схема: от остановки Маяк к кофейне и дальше по косе к Токаревскому маяку">
+      <rect width="320" height="260" fill="#cfdcde"/>
+      <path d="M-5 -5H210c-8 26 4 40-6 62-9 20-34 22-40 44-5 18 10 28 2 44-10 20-40 14-60 30-20 15-28 40-50 46-20 6-40-6-51-2z" fill="#e9ece6" stroke="#10191e" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M162 152c16 6 36 18 58 30 22 12 44 24 66 30" fill="none" stroke="#10191e" stroke-width="7" stroke-linecap="round"/>
+      <path d="M162 152c16 6 36 18 58 30 22 12 44 24 66 30" fill="none" stroke="#d9d4c4" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M58 40c18 10 46 8 64 24 14 12 22 34 28 52 4 12 6 22 10 34" fill="none" stroke="#c8361f" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="4 6"/>
+      <circle cx="58" cy="40" r="6" fill="#fff" stroke="#10191e" stroke-width="1.6"/>
+      <text x="70" y="30" font-family="Onest" font-weight="700" font-size="11" fill="#10191e">ост. «Маяк»</text>
+      <g transform="translate(150 138)"><rect x="-4" y="-4" width="26" height="22" rx="4" fill="#ffc928" stroke="#10191e" stroke-width="1.6"/><path d="M3 2h10v7a5 5 0 0 1-10 0z M13 4h3a2 2 0 0 1 0 5h-3" fill="none" stroke="#10191e" stroke-width="1.5"/></g>
+      <text x="96" y="178" font-family="Caveat" font-weight="700" font-size="19" fill="#10191e">мы тут</text>
+      <circle cx="288" cy="212" r="15" fill="#ffc928" opacity=".55"/>
+      <path d="M288 196l-4 6h8z" fill="#c8361f"/><rect x="284.5" y="202" width="7" height="14" fill="#fff" stroke="#10191e" stroke-width="1.3"/>
+      <text x="190" y="246" font-family="Onest" font-weight="700" font-size="11" fill="#10191e">Токаревский маяк</text>
+      <text x="214" y="164" font-family="Caveat" font-weight="700" font-size="17" fill="#10191e" transform="rotate(26 214 164)">коса, 800 м</text>
+      <text x="232" y="60" font-family="Onest" font-size="10" fill="#1b2a33" letter-spacing="1">Босфор Восточный</text>
+    </svg>
+  </article>
+
+  <article class="t t-play" id="player">
+    <div class="np">
+      <button class="pbtn" id="pbtn" aria-label="Пауза"><svg viewBox="0 0 16 16" id="pico"><rect x="3" y="2" width="3.5" height="12" fill="#10191e"/><rect x="9.5" y="2" width="3.5" height="12" fill="#10191e"/></svg></button>
+      <div><div class="tt" id="npT">Владивосток 2000</div><div class="ar" id="npA">Мумий Тролль, сейчас за стойкой</div></div>
+    </div>
+    <ul class="tracks" id="tracks">
+      <li class="cur"><button data-i="0"><span>Мумий Тролль, Владивосток 2000</span><span>2:42</span></button></li>
+      <li><button data-i="1"><span>Khruangbin, Maria También</span><span>3:08</span></button></li>
+      <li><button data-i="2"><span>Kings of Convenience, Misread</span><span>3:10</span></button></li>
+      <li><button data-i="3"><span>Сурганова и Оркестр, Холодное лето</span><span>3:57</span></button></li>
+    </ul>
+  </article>
+
+  <article class="t t-rev">
+    <div id="quotes">
+      <blockquote>«Лучший флэт уайт на Эгершельде, а бариста помнит, что я пью без сахара. Взяли стаканы и дошли до маяка на закате.»<cite>Анна К., 3 дня назад</cite></blockquote>
+      <blockquote hidden>«Привожу сюда всех гостей из Москвы. Гуджи брал домой уже четыре раза, пачка уходит за неделю.»<cite>Дмитрий С., неделю назад</cite></blockquote>
+      <blockquote hidden>«Ветер сдувал крышку, девушка за стойкой молча дала вторую и картонный держатель. Мелочь, а приятно.»<cite>Ольга В., 2 недели назад</cite></blockquote>
+    </div>
+    <div class="foot">
+      <p class="score"><b>4,9</b>на Яндекс Картах, 312 оценок</p>
+      <div class="qnav">
+        <button id="qPrev" aria-label="Предыдущий отзыв"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3 5 8l5 5"/></svg></button>
+        <button id="qNext" aria-label="Следующий отзыв"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 3 5 5-5 5"/></svg></button>
+      </div>
+    </div>
+  </article>
+
+  <article class="t t-pre">
+    <h2>Зерно к пятнице</h2>
+    <p>Соберите пачку, заберёте у стойки.</p>
+    <div class="chips" data-g="bean" aria-label="Зерно">
+      <button class="chip" aria-pressed="true" data-v="Эфиопия Гуджи" data-p="950">Эфиопия</button>
+      <button class="chip" aria-pressed="false" data-v="Колумбия Уила" data-p="820">Колумбия</button>
+      <button class="chip" aria-pressed="false" data-v="Бразилия Моджиана" data-p="690">Бразилия</button>
+    </div>
+    <div class="chips" data-g="w" aria-label="Вес">
+      <button class="chip" aria-pressed="true" data-v="250 г" data-m="1">250 г</button>
+      <button class="chip" aria-pressed="false" data-v="500 г" data-m="1.9">500 г</button>
+      <button class="chip" aria-pressed="false" data-v="1 кг" data-m="3.6">1 кг</button>
+    </div>
+    <div class="sum"><b id="preSum">950 ₽</b><a class="btn ink" href="#order" id="preGo">Оформить</a></div>
+  </article>
+
+</main>
+</div>
+
+<!-- ============ Второй ярус коробки: история ============ -->
+<section id="story">
+  <div class="wrap">
+    <div class="box story">
+      <article class="t t-story">
+        <h2 class="sec-h">Начали в гараже на Седанке</h2>
+        <p>В 2019 году Илья Мартынов купил подержанный ростер на килограмм и полгода жёг зерно, пока соседи не стали заходить за пачкой сами. Сейчас цех стоит через дорогу от кофейни, за прошлый год через него прошло 3 800 кг зерна. Если ветер с моря, на косе пахнет шоколадом.</p>
+        <span class="hand">обжариваем по четвергам, с 7 утра</span>
+      </article>
+      <article class="t t-curve">
+        <h3>Профиль обжарки, Эфиопия Гуджи <span>11 мин 20 с</span></h3>
+        <svg viewBox="0 0 600 300" role="img" aria-label="Кривая температуры обжарки: разворот на второй минуте, первый крэк в 9:40">
+          <g stroke="#b9cdd1" stroke-opacity=".18" stroke-width="1"><path d="M48 40H580M48 100H580M48 160H580M48 220H580"/></g>
+          <g font-family="Onest" font-size="13" fill="#b9cdd1"><text x="0" y="44">220°</text><text x="0" y="104">180°</text><text x="0" y="164">140°</text><text x="0" y="224">100°</text>
+          <text x="48" y="290">0:00</text><text x="200" y="290">4:00</text><text x="360" y="290">8:00</text><text x="535" y="290">11:20</text></g>
+          <path id="roastRor" d="M48 120C88 140 110 190 150 200S260 130 330 150 450 200 560 230" fill="none" stroke="#5d8fa1" stroke-width="2" stroke-dasharray="5 6"/>
+          <path id="roastCurve" d="M48 34C64 120 84 232 112 240S170 200 220 160 330 100 400 82 500 60 560 52" fill="none" stroke="#ffc928" stroke-width="3.5" stroke-linecap="round"/>
+          <g font-family="Caveat" font-weight="700" font-size="21" fill="#ffd95c"><circle cx="112" cy="240" r="5" fill="#ffc928"/><text x="124" y="262">точка разворота</text>
+          <circle cx="430" cy="76" r="5" fill="#ff7a5c"/><text x="372" y="58">первый крэк 9:40</text></g>
+        </svg>
+      </article>
+      <div class="t yr"><b>2019</b><p>Гараж на Седанке, ростер на 1 кг, двадцать пачек в неделю по знакомым.</p></div>
+      <div class="t yr"><b>2021</b><p>Жёлтый киоск на 9 м² у начала косы. Окно на Русский мост и очередь в выходные.</p></div>
+      <div class="t yr"><b>2023</b><p>Свой цех на Эгершельде и Giesen W6. Зерно напрямую от импортёров, 42 лота за год.</p></div>
+      <div class="t yr now"><b>2026</b><p>Кофейня на 24 места, школа бариста и доставка зерна по всему Приморью.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ МАСТЕР-КЛАССЫ ============ -->
+<section class="mc" id="mc">
+  <div class="wrap">
+    <div class="mc-head">
+      <h2 class="sec-h">Школа у маяка</h2>
+      <p>Группы до 10 человек, всё зерно и посуда наши. Сертификат в подарок можно оформить у стойки.</p>
+    </div>
+    <div class="mc-rows">
+      <div class="mc-row"><div class="mc-date">24.10<small>суббота, 12:00</small></div><div class="mc-t">Альтернатива дома<span>V60, аэропресс и кемекс: как варить вкусно без кофемашины. 2 часа</span></div><div class="mc-seats">Осталось 3 места из 8</div><div class="mc-pr">1 800 ₽</div><a class="btn ink" href="#order" data-mc>Записаться</a></div>
+      <div class="mc-row"><div class="mc-date">01.11<small>воскресенье, 11:00</small></div><div class="mc-t">Каппинг новых лотов<span>Пробуем шесть свежих лотов вслепую и учимся описывать вкус. 1,5 часа</span></div><div class="mc-seats">Осталось 5 мест из 10</div><div class="mc-pr">1 200 ₽</div><a class="btn ink" href="#order" data-mc>Записаться</a></div>
+      <div class="mc-row"><div class="mc-date">07.11<small>суббота, 15:00</small></div><div class="mc-t">Латте-арт для начинающих<span>Сердце, тюльпан и розетта на профессиональной машине. 2,5 часа</span></div><div class="mc-seats">Последнее место</div><div class="mc-pr">2 400 ₽</div><a class="btn ink" href="#order" data-mc>Записаться</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ПРЕДЗАКАЗ ============ -->
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="order-grid">
+      <div>
+        <h2 class="sec-h">Свежая обжарка, отложим на ваше имя</h2>
+        <p>Оставьте заявку до среды, в четверг обжарим, в пятницу пакет ждёт вас у стойки.</p>
+        <ol>
+          <li>Выбираете зерно и вес</li>
+          <li>Бариста звонит и уточняет помол</li>
+          <li>Забираете с пятницы по воскресенье, оплата на месте</li>
+        </ol>
+      </div>
+      <form class="f" id="form" novalidate>
+        <label class="fl">Имя<input type="text" name="name" required autocomplete="name" placeholder="Как к вам обращаться"></label>
+        <label class="fl">Телефон<input type="tel" name="phone" required autocomplete="tel" placeholder="+7 (___) ___-__-__" id="phone"></label>
+        <div class="two">
+          <label class="fl">Зерно<select name="bean" id="fBean"><option>Эфиопия Гуджи</option><option>Колумбия Уила</option><option>Бразилия Моджиана</option><option>Мастер-класс</option></select></label>
+          <label class="fl">Вес<select name="w" id="fW"><option>250 г</option><option>500 г</option><option>1 кг</option></select></label>
+        </div>
+        <label class="agree"><input type="checkbox" required name="agree"><span>Согласен на обработку персональных данных и принимаю <a href="#privacy">Политику конфиденциальности</a></span></label>
+        <button class="btn" type="submit">Отложить пачку</button>
+        <div class="thanks" role="status"><h3>Спасибо!</h3><p>Заявка у нас. Позвоним в течение часа с 8:00 до 22:00 по Владивостоку.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><h4>МАЯК</h4><p>Обжарочная и кофейня у Токаревского маяка.<br>Владивосток, Эгершельд, ул. Токаревская, 4</p></div>
+      <div><h4>Часы</h4><p>Каждый день с 8:00 до 22:00<br>Обжарка по четвергам</p></div>
+      <div><h4>Связь</h4><p><a href="tel:+74232905517">+7 (423) 290-55-17</a><br><a href="mailto:hello@mayak-coffee.ru">hello@mayak-coffee.ru</a></p></div>
+      <div><h4>Соцсети</h4><p><a href="#">Телеграм</a><br><a href="#">ВКонтакте</a><br><a href="#privacy" id="privacy">Политика конфиденциальности</a></p></div>
+    </div>
+    <div class="legal"><span>© 2026 ИП Мартынов И. А. Учебный пример для лекции, бренд вымышленный</span><span>Фото: Unsplash</span></div>
+  </div>
+</footer>
+
+<button class="about-btn" id="aboutBtn" aria-expanded="false" aria-controls="about">О стиле</button>
+<aside class="about" id="about" aria-label="О стиле">
+  <button class="x" id="aboutX" aria-label="Закрыть">×</button>
+  <h2>Bento Box</h2>
+  <h3>Признаки</h3>
+  <ul>
+    <li>Страница собрана как настоящая коробка бенто: один тёмный лоток, отсеки разного размера разделены стенкой в 8 px</li>
+    <li>Каждый отсек из своего материала: ночное море, жёлтый фонарь, бумажная этикетка пачки, морская карта</li>
+    <li>У каждого отсека своя типографика и своя функция: живые часы, карта гостя со штампами, меню с отточиями, плеер</li>
+    <li>Второй ярус коробки повторяет приём для истории обжарки</li>
+  </ul>
+  <h3>Шрифты</h3>
+  <ul><li>Unbounded: заголовки и цифры</li><li>Onest: текст и интерфейс</li><li>Caveat: пометки бариста от руки, два-три раза на страницу</li></ul>
+  <h3>Библиотеки</h3>
+  <ul><li>anime.js v4: прорисовка кривой обжарки (svg.createDrawable), один раз при появлении</li><li>Остальное на CSS и 3 КБ своего JS</li></ul>
+  <h3>Эффекты по мотивам reactbits.dev</h3>
+  <ul><li>Луч маяка: небольшой слой-клин раз в семь секунд переводится на другую сторону бухты (только transform); вне экрана стоит</li><li>Click Spark, переосмысленный как штамп на карте гостя</li></ul>
+  <h3>Референсы</h3>
+  <ul><li><a href="https://www.apple.com/iphone/" target="_blank" rel="noopener">Apple, страницы iPhone</a></li><li><a href="https://bentogrids.com" target="_blank" rel="noopener">bentogrids.com</a></li><li>Японские коробки бэнто с лакированными перегородками</li></ul>
+  <p class="no"><b>Чего здесь нет:</b> одинаковых карточек с подписью капсом сверху, пульсирующих точек, 3D-наклона и прожектора на каждой карточке, бесконечных анимаций в фоне. Было 5 fps в покое на слабом ноутбуке, стало около 60.</p>
+</aside>
+
+<script src="../../assets/js/anime.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+/* луч маяка: раз в 7 секунд переводится на другую сторону бухты, только когда hero на экране */
+const hero=$('#hero'),beam=$('.beam');let heroOn=true;
+new IntersectionObserver(([e])=>{heroOn=e.isIntersecting}).observe(hero);
+if(!RM) setInterval(()=>{if(heroOn&&!document.hidden) beam.classList.toggle('swing')},7000);
+
+/* часы Владивостока: обновляем раз в минуту, ровно на смене минуты */
+const fmt=new Intl.DateTimeFormat('ru-RU',{timeZone:'Asia/Vladivostok',hour:'2-digit',minute:'2-digit',hourCycle:'h23'});
+function tick(){
+  const p=fmt.formatToParts(new Date()),h=+p.find(x=>x.type==='hour').value,m=+p.find(x=>x.type==='minute').value;
+  const now=h*60+m,open=now>=480&&now<1320;
+  $('#clock').textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');
+  const left=open?1320-now:(now<480?480-now:1440-now+480),hh=Math.floor(left/60),mm=left%60,s=(hh?hh+' ч ':'')+mm+' мин';
+  $('#st').innerHTML=open?'<b>Открыто.</b> До закрытия '+s+', последний заказ в 21:45':'<b>Закрыто.</b> Откроемся через '+s+', в 8:00';
+  setTimeout(tick,60000-Date.now()%60000+200);
+}
+tick();
+
+/* меню */
+const MENU={
+  esp:[['Эспрессо','Бразилия Моджиана, 30 мл',180],['Капучино','250 мл, можно на овсяном',260],['Флэт уайт','двойной ристретто',290],['Раф на морской соли','соль с острова Попова',340],['Тоник эспрессо','с юдзу и розмарином',320]],
+  filt:[['V60','зерно недели, 250 мл',280],['Аэропресс','любой лот с витрины',260],['Кемекс на двоих','500 мл, подаём на подносе',420],['Колд брю','настаиваем 18 часов',310]],
+  des:[['Канеле','ром и ваниль, печём утром',220],['Баскский чизкейк','с солёной карамелью',320],['Тарт с жимолостью','ягода из Хабаровского края',390],['Печенье на гречишном мёде','к фильтру',180]]
+};
+$$('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  $$('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  const ul=$('#mlist');
+  ul.innerHTML=MENU[b.dataset.t].map(([n,d,p])=>`<li><div class="row"><span>${n}</span><span class="pr">${p} ₽</span></div><div class="ds">${d}</div></li>`).join('');
+  if(!RM) ul.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:260,easing:'cubic-bezier(.2,.8,.2,1)'});
+}));
+
+/* карта гостя: штампы */
+const stampSVG='<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#c8361f" stroke-width="2.2"/><path d="M20 8l-3 4h6zM17 12h6l2 18h-10z" fill="#c8361f"/><path d="M11 31h18" stroke="#c8361f" stroke-width="2"/></svg>';
+const cells=$$('#stamps i').slice(0,6);cells.forEach(c=>c.innerHTML=stampSVG);
+const gift=$('#stamps .gift');
+let n=6;try{const s=localStorage.getItem('mayak-stamps');if(s!==null)n=+s}catch(e){}
+function draw(){
+  cells.forEach((c,i)=>c.classList.toggle('on',i<n));gift.classList.toggle('on',n>=7);
+  $('#loyHint').textContent=n>=7?'Седьмая за наш счёт! Нажмите, чтобы начать новую карту.':n===6?'Нажмите, чтобы поставить штамп. Осталась одна чашка.':'До подарка '+(7-n)+' чашки. Нажмите, чтобы поставить штамп.';
+}
+draw();
+function stamp(){n=n>=7?0:n+1;try{localStorage.setItem('mayak-stamps',n)}catch(e){}draw()}
+$('#loyal').addEventListener('click',stamp);
+$('#loyal').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stamp()}});
+
+/* плеер */
+const TR=[['Владивосток 2000','Мумий Тролль'],['Maria También','Khruangbin'],['Misread','Kings of Convenience'],['Холодное лето','Сурганова и Оркестр']];
+const pl=$('#player');
+function icon(){const p=pl.classList.contains('paused');$('#pico').innerHTML=p?'<path d="M4 2l10 6-10 6z" fill="#10191e"/>':'<rect x="3" y="2" width="3.5" height="12" fill="#10191e"/><rect x="9.5" y="2" width="3.5" height="12" fill="#10191e"/>';$('#pbtn').setAttribute('aria-label',p?'Играть':'Пауза');$('#npA').textContent=TR[cur][1]+(p?', на паузе':', сейчас за стойкой')}
+let cur=0;
+$$('#tracks button').forEach(b=>b.addEventListener('click',()=>{cur=+b.dataset.i;$('#npT').textContent=TR[cur][0];$$('#tracks li').forEach((l,j)=>l.classList.toggle('cur',j===cur));pl.classList.remove('paused');icon()}));
+$('#pbtn').addEventListener('click',()=>{pl.classList.toggle('paused');icon()});
+
+/* отзывы: листаются вручную */
+const qs=$$('#quotes blockquote');let qi=0;
+const showQ=d=>{qs[qi].hidden=true;qi=(qi+d+qs.length)%qs.length;qs[qi].hidden=false};
+$('#qPrev').addEventListener('click',()=>showQ(-1));$('#qNext').addEventListener('click',()=>showQ(1));
+
+/* мини-предзаказ */
+const pick={bean:$('[data-g=bean] [aria-pressed=true]'),w:$('[data-g=w] [aria-pressed=true]')};
+$$('.t-pre .chips').forEach(g=>g.addEventListener('click',e=>{
+  const b=e.target.closest('.chip');if(!b)return;
+  $$('.chip',g).forEach(x=>x.setAttribute('aria-pressed',x===b));pick[g.dataset.g]=b;
+  $('#preSum').textContent=(Math.round(+pick.bean.dataset.p*+pick.w.dataset.m/10)*10).toLocaleString('ru-RU')+' ₽';
+}));
+$('#preGo').addEventListener('click',()=>{$('#fBean').value=pick.bean.dataset.v;$('#fW').value=pick.w.dataset.v});
+$$('[data-mc]').forEach(a=>a.addEventListener('click',()=>{$('#fBean').value='Мастер-класс'}));
+
+/* форма */
+const ph=$('#phone');
+ph.addEventListener('input',()=>{let d=ph.value.replace(/\D/g,'');if(d[0]==='8')d='7'+d.slice(1);if(d&&d[0]!=='7')d='7'+d;d=d.slice(0,11);let r='+7';if(d.length>1)r+=' ('+d.slice(1,4);if(d.length>=4)r+=') '+d.slice(4,7);if(d.length>=7)r+='-'+d.slice(7,9);if(d.length>=9)r+='-'+d.slice(9,11);ph.value=d?r:''});
+$('#form').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.currentTarget;
+  if(!f.checkValidity()){f.reportValidity();return}
+  if(ph.value.replace(/\D/g,'').length<11){ph.setCustomValidity('Введите номер полностью');ph.reportValidity();ph.setCustomValidity('');return}
+  f.classList.add('done');
+});
+
+/* о стиле */
+const ab=$('#about'),abb=$('#aboutBtn');
+abb.addEventListener('click',()=>{abb.setAttribute('aria-expanded',ab.classList.toggle('open'))});
+$('#aboutX').addEventListener('click',()=>{ab.classList.remove('open');abb.setAttribute('aria-expanded',false);abb.focus()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&ab.classList.contains('open')){ab.classList.remove('open');abb.setAttribute('aria-expanded',false)}});
+
+/* кривая обжарки прорисовывается один раз (anime.js) */
+if(!RM&&typeof anime!=='undefined'){
+  const curve=$('.t-curve'),dr=anime.svg.createDrawable(['#roastCurve','#roastRor']);
+  const io=new IntersectionObserver(([e])=>{if(e.isIntersecting){io.disconnect();anime.utils.set(dr,{draw:'0 0'});anime.animate(dr,{draw:['0 0','0 1'],duration:1800,ease:'outQuad',delay:anime.stagger(250)})}},{threshold:.5});
+  io.observe(curve);
+}
+});
+</script>
+</body>
+</html>

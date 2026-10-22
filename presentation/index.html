@@ -1,0 +1,1534 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Сайты, которые продают</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Caveat:wght@700&family=Dela+Gothic+One&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Marck+Script&family=Rubik+Dirt&family=Rubik+Glitch&family=Pangolin&family=Yeseva+One&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,900;1,400&family=Press+Start+2P&family=Rubik+Mono+One&display=swap">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="deck.css">
+</head><body>
+<style>
+/* локальные компоненты слайдов */
+.cover-word{position:absolute;left:110px;right:60px;bottom:200px;font:900 250px/.84 var(--f-display);letter-spacing:-.06em;margin:0}
+.cover-strip{position:absolute;right:110px;top:120px;display:flex;gap:18px}
+.cover-strip .ph{width:180px;height:230px}
+.cover-strip .ph:nth-child(odd){transform:translateY(40px) rotate(-3deg)}
+.cover-strip .ph:nth-child(even){transform:rotate(2deg)}
+.cover-mq{position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:var(--paper);font:700 46px/1 var(--f-display);padding:28px 0;text-transform:uppercase}
+.cover-mq span::after{content:"✳";margin-left:60px;color:var(--lime)}
+.chapter .bignum{font:900 520px/.75 var(--f-display);letter-spacing:-.07em;position:absolute;right:90px;top:110px;opacity:.95}
+.chapter h2{font:800 150px/.9 var(--f-display);letter-spacing:-.045em;margin:0;max-width:11ch}
+.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 30px;margin-top:40px}
+.plan div{border-top:3px solid var(--ink);padding-top:16px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline}
+.plan b{font:700 22px/1 var(--f-mono)}
+.plan span{font:600 28px/1.15 var(--f-text)}
+.plan i{font:400 20px/1 var(--f-mono);font-style:normal;opacity:.55}
+.plan div.big{background:var(--lime);border-color:var(--lime);padding:16px;margin-top:-16px}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;flex:1;margin-top:30px}
+.vs>div{padding:50px;display:flex;flex-direction:column;gap:26px}
+.vs .y{font:900 150px/.8 var(--f-display);letter-spacing:-.05em}
+.vs ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px}
+.vs li{font:500 34px/1.2 var(--f-text);display:flex;justify-content:space-between;gap:30px;border-top:2px solid currentColor;padding-top:14px}
+.vs li b{font-family:var(--f-mono);font-weight:700}
+.q5{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:50px}
+.q5 div{background:var(--paper);color:var(--ink);padding:30px 28px 34px;display:flex;flex-direction:column;gap:18px;min-height:330px}
+.q5 div:nth-child(2n){transform:rotate(1.2deg)}.q5 div:nth-child(2n+1){transform:rotate(-1deg)}
+.q5 b{font:900 90px/.8 var(--f-display);color:var(--blue)}
+.q5 p{font:600 34px/1.15 var(--f-text);margin:0}
+.q5 small{font:400 22px/1.3 var(--f-text);color:var(--ink2)}
+/* таймлайн */
+.tl{position:relative;margin-top:70px;flex:1}
+.tl svg{position:absolute;left:0;top:118px;width:100%;height:20px;overflow:visible}
+.tl .eras{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;position:relative}
+.tl .era{display:flex;flex-direction:column;gap:12px}
+.tl .era .yr{font:800 58px/1 var(--f-display);letter-spacing:-.03em}
+.tl .era .dot{width:28px;height:28px;border-radius:50%;background:var(--blue);margin:22px 0 26px;box-shadow:0 0 0 8px var(--paper)}
+.tl .era h4{font:700 32px/1.05 var(--f-display);margin:0}
+.tl .era p{font:400 24px/1.35 var(--f-text);margin:0;color:var(--ink2)}
+.tl .era .who{font:500 19px/1.3 var(--f-mono);border:2px solid var(--ink);padding:8px 10px;align-self:flex-start;margin-top:auto}
+/* cern */
+.cern{background:#fff;color:#000;font:400 30px/1.35 'Times New Roman',Times,serif;padding:50px 60px;box-shadow:0 20px 60px rgba(0,0,0,.25);width:880px}
+.cern h1{font:700 52px/1.1 'Times New Roman',serif;margin:0 0 22px}
+.cern a{color:#00e;text-decoration:underline}
+/* ucoz */
+.ucoz{width:900px;height:620px;background:#000080 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ctext x='4' y='26' font-size='18' fill='%23ffffff22'%3E%E2%98%85%3C/text%3E%3C/svg%3E");border:6px ridge #c0c0c0;color:#ff0;font:700 28px/1.3 'Comic Sans MS','Times New Roman',serif;display:grid;grid-template-columns:220px 1fr;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.ucoz .side{background:#c0c0c0;color:#000;padding:16px;font:400 22px/1.6 'Times New Roman',serif;border-right:4px outset #fff}
+.ucoz .side a{color:#00f;text-decoration:underline;display:block}
+.ucoz .main{padding:22px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
+.ucoz .blink{animation:blink 1s steps(2) infinite;color:#f0f}
+@keyframes blink{50%{opacity:0}}
+.ucoz .cnt{font:700 26px 'Courier New',monospace;background:#000;color:#0f0;padding:4px 10px;border:3px inset #888;letter-spacing:4px}
+.ucoz .uc{background:#ff0;color:#000;padding:6px 14px;font:700 22px 'Arial';border:3px dashed #f00}
+/* skeuo vs flat */
+.btn-skeu{font:700 40px/1 Arial;color:#fff;padding:34px 70px;border-radius:22px;background:linear-gradient(#7fc4ff,#1f73d6 50%,#0d5fc4 51%,#3a8ee8);border:2px solid #0a4a9a;box-shadow:inset 0 2px 0 rgba(255,255,255,.7),0 8px 18px rgba(0,0,0,.35);text-shadow:0 -2px 0 rgba(0,0,0,.4)}
+.btn-flat{font:700 40px/1 var(--f-text);color:#fff;padding:36px 72px;background:#1abc9c}
+.btn-now{font:600 40px/1 var(--f-text);color:var(--paper);padding:36px 72px;background:var(--ink);border-radius:999px}
+/* виды сайтов */
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 40px;margin-top:40px}
+.types .t{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:center}
+.wf{height:110px;border:3px solid var(--ink);background:var(--paper);position:relative;display:flex;flex-direction:column;gap:6px;padding:8px}
+.wf i{display:block;background:var(--ink);height:8px}
+.wf i.b{height:30px;background:var(--line)}
+.wf i.s{width:50%}
+.wf i.c{background:var(--blue);width:40%;height:12px}
+.types h4{font:700 32px/1 var(--f-display);margin:0 0 8px}
+.types p{font:400 22px/1.3 var(--f-text);margin:0;color:var(--ink2)}
+/* анатомия лендинга */
+.anat{display:grid;grid-template-columns:520px 1fr;gap:80px;flex:1;min-height:0;margin-top:20px}
+.phone{border:4px solid var(--ink);border-radius:48px;padding:20px 18px;display:flex;flex-direction:column;gap:9px;background:var(--white);height:860px;margin-top:-40px}
+.phone .blk{border-radius:10px;background:var(--paper2);display:flex;align-items:center;padding:0 16px;font:600 19px/1 var(--f-mono);color:var(--ink2)}
+.phone .blk.hero{background:var(--blue);color:#fff;height:190px;flex-direction:column;align-items:flex-start;justify-content:center;gap:10px}
+.phone .blk.hero b{font:800 30px/1 var(--f-display)}
+.phone .blk.hero span{background:var(--lime);color:var(--ink);padding:8px 14px;border-radius:99px;font:700 16px var(--f-text)}
+.phone .blk.cta{background:var(--ink);color:#fff}
+.anat ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;align-content:start;counter-reset:a}
+.anat li{counter-increment:a;display:grid;grid-template-columns:52px 1fr;gap:12px;font:400 24px/1.3 var(--f-text);border-top:2px solid var(--line);padding-top:12px}
+.anat li::before{content:counter(a,decimal-leading-zero);font:700 22px/1.4 var(--f-mono);color:var(--blue)}
+.anat li b{display:block;font:700 26px/1.2 var(--f-text);color:var(--ink)}
+/* формулы */
+.formula{display:flex;gap:16px;align-items:stretch;margin-top:20px}
+.formula div{flex:1;padding:28px;display:flex;flex-direction:column;gap:10px;min-height:250px}
+.formula b{font:900 120px/.8 var(--f-display)}
+.formula span{font:700 30px/1.1 var(--f-display)}
+.formula p{font:400 23px/1.35 var(--f-text);margin:0;margin-top:auto}
+/* воронка */
+.funnel{display:flex;flex-direction:column;gap:14px;flex:1;justify-content:center}
+.funnel .lv{display:grid;grid-template-columns:240px 1fr 210px;gap:30px;align-items:center}
+.funnel .lv .hbar{height:96px;background:var(--blue)}
+.funnel .lv b{font:800 50px/1 var(--f-display);text-align:right;white-space:nowrap}
+.funnel .lv span{font:500 28px/1.2 var(--f-text)}
+/* ui/ux */
+.flat{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:40px;flex:1}
+.flat svg{width:100%;height:auto}
+/* правила */
+.rules{display:grid;grid-template-columns:repeat(5,1fr);gap:28px 32px;margin-top:44px}
+.rules .r{display:flex;flex-direction:column;gap:12px;border-top:3px solid var(--ink);padding-top:16px}
+.rules .r b{font:800 54px/1 var(--f-display);color:var(--blue)}
+.rules .r h4{font:700 29px/1.1 var(--f-display);margin:0}
+.fontwall .col>span:first-child{font-size:90px!important;line-height:1.05!important}
+.fontwall .g4,.fontwall [style*="repeat(4,1fr)"]{row-gap:56px!important}
+a{color:inherit}
+.rules .r p{font:400 22px/1.35 var(--f-text);margin:0;color:var(--ink2)}
+</style>
+
+<div id="viewport"><div id="stage">
+
+<!-- 1. ОБЛОЖКА -->
+<section class="slide" data-title="Обложка" data-chapter="1">
+  <div class="run"><span>Лекция · Медиаком</span><span>Владивосток · 21.10.2026</span></div>
+  <div class="cover-strip">
+    <div class="ph" data-a="up" style="--d:2"><img src="../assets/photos/fashion-woman-hat.webp" alt="Девушка в шляпе на фоне здания"></div>
+    <div class="ph" data-a="up" style="--d:3"><img src="../assets/photos/coffee-cookies.webp" alt="Кофе и печенье"></div>
+    <div class="ph" data-a="up" style="--d:4"><img src="../assets/photos/hydrangea-pink.webp" alt="Розовая гортензия"></div>
+    <div class="ph" data-a="up" style="--d:5"><img src="../assets/photos/cow.webp" alt="Корова с бирками"></div>
+  </div>
+  <div style="position:absolute;left:120px;top:130px;max-width:760px" class="col">
+    <span class="tag fill" data-a="fade">90 минут · 12 блоков · 8 живых примеров</span>
+    <p class="lead" data-a="up" style="--d:1">Как маркетологу в 2026 году самому сделать сайт, который продает: от дизайна до домена.</p>
+    <p class="small mono" data-a="fade" style="--d:3">Даниил Комаров</p>
+  </div>
+  <h1 class="cover-word split">Сайты, что<br>продают</h1>
+  <div class="cover-mq"><div class="marquee"><div><span>Oversize</span><span>Editorial 2.0</span><span>Bento</span><span>New Rococo</span><span>ASCII</span><span>Punk Grunge</span><span>Naive</span><span>Trinket</span><span>Анти-ИИ</span></div><div aria-hidden="true"><span>Oversize</span><span>Editorial 2.0</span><span>Bento</span><span>New Rococo</span><span>ASCII</span><span>Punk Grunge</span><span>Naive</span><span>Trinket</span><span>Анти-ИИ</span></div></div></div>
+  <template class="n"><p>Представиться. Сказать, что к концу пары у каждого будет понимание, как собрать лендинг за вечер, и живой пример, сделанный на их глазах.</p><p>Сразу запустить интерактив со студентом (слайд 6), пока идет история.</p></template>
+</section>
+
+<!-- 2. ТЕЗИС -->
+<section class="slide dark" data-title="Главная мысль">
+  <div class="run"><span>Главная мысль</span><span>01</span></div>
+  <div class="grow col center" style="align-items:flex-start">
+    <h2 class="h-xl split">Код стал дешевым.</h2>
+    <h2 class="h-xl" data-a="up" style="--d:6;margin-top:30px"><span style="background:var(--lime);color:var(--ink);padding:0 20px">Дорого</span> понимать,<br>что продавать.</h2>
+    <p class="lead" data-a="fade" style="--d:10;margin-top:50px;color:#bbb">Нейросеть пишет код за минуты. Она не знает, кто ваш клиент, чего он боится и почему купит у вас.</p>
+  </div>
+  <template class="n"><p>Это мысль всей лекции. Всё остальное работает на нее. Можно спросить: кто уже делал сайт нейросетью? Кто продавал что-то через сайт?</p></template>
+</section>
+
+<section class="slide story" data-title="История 01: Этот набор сделан за вечер с ИИ-агентом">
+  <div class="run"><span>История из опыта</span><span>01</span></div>
+  <span class="lbl" data-a="rot">история из опыта</span>
+  <h2 data-a="up" style="--d:1">Этот набор сделан за&nbsp;вечер с&nbsp;ИИ-агентом</h2>
+  <div class="beats"><div data-a="up" style="--d:2"><span>Что было</span><p>Презентация, 8 сайтов, гайдбук и памятки к этой паре. Раньше на такое ушел бы месяц работы дизайнера и верстальщика.</p></div><div data-a="up" style="--d:3"><span>Как сделано</span><p>Я описывал задачу и проверял результат, агент писал код, делал скриншоты и правил ошибки. Мои решения: что показать, кому и зачем.</p></div><div data-a="up" style="--d:4"><span>Вывод</span><p>Код стоил вечер. Дорогим было понимать, что нужно вам, и выбирать из вариантов лучшее.</p></div></div>
+  <template class="n"><p>Рассказать честно, с деталями: сколько итераций было, что пришлось переделать руками, где агент ошибся (например, сайты сначала лагали и выглядели как ИИ-шаблон, пришлось переделывать). Это мостик к главной мысли.</p></template>
+</section>
+
+<!-- 3. ПЛАН -->
+<section class="slide" data-title="План лекции">
+  <div class="run"><span>План</span><span>90 минут</span></div>
+  <h2 class="h-l" data-a="up">План на пару</h2>
+  <div class="plan">
+    <div data-a="up" style="--d:1"><b>01</b><span>Зачем маркетологу сайт</span><i>7</i></div>
+    <div data-a="up" style="--d:2"><b>02</b><span>История веба и дизайна</span><i>6</i></div>
+    <div data-a="up" style="--d:3"><b>03</b><span>Виды сайтов</span><i>4</i></div>
+    <div data-a="up" style="--d:4"><b>04</b><span>Лендинги: виды и блоки</span><i>9</i></div>
+    <div data-a="up" style="--d:5"><b>05</b><span>UI/UX и тренды 2026</span><i>9</i></div>
+    <div data-a="up" style="--d:6"><b>06</b><span>HTML, CSS, JS</span><i>3</i></div>
+    <div data-a="up" style="--d:7"><b>07</b><span>React и стек</span><i>3</i></div>
+    <div data-a="up" style="--d:8"><b>08</b><span>Архитектура лендинга</span><i>4</i></div>
+    <div data-a="up" style="--d:9"><b>09</b><span>Скорость и SEO</span><i>5</i></div>
+    <div data-a="up" style="--d:10"><b>10</b><span>Домены, деплой, закон</span><i>5</i></div>
+    <div class="big" data-a="up" style="--d:11"><b>11</b><span>Практика: генерация и деплой</span><i>30</i></div>
+    <div data-a="up" style="--d:12"><b>12</b><span>Итоги и вопросы</span><i>5</i></div>
+  </div>
+  <p class="small mono muted" data-a="fade" style="--d:13;margin-top:auto">Минуты указаны справа. По ходу пары заполняем общий бриф, в конце генерируем по нему сайт и публикуем на GitHub Pages.</p>
+  <template class="n"><p>Показать, что самый длинный блок практический. Если отстаем по времени, сокращаем историю и архитектуру.</p></template>
+</section>
+
+<section class="slide" data-title="Сделайте сейчас: GitHub">
+  <div class="run"><span>Сделайте сейчас</span><span>понадобится в конце пары</span></div>
+  <p class="eyebrow" data-a="fade">Пока я рассказываю, зарегистрируйтесь</p>
+  <h2 class="h-l" data-a="up">GitHub: аккаунт за 3 минуты</h2>
+  <div class="grow" style="display:grid;grid-template-columns:1fr 340px 1fr;gap:60px;margin-top:40px;align-items:start">
+    <ol class="steps2 light">
+      <li data-a="up" style="--d:2"><span><b>github.com/signup</b>: почта и пароль</span></li>
+      <li data-a="up" style="--d:3"><span><b>Имя пользователя</b> станет адресом: <code>имя.github.io</code></span></li>
+      <li data-a="up" style="--d:4"><span><b>Подтвердите почту</b> кодом из письма</span></li>
+    </ol>
+    <div class="col" style="align-items:center;gap:18px" data-a="scale">
+      <div class="qr" style="width:340px;height:340px"><img src="screens/qr-github-signup.svg" alt="QR-код github.com/signup"></div>
+      <span class="mono small">github.com/signup</span>
+    </div>
+    <div class="col" style="gap:20px" data-a="right">
+      <div class="bf" style="height:250px;box-shadow:6px 6px 0 var(--ink)"><div class="bar"><i></i><i></i><i></i><span>github.com/signup</span></div><img src="screens/github-blocked.webp" alt="GitHub: доступ временно ограничен"></div>
+      <p class="small"><b>«Доступ временно ограничен»?</b> GitHub режет некоторые VPN и общие IP. Выключите VPN или зайдите с мобильного интернета. Этот экран я поймал сам, пока готовил лекцию.</p>
+    </div>
+  </div>
+  <template class="n"><p>Попросить всех открыть QR прямо сейчас. Через 10 минут спросить, у кого не получилось. Частые проблемы: VPN (скриншот реальный, GitHub закрыл доступ при подготовке лекции), письмо в спаме, занятое имя пользователя.</p></template>
+</section>
+
+<section class="slide dark" data-title="Сквозной бриф">
+  <div class="run"><span>Как устроена пара</span><span>13 полей</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1fr;gap:70px">
+    <div class="col">
+      <h2 class="h-l" data-a="up">Один промпт на всю пару</h2>
+      <p class="lead" style="color:#ccc" data-a="up">После каждого блока заполняем вместе одно-два поля. К блоку про нейросети у нас будет готовый бриф, и вы сгенерируете по нему сайт.</p>
+      <a class="go-brief interactive" href="../brief/index.html" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:20px" data-a="up">Открыть бриф группы</a>
+    </div>
+    <pre class="prompt" data-a="right" style="font-size:22px;line-height:1.55;align-self:center">Создай одностраничный сайт на русском.
+БИЗНЕС: <em>[01]</em>
+АУДИТОРИЯ: <em>[02]</em>
+ПОЧЕМУ У НАС: <em>[03]</em>
+ТИП И ДЕЙСТВИЕ: <em>[04]</em>
+ОФФЕР: <em>[05]</em>
+СТРУКТУРА: <em>[06]</em>
+СТИЛЬ: <em>[07]</em>  ШРИФТЫ И ЦВЕТА: <em>[08]</em>
+АНИМАЦИИ: <em>[09]</em>
+ТЕХНИЧЕСКИ: <em>[10]</em>
+SEO: <em>[11]</em>  ФОРМА: <em>[12]</em>
+НЕ ИСПОЛЬЗУЙ: <em>[13]</em></pre>
+  </div>
+  <template class="n"><p>Откройте brief/index.html на проекторе во второй вкладке. Кнопка «Пример: барбершоп» заполняет всё сразу, если группа молчит.</p></template>
+</section>
+
+<!-- 4. ГЛАВА 1 -->
+<section class="slide blue chapter" data-title="01 · Зачем маркетологу сайт" data-chapter="1">
+  <div class="run"><span>Глава</span><span>7 минут</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 01</p><h2 class="split">Зачем маркетологу сайт</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">01</div>
+</section>
+
+<!-- 5. БЫЛО / СТАЛО -->
+<section class="slide" data-title="Было и стало">
+  <div class="run"><span>01 · Зачем</span><span>Было и стало</span></div>
+  <h2 class="h-m" data-a="up">Один лендинг: тогда и сейчас</h2>
+  <div class="vs">
+    <div style="background:var(--paper2)" data-a="left">
+      <div class="y">2019</div>
+      <ul>
+        <li>Команда <b>4 человека</b></li>
+        <li>Срок <b>от 2 недель</b></li>
+        <li>Бюджет <b>от 50 000 ₽</b></li>
+        <li>Правка текста <b>через подрядчика</b></li>
+      </ul>
+    </div>
+    <div style="background:var(--ink);color:var(--paper)" data-a="right">
+      <div class="y" style="color:var(--lime)">2026</div>
+      <ul>
+        <li>Команда <b>1 маркетолог + AI</b></li>
+        <li>Срок <b>вечер</b></li>
+        <li>Бюджет <b>от 0 ₽</b></li>
+        <li>Правка текста <b>одной фразой</b></li>
+      </ul>
+    </div>
+  </div>
+  <template class="n"><p>Раньше: дизайнер, верстальщик, программист, копирайтер. Сейчас маркетолог может сам проверить гипотезу, сам запустить страницу под рекламу и сам переделать оффер.</p></template>
+</section>
+
+<!-- 6. ЧЕТЫРЕ ТЕЗИСА -->
+<section class="slide" data-title="Четыре тезиса">
+  <div class="run"><span>01 · Зачем</span><span>Тезисы</span></div>
+  <h2 class="h-m" data-a="up">Что нужно запомнить сегодня</h2>
+  <div class="g4" style="margin-top:60px;flex:1">
+    <div class="cell" data-a="up" style="--d:1"><span class="k">01</span><h4>Код дешевый</h4><p>Нейросеть пишет его быстрее и дешевле фрилансера. Дорогое теперь: что продавать, кому и как.</p></div>
+    <div class="cell" data-a="up" style="--d:2"><span class="k">02</span><h4>Выигрывает быстрый</h4><p>Не идеальный сайт через месяц, а рабочий через день. Потом правки по данным.</p></div>
+    <div class="cell" data-a="up" style="--d:3"><span class="k">03</span><h4>AI это новая норма</h4><p>Маркетолог без нейросетей в 2026 проигрывает тому, кто ими пользуется каждый день.</p></div>
+    <div class="cell" data-a="up" style="--d:4"><span class="k">04</span><h4>Знать, что знание есть</h4><p>Любой навык достается за один запрос. Нужно только знать, что спросить.</p></div>
+  </div>
+  <p class="note-hand" data-a="rot" style="--d:6;align-self:flex-end;font-size:60px">продавать важнее, чем кодить</p>
+</section>
+
+<!-- 7. ЗАДАЧИ -->
+<section class="slide" data-title="Задачи маркетолога и тип сайта">
+  <div class="run"><span>01 · Зачем</span><span>Задачи</span></div>
+  <h2 class="h-m" data-a="up">Сайт выбирают по задаче</h2>
+  <table class="t" style="margin-top:50px" data-a="fade">
+    <tr><th>Задача</th><th>Какой сайт</th><th>Пример</th></tr>
+    <tr><td>Проверить идею до запуска</td><td>Лендинг «оставь почту»</td><td>Лист ожидания курса, предзаказ</td></tr>
+    <tr><td>Лить рекламу</td><td>Продающий лендинг под один оффер</td><td>Запись на услугу, акция</td></tr>
+    <tr><td>Собрать регистрации</td><td>Ивент-лендинг</td><td>Конференция, мастер-класс</td></tr>
+    <tr><td>Спецпроект бренда</td><td>Промо-сайт</td><td>Конкурс, игра, кампания к праздникам</td></tr>
+    <tr><td>Показать себя</td><td>Портфолио, визитка</td><td>Личный бренд, резюме</td></tr>
+  </table>
+</section>
+
+<!-- 8. ИНТЕРАКТИВ -->
+<section class="slide blue" data-title="Интерактив: 5 вопросов">
+  <div class="run"><span>Интерактив</span><span>Делаем сайт вживую</span></div>
+  <p class="eyebrow" data-a="fade">У кого есть бизнес, идея или хобби?</p>
+  <h2 class="h-l split">Пять вопросов, и сайт готов</h2>
+  <div class="q5">
+    <div data-a="up" style="--d:3"><b>1</b><p>Что продаем?</p><small>Продукт или услуга, одной фразой</small></div>
+    <div data-a="up" style="--d:4"><b>2</b><p>Кому?</p><small>Кто клиент, чего хочет, чего боится</small></div>
+    <div data-a="up" style="--d:5"><b>3</b><p>Почему у нас?</p><small>Отличие от конкурентов</small></div>
+    <div data-a="up" style="--d:6"><b>4</b><p>Что сделать?</p><small>Позвонить, записаться, купить</small></div>
+    <div data-a="up" style="--d:7"><b>5</b><p>Какое настроение?</p><small>Строгое, дерзкое, уютное, премиальное</small></div>
+  </div>
+  <p class="lead" data-a="fade" style="--d:9;margin-top:auto;max-width:none">Хороший промпт = хороший бриф. Это и есть работа маркетолога.</p>
+  <template class="n"><p>Выбрать студента. Если молчат: кофейня, барбершоп, репетитор, фотограф, кондитер. Записать 5 ответов, вставить в Промпт 1, отправить в Lovable или Google AI Studio. Пока генерируется, идем дальше. Вернемся в блоке 11.</p></template>
+</section>
+
+<section class="slide brief-slide" data-title="Бриф: бизнес, аудитория, отличие">
+  <div class="run"><span>Сквозной бриф · поля 01-03</span><span>после блока 01</span></div>
+  <div class="row between" style="align-items:flex-end"><h2 class="h-l" data-a="up">Заполняем бриф</h2><a class="go-brief interactive" href="../brief/index.html#f-biz" target="_blank" rel="noopener">Открыть бриф</a></div>
+  <div class="flds"><div class="fld" data-a="up"><b>01</b><div><h3>Бизнес</h3><p>Что продаем, как называется, где?</p><div class="opts"><span>кофейня</span><span>барбершоп</span><span>репетитор</span><span>кондитерская</span><span>фотограф</span></div></div></div><div class="fld" data-a="up"><b>02</b><div><h3>Аудитория</h3><p>Кто клиент, чего хочет, чего боится?</p><div class="opts"><span>возраст</span><span>доход</span><span>главный страх</span></div></div></div><div class="fld" data-a="up"><b>03</b><div><h3>Почему у нас</h3><p>Только факты: срок, цена, опыт, место</p><div class="opts"><span>быстрее</span><span>дешевле</span><span>ближе</span><span>уникальнее</span></div></div></div></div>
+  <p class="small" style="margin-top:auto;opacity:.8">Если группа молчит: «Пример: барбершоп» в брифе.</p>
+  <template class="n"><p>Спросите группу, запишите ответ в бриф на проекторе (brief/index.html). Можно голосовать поднятием рук. Не больше 2 минут на поле.</p></template>
+</section>
+
+<!-- ГЛАВА 2 -->
+<section class="slide dark chapter" data-title="02 · История веба и дизайна" data-chapter="1">
+  <div class="run"><span>Глава</span><span>8 минут</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 02</p><h2 class="split">История веба и дизайна</h2></div>
+  <div class="bignum" data-a="up" style="--d:4;color:var(--lime)">02</div>
+  <template class="n"><p>Главная мысль блока: каждые 5-10 лет порог входа в создание сайтов падал. Сначала ученые, потом программисты, верстальщики, пользователи конструкторов. Сейчас любой, кто умеет сформулировать задачу.</p></template>
+</section>
+
+<section class="slide" data-title="Таймлайн 1989-2026">
+  <div class="run"><span>02 · История</span><span>35 лет за один слайд</span></div>
+  <h2 class="h-m" data-a="up">Порог входа падал каждые 5-10 лет</h2>
+  <div class="tl">
+    <svg class="draw" viewBox="0 0 1680 20" preserveAspectRatio="none"><line x1="0" y1="10" x2="1680" y2="10" stroke="#121212" stroke-width="3" pathLength="1"/></svg>
+    <div class="eras">
+      <div class="era" data-a="up" style="--d:1"><span class="yr">1989</span><span class="dot"></span><h4>Документы</h4><p>HTML, ссылки, первый сайт в ЦЕРН</p><span class="who">делают ученые</span></div>
+      <div class="era" data-a="up" style="--d:2"><span class="yr">1995</span><span class="dot"></span><h4>Таблицы и Flash</h4><p>JavaScript, CSS, табличная верстка, uCoz</p><span class="who">программисты</span></div>
+      <div class="era" data-a="up" style="--d:3"><span class="yr">2003</span><span class="dot"></span><h4>CMS</h4><p>WordPress, Битрикс, Web 2.0, админка</p><span class="who">верстальщики</span></div>
+      <div class="era" data-a="up" style="--d:4"><span class="yr">2007</span><span class="dot"></span><h4>Смартфоны</h4><p>iPhone, адаптив, Bootstrap, flat</p><span class="who">дизайнеры</span></div>
+      <div class="era" data-a="up" style="--d:5"><span class="yr">2013</span><span class="dot"></span><h4>Компоненты</h4><p>React, Figma, Tilda, Webflow</p><span class="who">конструкторы</span></div>
+      <div class="era" data-a="up" style="--d:6"><span class="yr">2022</span><span class="dot" style="background:var(--signal)"></span><h4>Нейросети</h4><p>ChatGPT, Lovable, агенты</p><span class="who" style="background:var(--lime);border-color:var(--lime)">любой с идеей</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide paper2" data-title="1991: первый сайт">
+  <div class="run"><span>02 · История</span><span>6 августа 1991</span></div>
+  <div class="g2 grow" style="align-items:center">
+    <div class="col">
+      <p class="eyebrow" data-a="fade">Этап 1 · 1989-1995</p>
+      <h2 class="h-l" data-a="up">Сайт был просто документом</h2>
+      <p class="txt" data-a="up" style="--d:2">Тим Бернерс-Ли в ЦЕРН придумал HTML, HTTP и URL. 6 августа 1991 года появился первый сайт info.cern.ch: текст и ссылки, без картинок. Он работает до сих пор.</p>
+      <p class="txt muted" data-a="up" style="--d:3">1993: браузер Mosaic показал картинки внутри текста. 1994: Netscape, первый массовый браузер.</p>
+    </div>
+    <div class="cern" data-a="right" style="--d:2;transform:rotate(1.5deg)">
+      <h1>World Wide Web</h1>
+      <p>The WorldWideWeb (W3) is a wide-area <a>hypermedia</a> information retrieval initiative aiming to give universal access to a large universe of documents.</p>
+      <p>Everything there is online about W3 is linked directly or indirectly to this document, including an <a>executive summary</a> of the project, <a>Mailing lists</a>, <a>Policy</a>, November's <a>W3 news</a>, <a>Frequently Asked Questions</a>.</p>
+      <p style="font:400 20px/1.3 var(--f-mono);color:#777;margin-top:30px">Реконструкция страницы info.cern.ch</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="1995-2003: таблицы, Flash, uCoz">
+  <div class="run"><span>02 · История</span><span>1995-2003</span></div>
+  <div class="g2 grow" style="align-items:center;grid-template-columns:1fr 920px">
+    <div class="col">
+      <p class="eyebrow" data-a="fade">Этап 2 · HTML, CSS, JS</p>
+      <h2 class="h-m" data-a="up">Скелет, одежда, мышцы</h2>
+      <div class="cell" data-a="up" style="--d:2"><span class="k">1995</span><p><b>JavaScript</b> написан Бренданом Эйхом примерно за 10 дней. Страницы начали реагировать на клики.</p></div>
+      <div class="cell" data-a="up" style="--d:3"><span class="k">1996</span><p><b>CSS</b> отделил внешний вид от содержания. Но браузеры поддерживали его плохо, поэтому 10 лет верстали таблицами.</p></div>
+      <div class="cell" data-a="up" style="--d:4"><span class="k">1996-2010</span><p><b>Flash</b>: анимированные промо-сайты брендов, интро «Пропустить заставку», музыка на фоне.</p></div>
+    </div>
+    <div class="ucoz" data-a="scale" style="--d:2">
+      <div class="side"><b>МЕНЮ</b><a>Главная</a><a>Наш клан</a><a>Фотоальбом</a><a>Гостевая книга</a><a>Скачать</a><a>Ссылки</a><br><span style="font-size:18px">Вы зашли как: Гость</span></div>
+      <div class="main">
+        <div style="font-size:40px;color:#0ff;text-shadow:3px 3px #f00">Добро пожаловать!!!</div>
+        <div class="blink">САЙТ В РАЗРАБОТКЕ</div>
+        <div style="color:#fff;font:400 22px 'Times New Roman'">Народ.ру и uCoz дали бесплатный сайт каждому. Счетчики, гостевые книги, MIDI на фоне.</div>
+        <div class="cnt">0 0 4 7 1 9</div>
+        <div class="uc">Лучше всего смотреть в Internet Explorer 6, 800x600</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="2003: WordPress и CMS">
+  <div class="run"><span>02 · История</span><span>2003</span></div>
+  <div class="g2 grow">
+    <div class="col end">
+      <p class="eyebrow" data-a="fade">Этап 3 · CMS</p>
+      <h2 class="h-xl" data-a="up" style="font-size:150px">WordPress</h2>
+      <p class="txt" data-a="up" style="--d:2">2003: Мэтт Мулленвег и Майк Литтл выпускают движок для блогов. Сайтом управляют через админку: написал статью, нажал «Опубликовать». Без программиста.</p>
+      <p class="txt muted" data-a="up" style="--d:3">В России параллельно: 1С-Битрикс, Joomla, Drupal, MODX. 2004: термин Web 2.0, контент создают пользователи. YouTube 2005, ВКонтакте 2006.</p>
+    </div>
+    <div class="col center" style="background:var(--ink);color:var(--paper);padding:60px" data-a="maskup">
+      <div style="font:900 210px/.8 var(--f-display);letter-spacing:-.06em;color:var(--lime);white-space:nowrap"><span data-count="40">0</span>%+</div>
+      <p class="lead" style="color:var(--paper);text-align:center">всех сайтов в мире работает на WordPress. Самая популярная CMS в истории.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide paper2" data-title="2007-2014: смартфоны и адаптив">
+  <div class="run"><span>02 · История</span><span>2007-2014</span></div>
+  <p class="eyebrow" data-a="fade">Этап 4 · Смартфоны</p>
+  <h2 class="h-l" data-a="up">Один сайт под любой экран</h2>
+  <div class="g3" style="margin-top:60px;flex:1">
+    <div class="col" data-a="up" style="--d:2"><span class="k mono" style="font-size:22px;opacity:.6">2007 · Скевоморфизм</span><div style="height:220px;display:grid;place-items:center;background:var(--paper)"><span class="btn-skeu">Купить</span></div><p class="small">iPhone. Кнопки как стекло и кожа. Сайты под монитор на телефоне неудобны.</p></div>
+    <div class="col" data-a="up" style="--d:3"><span class="k mono" style="font-size:22px;opacity:.6">2013 · Flat</span><div style="height:220px;display:grid;place-items:center;background:var(--paper)"><span class="btn-flat">Купить</span></div><p class="small">2010: Джобс отказывается от Flash. Итан Маркотт описывает адаптивный дизайн. iOS 7 и Material Design делают всё плоским.</p></div>
+    <div class="col" data-a="up" style="--d:4"><span class="k mono" style="font-size:22px;opacity:.6">2026 · Характер</span><div style="height:220px;display:grid;place-items:center;background:var(--paper)"><span class="btn-now">Купить</span></div><p class="small">Сегодня кнопка проще, а характер бренда в типографике, фото и движении.</p></div>
+  </div>
+  <p class="small mono muted" data-a="fade" style="--d:6">2011 Bootstrap · 2014 Tilda в России · 31.12.2020 Adobe прекращает поддержку Flash</p>
+</section>
+
+<section class="slide" data-title="2013-2022: React, Figma, конструкторы">
+  <div class="run"><span>02 · История</span><span>2013-2022</span></div>
+  <p class="eyebrow" data-a="fade">Этап 5 · Компоненты</p>
+  <h2 class="h-l" data-a="up">Сайт из деталей LEGO</h2>
+  <div class="g4" style="margin-top:60px">
+    <div class="cell" data-a="up" style="--d:2"><span class="k">2013</span><img src="../assets/logos/react.svg" alt="" style="width:70px;height:70px"><h4>React</h4><p>Facebook открывает библиотеку компонентов. Появляются SPA: Gmail, ВКонтакте, Notion.</p></div>
+    <div class="cell" data-a="up" style="--d:3"><span class="k">2014</span><div style="width:70px;height:70px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:900 40px var(--f-display)">T</div><h4>Tilda</h4><p>Российский конструктор из блоков. Лендинг без кода за день.</p></div>
+    <div class="cell" data-a="up" style="--d:4"><span class="k">2016</span><img src="../assets/logos/figma.svg" alt="" style="width:70px;height:70px"><h4>Figma</h4><p>Дизайн переезжает в браузер, команда работает в одном макете.</p></div>
+    <div class="cell" data-a="up" style="--d:5"><span class="k">2016</span><img src="../assets/logos/nextdotjs.svg" alt="" style="width:70px;height:70px"><h4>Next.js, Vercel</h4><p>Сайт публикуется одной командой. Webflow и Framer: дизайн без программиста.</p></div>
+  </div>
+</section>
+
+<section class="slide paper2" data-title="Тогда и сейчас: живые сайты">
+  <div class="run"><span>02 · История</span><span>скриншоты из браузера, октябрь 2026</span></div>
+  <h2 class="h-m" data-a="up">35 лет одной картинкой</h2>
+  <div class="g3" style="margin-top:40px;flex:1;min-height:0;gap:40px">
+    <div class="col" data-a="up" style="--d:1;min-height:0"><div class="bf" style="height:420px"><div class="bar"><i></i><i></i><i></i><span>info.cern.ch</span></div><img src="screens/cern.webp" alt="info.cern.ch" loading="lazy"></div><p class="small"><b>1991.</b> Первый сайт. До сих пор открывается.</p></div>
+    <div class="col" data-a="up" style="--d:2;min-height:0"><div class="bf" style="height:420px"><div class="bar"><i></i><i></i><i></i><span>wordpress.org</span></div><img src="screens/wordpress.webp" alt="wordpress.org" loading="lazy"></div><p class="small"><b>2003.</b> WordPress: больше 40% всех сайтов мира.</p></div>
+    <div class="col" data-a="up" style="--d:3;min-height:0"><div class="bf" style="height:420px"><div class="bar"><i></i><i></i><i></i><span>tilda.cc</span></div><img src="screens/tilda.webp" alt="tilda.cc" loading="lazy"></div><p class="small"><b>2014.</b> Tilda. Сегодня уже обещает «сайт вместе с AI».</p></div>
+  </div>
+</section>
+
+<section class="slide dark" data-title="2022-2026: нейросети">
+  <div class="run"><span>02 · История</span><span>2022-2026</span></div>
+  <p class="eyebrow" data-a="fade">Этап 6 · Нейросети</p>
+  <div class="grow col between">
+    <div class="g4" style="margin-top:30px">
+      <div class="cell" data-a="up" style="--d:1"><span class="k">30.11.2022</span><h4>ChatGPT</h4><p>Код можно попросить словами.</p></div>
+      <div class="cell" data-a="up" style="--d:2"><span class="k">2023-2024</span><h4>v0, Bolt, Lovable</h4><p>Описал идею, получил сайт с публикацией.</p></div>
+      <div class="cell" data-a="up" style="--d:3"><span class="k">02.2025</span><h4>Вайб-кодинг</h4><p>Термин Андрея Карпаты. Слово 2025 года по версии Collins.</p></div>
+      <div class="cell" data-a="up" style="--d:4"><span class="k">2025-2026</span><h4>Агенты</h4><p>Claude Code, Codex, Antigravity сами пишут, проверяют и публикуют.</p></div>
+    </div>
+    <h2 class="h-l" data-a="up" style="--d:5;max-width:none">Каждая волна обесценивала технику.<br><span style="color:var(--lime)">Смысл не обесценивался никогда.</span></h2>
+  </div>
+  <template class="n"><p>Спросить группу: какой сайт из детства вы помните? Флеш-игры, uCoz-сайты кланов. Мостик к мысли, как быстро всё меняется. Не обесценивалось одно: понимание, зачем сайт нужен и как он продает.</p></template>
+</section>
+
+<!-- ГЛАВА 3 -->
+<section class="slide blue chapter" data-title="03 · Виды сайтов" data-chapter="1">
+  <div class="run"><span>Глава</span><span>4 минуты</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 03</p><h2 class="split">Виды сайтов</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">03</div>
+</section>
+
+<section class="slide" data-title="9 видов сайтов">
+  <div class="run"><span>03 · Виды</span><span>Тип выбирают от задачи бизнеса</span></div>
+  <h2 class="h-m" data-a="up">Девять видов сайтов</h2>
+  <div class="types">
+    <div class="t" data-a="up" style="--d:1"><div class="wf"><i class="b"></i><i class="s"></i><i class="c"></i><i class="b"></i></div><div><h4>Лендинг</h4><p>1 страница, 1 действие. Lovable, Tilda</p></div></div>
+    <div class="t" data-a="up" style="--d:2"><div class="wf"><i class="s"></i><i class="b"></i><i class="s"></i></div><div><h4>Визитка</h4><p>1-5 страниц: кто мы и контакты</p></div></div>
+    <div class="t" data-a="up" style="--d:3"><div class="wf" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i></div><div><h4>Корпоративный</h4><p>10-100 страниц. WordPress, Битрикс</p></div></div>
+    <div class="t" data-a="up" style="--d:4"><div class="wf" style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px"><i class="b"></i><i class="b"></i><i class="b"></i><i class="b"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i></div><div><h4>Магазин</h4><p>Каталог товаров. InSales, маркетплейсы</p></div></div>
+    <div class="t" data-a="up" style="--d:5"><div class="wf" style="display:grid;grid-template-columns:2fr 1fr;gap:5px"><i class="b" style="height:44px"></i><i class="b" style="height:44px"></i><i class="b" style="height:44px"></i><i class="b" style="height:44px"></i></div><div><h4>Портфолио</h4><p>Работы и заказы. Framer, Behance</p></div></div>
+    <div class="t" data-a="up" style="--d:6"><div class="wf"><i class="s"></i><i></i><i></i><i></i><i class="s"></i></div><div><h4>Блог, медиа</h4><p>Контент и поисковый трафик</p></div></div>
+    <div class="t" data-a="up" style="--d:7"><div class="wf" style="background:var(--signal);border-color:var(--signal)"><i class="b" style="background:var(--ink);height:60px"></i></div><div><h4>Промо-сайт</h4><p>Спецпроект: игра, конкурс</p></div></div>
+    <div class="t" data-a="up" style="--d:8"><div class="wf" style="display:grid;grid-template-columns:30px 1fr;gap:5px"><i style="height:100%"></i><i class="b" style="height:100%"></i></div><div><h4>Веб-приложение</h4><p>Кабинет, калькулятор, сервис</p></div></div>
+    <div class="t" data-a="up" style="--d:9"><div class="wf" style="align-items:center;justify-content:center"><i class="c" style="width:70%"></i><i class="c" style="width:70%"></i><i class="c" style="width:70%"></i></div><div><h4>Мультиссылка</h4><p>Все ссылки для соцсетей. Taplink</p></div></div>
+  </div>
+  <p class="txt" data-a="fade" style="--d:10;margin-top:auto;max-width:none">Новичку: начинайте с лендинга. Это самый быстрый способ проверить, покупают ли ваш продукт.</p>
+  <template class="n"><p>Частая ошибка: делать большой сайт про компанию, когда нужен один лендинг под одну кампанию. В России многие живут без сайта на WB, Ozon, в Telegram и VK. Сайт нужен для поиска, измеримой рекламы, бренда и независимости от площадки.</p></template>
+</section>
+
+<section class="slide brief-slide" data-title="Бриф: тип сайта">
+  <div class="run"><span>Сквозной бриф · поля 04</span><span>после блока 03</span></div>
+  <div class="row between" style="align-items:flex-end"><h2 class="h-l" data-a="up">Заполняем бриф</h2><a class="go-brief interactive" href="../brief/index.html#f-biz" target="_blank" rel="noopener">Открыть бриф</a></div>
+  <div class="flds"><div class="fld" data-a="up"><b>04</b><div><h3>Тип сайта и действие</h3><p>Какой сайт нужен нашему бизнесу и что человек должен сделать?</p><div class="opts"><span>лендинг + запись</span><span>лендинг + звонок</span><span>предзаказ + почта</span><span>ивент + регистрация</span></div></div></div></div>
+  <p class="small" style="margin-top:auto;opacity:.8"></p>
+  <template class="n"><p>Спросите группу, запишите ответ в бриф на проекторе (brief/index.html). Можно голосовать поднятием рук. Не больше 2 минут на поле.</p></template>
+</section>
+
+<section class="slide story" data-title="История 02: Идею назвали плохой. И это сэкономило месяцы">
+  <div class="run"><span>История из опыта</span><span>02</span></div>
+  <span class="lbl" data-a="rot">история из опыта</span>
+  <h2 data-a="up" style="--d:1">Идею назвали плохой. И&nbsp;это сэкономило месяцы</h2>
+  <div class="beats"><div data-a="up" style="--d:2"><span>Что было</span><p>Для чемпионата культурных проектов я придумал настолку с цифровым слоем. Показал людям и услышал жесткое «не то».</p></div><div data-a="up" style="--d:3"><span>Что сделал</span><p>Не стал спорить, а вернулся к критериям жюри и пересобрал идею. Отзыв за один день вместо полугода разработки.</p></div><div data-a="up" style="--d:4"><span>Вывод для вас</span><p>Лендинг «оставь почту» проверяет идею до того, как вы потратите деньги. Это самый дешевый способ услышать «нет».</p></div></div>
+  <template class="n"><p>Расскажите своими словами: какой был проект, кто и как отреагировал, что поменяли. Можно добавить, какую идею выбрали в итоге. Подставьте реальные детали.</p></template>
+</section>
+
+<!-- ГЛАВА 4 -->
+<section class="slide lime chapter" data-title="04 · Лендинги" data-chapter="1">
+  <div class="run"><span>Глава</span><span>9 минут</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 04</p><h2 class="split">Лендинги: виды и блоки</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">04</div>
+</section>
+
+<section class="slide" data-title="Что такое лендинг">
+  <div class="run"><span>04 · Лендинги</span><span>Landing page</span></div>
+  <div class="grow g2" style="align-items:center">
+    <div class="col">
+      <h2 class="h-xl" data-a="up" style="font-size:140px">Одна цель.<br>Одна кнопка.</h2>
+      <p class="txt" data-a="up" style="--d:2">Лендинг, «посадочная страница», это страница, на которую человек приземляется после клика по рекламе. Всё, что не ведет к кнопке, лишнее.</p>
+    </div>
+    <div class="col center interactive" style="height:600px;background:var(--paper2);position:relative" data-a="scale">
+      <span class="mono small muted" style="position:absolute;top:24px;left:28px">Наведите курсор: кнопка притягивается (reactbits · Magnet)</span>
+      <button class="magnet" style="all:unset;cursor:pointer;background:var(--blue);color:#fff;font:700 44px/1 var(--f-display);padding:44px 80px;border-radius:999px;transition:transform .25s cubic-bezier(.2,.8,.2,1)">Записаться</button>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="Виды лендингов">
+  <div class="run"><span>04 · Лендинги</span><span>7 видов</span></div>
+  <h2 class="h-m" data-a="up">Какие бывают лендинги</h2>
+  <table class="t" style="margin-top:40px" data-a="fade">
+    <tr><th>Вид</th><th>Цель</th><th>Главный элемент</th></tr>
+    <tr><td>Лидогенерация</td><td>Получить контакт</td><td>Короткая форма и лид-магнит: скидка, чек-лист, консультация</td></tr>
+    <tr><td>Продающий long-read</td><td>Продать прямо на странице</td><td>Много блоков: возражения, отзывы, цена, оплата</td></tr>
+    <tr><td>Waitlist, предзаказ</td><td>Проверить спрос до продукта</td><td>Поле «оставь почту» и счетчик записавшихся</td></tr>
+    <tr><td>Ивент</td><td>Регистрация на событие</td><td>Дата, программа, спикеры, таймер</td></tr>
+    <tr><td>Промо, спецпроект</td><td>Вовлечь и запомниться</td><td>Интерактив, игра, анимация</td></tr>
+    <tr><td>Приложение, SaaS</td><td>Скачать или зарегистрироваться</td><td>Скриншоты продукта, тарифы, кнопки сторов</td></tr>
+    <tr><td>Thank you page</td><td>Закрепить после заявки</td><td>«Спасибо», следующий шаг, подписка на Telegram</td></tr>
+  </table>
+</section>
+
+<section class="slide" data-title="Анатомия лендинга">
+  <div class="run"><span>04 · Лендинги</span><span>11 блоков сверху вниз</span></div>
+  <div class="anat">
+    <div class="phone" data-a="up">
+      <div class="blk hero"><b>Стрижка за 40 минут</b><span>Записаться</span></div>
+      <div class="blk" style="height:44px">логотипы · 4.9 на картах</div>
+      <div class="blk" style="height:54px">боль клиента</div>
+      <div class="blk" style="height:74px">выгоды</div>
+      <div class="blk" style="height:54px">как это работает</div>
+      <div class="blk" style="height:74px">отзывы и кейсы</div>
+      <div class="blk" style="height:64px">тарифы</div>
+      <div class="blk" style="height:54px">FAQ</div>
+      <div class="blk" style="height:40px">гарантии</div>
+      <div class="blk cta" style="height:64px">форма заявки</div>
+      <div class="blk" style="height:34px">футер</div>
+    </div>
+    <div class="col">
+      <h2 class="h-m" data-a="up">Порядок блоков, который можно вставлять прямо в промпт</h2>
+      <ol data-a="fade" style="--d:2">
+        <li><span><b>Hero</b>Выгода, подзаголовок, кнопка. 3-5 секунд на решение</span></li>
+        <li><span><b>Доверие</b>Логотипы, рейтинг, «нам доверяют 2000»</span></li>
+        <li><span><b>Боль</b>Показываем, что понимаем ситуацию</span></li>
+        <li><span><b>Выгоды</b>Не «мощный мотор», а «до дачи за час»</span></li>
+        <li><span><b>Как это работает</b>3-4 шага снимают страх</span></li>
+        <li><span><b>Отзывы</b>Живые фото, имена, цифры</span></li>
+        <li><span><b>Тарифы</b>Обычно три, средний «популярный»</span></li>
+        <li><span><b>FAQ</b>Ответы на «дорого» и «а если не подойдет»</span></li>
+        <li><span><b>Гарантии</b>Возврат, договор, пробный период</span></li>
+        <li><span><b>Финальный призыв</b>Повторить оффер и форму</span></li>
+        <li><span><b>Футер</b>Контакты, реквизиты, политика</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="Формулы AIDA и PAS">
+  <div class="run"><span>04 · Лендинги</span><span>Формулы</span></div>
+  <h2 class="h-m" data-a="up">Две формулы, на которых держится текст</h2>
+  <p class="eyebrow" data-a="fade" style="--d:1;margin-top:40px">AIDA · классический порядок блоков</p>
+  <div class="formula">
+    <div style="background:var(--ink);color:var(--paper)" data-a="up"><b>A</b><span>Attention</span><p>Внимание: заголовок и визуал первого экрана</p></div>
+    <div style="background:var(--blue);color:#fff" data-a="up"><b>I</b><span>Interest</span><p>Интерес: боль и решение</p></div>
+    <div style="background:var(--lime)" data-a="up"><b>D</b><span>Desire</span><p>Желание: выгоды, отзывы, кейсы</p></div>
+    <div style="background:var(--signal);color:#fff" data-a="up"><b>A</b><span>Action</span><p>Действие: кнопка и форма</p></div>
+  </div>
+  <div class="g2" style="margin-top:44px">
+    <div class="cell" data-a="up" style="--d:6"><span class="k">PAS · для услуг</span><h4>Problem, Agitation, Solution</h4><p>Проблема, усиление боли, решение.</p></div>
+    <div class="cell" data-a="up" style="--d:7"><span class="k">Оффер</span><h4>Что получите + срок + без риска</h4><p>«Английский для работы за 3 месяца. Первый урок бесплатно».</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Конверсия">
+  <div class="run"><span>04 · Лендинги</span><span>Главная метрика</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1.2fr">
+    <div class="col center" style="align-items:flex-start">
+      <p class="eyebrow" data-a="fade">Конверсия, CR</p>
+      <div style="font:900 330px/.8 var(--f-display);letter-spacing:-.06em" data-a="up"><span data-count="3">0</span>%</div>
+      <p class="txt" data-a="up" style="--d:2">Из 1000 посетителей заявку оставили 30. Для лендинга под рекламу 2-5% это нормально, выше 10% бывает при горячем трафике и сильном оффере.</p>
+      <p class="small muted" data-a="up" style="--d:3">Цифры сильно зависят от ниши. Сравнивайте страницу с самой собой через A/B-тест.</p>
+    </div>
+    <div class="funnel">
+      <div class="lv"><span>Увидели рекламу</span><div class="hbar" style="--d:1"></div><b class="num">20 000</b></div>
+      <div class="lv"><span>Перешли на сайт</span><div class="hbar" style="--d:2;width:48%"></div><b class="num">1 000</b></div>
+      <div class="lv"><span>Долистали до формы</span><div class="hbar" style="--d:3;width:22%"></div><b class="num">240</b></div>
+      <div class="lv"><span>Оставили заявку</span><div class="hbar" style="--d:4;width:6%;background:var(--signal)"></div><b class="num">30</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide brief-slide" data-title="Бриф: оффер и блоки">
+  <div class="run"><span>Сквозной бриф · поля 05-06</span><span>после блока 04</span></div>
+  <div class="row between" style="align-items:flex-end"><h2 class="h-l" data-a="up">Заполняем бриф</h2><a class="go-brief interactive" href="../brief/index.html#f-biz" target="_blank" rel="noopener">Открыть бриф</a></div>
+  <div class="flds"><div class="fld" data-a="up"><b>05</b><div><h3>Оффер и заголовок</h3><p>Что получит + за какой срок + почему без риска. До 8 слов.</p><div class="opts"><span>«Стрижка за 40 минут»</span><span>«Первый урок бесплатно»</span></div></div></div><div class="fld" data-a="up"><b>06</b><div><h3>Блоки страницы</h3><p>Выбираем 7-9 блоков сверху вниз</p><div class="opts"><span>первый экран</span><span>доверие</span><span>боль</span><span>услуги и цены</span><span>как работает</span><span>отзывы</span><span>FAQ</span><span>форма</span><span>контакты</span></div></div></div></div>
+  <p class="small" style="margin-top:auto;opacity:.8"></p>
+  <template class="n"><p>Спросите группу, запишите ответ в бриф на проекторе (brief/index.html). Можно голосовать поднятием рук. Не больше 2 минут на поле.</p></template>
+</section>
+
+<!-- ГЛАВА 5 -->
+<section class="slide dark chapter" data-title="05 · UI/UX и дизайн" data-chapter="1">
+  <div class="run"><span>Глава</span><span>10 минут</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 05</p><h2 class="split">UI/UX, дизайн и тренды 2026</h2></div>
+  <div class="bignum" data-a="up" style="--d:4;color:var(--pink)">05</div>
+</section>
+
+<section class="slide" data-title="UX и UI: квартира">
+  <div class="run"><span>05 · UI/UX</span><span>Аналогия</span></div>
+  <h2 class="h-m" data-a="up">UX это планировка. UI это ремонт.</h2>
+  <div class="flat">
+    <div class="col" data-a="up" style="--d:1">
+      <svg viewBox="0 0 600 380" class="draw"><rect x="10" y="10" width="580" height="360" fill="none" stroke="#121212" stroke-width="8" pathLength="1"/><line x1="300" y1="10" x2="300" y2="230" stroke="#121212" stroke-width="8" pathLength="1"/><line x1="300" y1="300" x2="300" y2="370" stroke="#121212" stroke-width="8" pathLength="1"/><line x1="10" y1="200" x2="200" y2="200" stroke="#121212" stroke-width="8" pathLength="1"/><path d="M90 290 C 180 250, 260 330, 380 280 S 520 140 470 90" fill="none" stroke="#2335FF" stroke-width="6" stroke-dasharray="1" pathLength="1"/><text x="40" y="120" font-family="JetBrains Mono" font-size="22">кухня</text><text x="340" y="80" font-family="JetBrains Mono" font-size="22">ванная</text><text x="40" y="330" font-family="JetBrains Mono" font-size="22">вход</text></svg>
+      <h4 class="h-s">UX · User Experience</h4><p class="small muted">Насколько легко дойти до цели: найти цену, понять, куда нажать, не запутаться в форме.</p>
+    </div>
+    <div class="col" data-a="up" style="--d:2">
+      <div style="height:353px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div style="background:#2335FF"></div><div style="background:#C6F432"></div><div style="background:#FF5A1F"></div><div style="background:#121212"></div>
+        <div style="grid-column:span 2;display:grid;place-items:center;background:var(--paper2);font:900 90px var(--f-display)">Аа</div>
+        <div style="grid-column:span 2;display:grid;place-items:center;background:var(--paper2)"><span class="btn-now" style="font-size:28px;padding:22px 40px">Кнопка</span></div>
+      </div>
+      <h4 class="h-s">UI · User Interface</h4><p class="small muted">Как это выглядит: цвета, шрифты, кнопки, отступы, иконки.</p>
+    </div>
+  </div>
+  <p class="txt" data-a="fade" style="--d:5;max-width:none">Красивый ремонт не спасет квартиру, где из кухни нельзя пройти в ванную.</p>
+</section>
+
+<section class="slide" data-title="10 правил UI">
+  <div class="run"><span>05 · UI/UX</span><span>Работает всегда</span></div>
+  <h2 class="h-m" data-a="up">10 правил, которые работают всегда</h2>
+  <div class="rules">
+    <div class="r" data-a="up" style="--d:1"><b>01</b><h4>Mobile first</h4><p>Почти весь трафик из соцсетей с телефона</p></div>
+    <div class="r" data-a="up" style="--d:2"><b>02</b><h4>Иерархия</h4><p>Важное крупнее и выше</p></div>
+    <div class="r" data-a="up" style="--d:3"><b>03</b><h4>Один акцент</h4><p>Один цвет для всех кнопок</p></div>
+    <div class="r" data-a="up" style="--d:4"><b>04</b><h4>2 шрифта</h4><p>Заголовки и текст, обязательно с кириллицей</p></div>
+    <div class="r" data-a="up" style="--d:5"><b>05</b><h4>Воздух</h4><p>Пустота делает дизайн дороже</p></div>
+    <div class="r" data-a="up" style="--d:6"><b>06</b><h4>Кнопка говорит</h4><p>Не «Отправить», а «Получить расчет»</p></div>
+    <div class="r" data-a="up" style="--d:7"><b>07</b><h4>Короткие формы</h4><p>Имя и телефон, и хватит</p></div>
+    <div class="r" data-a="up" style="--d:8"><b>08</b><h4>Читаемость</h4><p>Текст от 16px, контраст</p></div>
+    <div class="r" data-a="up" style="--d:9"><b>09</b><h4>Свои фото</h4><p>Мастер, зал, команда лучше стока</p></div>
+    <div class="r" data-a="up" style="--d:10"><b>10</b><h4>Одинаковое одинаково</h4><p>Элементы выглядят одинаково везде</p></div>
+  </div>
+  <div class="row" style="margin-top:auto;align-items:center" data-a="fade">
+    <span class="tag fill">Тест 5 секунд</span><p class="small">Покажите сайт на 5 секунд и закройте. Спросите: что продают и что нужно сделать? Не ответили, значит дизайн не работает.</p>
+  </div>
+</section>
+
+<section class="slide story" data-title="История 03: Брендбук до первого слайда">
+  <div class="run"><span>История из опыта</span><span>03</span></div>
+  <span class="lbl" data-a="rot">история из опыта</span>
+  <h2 data-a="up" style="--d:1">Брендбук до&nbsp;первого слайда</h2>
+  <div class="beats"><div data-a="up" style="--d:2"><span>Проект</span><p>Наша команда из четырех человек делает визуальную новеллу «Наследие» по фольклору народов России.</p></div><div data-a="up" style="--d:3"><span>Что сделали</span><p>Прежде чем собирать питч для инвесторов, сделали брендбук: шрифты, цвета, правила. Дальше все слайды команда собирала в одном стиле.</p></div><div data-a="up" style="--d:4"><span>Вывод</span><p>С нейросетью так же: сначала решения бренда, потом генерация. Иначе каждый экран будет из своего шаблона.</p></div></div>
+  <template class="n"><p>Добавьте детали: кто в команде за что отвечает, как выглядел брендбук, что изменилось после. Можно показать пару слайдов, если есть.</p></template>
+</section>
+
+<!-- ТРЕНДЫ -->
+<section class="slide" data-title="Главный тренд: анти-ИИ" style="background:#E9E8E2">
+  <div class="run"><span>05 · Тренды 2026</span><span>Главный тренд</span></div>
+  <div class="row" style="align-items:flex-end;justify-content:space-between">
+    <h2 class="h-xl split" style="font-size:150px">Анти-ИИ</h2>
+    <p class="txt" data-a="fade" style="--d:4;max-width:34ch">Нейросети сделали сайты быстрыми и одинаковыми. Поэтому в 2026 ценится то, что видно руку человека.</p>
+  </div>
+  <div class="g2" style="margin-top:44px;flex:1;min-height:0">
+    <div class="col" data-a="left" style="--d:2">
+      <span class="chip" style="align-self:flex-start;background:#7a5cff">Так выглядит по умолчанию</span>
+      <div style="flex:1;background:linear-gradient(135deg,#6d4dff,#3aa0ff);color:#fff;padding:36px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;border-radius:24px;font-family:Inter,Arial,sans-serif;position:relative;overflow:hidden">
+        <img src="../assets/photos/crystal-ai-gloss.webp" alt="" style="position:absolute;right:-60px;top:-40px;width:300px;opacity:.55;border-radius:50%">
+        <span style="font-size:20px;background:rgba(255,255,255,.2);padding:8px 16px;border-radius:99px">✨ Новое поколение решений</span>
+        <b style="font-size:58px;line-height:1.05;position:relative">Революционное решение для вашего бизнеса</b>
+        <span style="font-size:24px;opacity:.85">Откройте новые возможности с инновационной платформой</span>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%;margin-top:auto">
+          <div style="background:rgba(255,255,255,.15);border-radius:18px;padding:18px;font-size:20px">🚀<br>Быстро</div><div style="background:rgba(255,255,255,.15);border-radius:18px;padding:18px;font-size:20px">💡<br>Умно</div><div style="background:rgba(255,255,255,.15);border-radius:18px;padding:18px;font-size:20px">🔒<br>Надежно</div>
+        </div>
+      </div>
+    </div>
+    <div class="col" data-a="right" style="--d:3">
+      <span class="chip" style="align-self:flex-start;background:var(--ink)">Так выглядит, когда думал человек</span>
+      <div style="flex:1;background:#1a1916;color:#efe9dc;display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden;position:relative">
+        <img src="../assets/photos/monk-window.webp" alt="Человек у окна с чашкой" style="width:100%;height:100%;object-fit:cover;filter:grayscale(.3) contrast(1.05)">
+        <div style="padding:34px;display:flex;flex-direction:column;gap:16px">
+          <span style="font:500 18px/1 'JetBrains Mono';opacity:.6">ул. Алеутская, 11 · с 8:00</span>
+          <b style="font:400 64px/.95 'Yeseva One',serif">Обжариваем по четвергам. Приходите в пятницу.</b>
+          <span style="font:400 22px/1.4 Onest">Эфиопия Гуджи, 340 ₽ за фильтр. Зерно уходит к обеду.</span>
+          <span style="font:700 40px/1 Caveat;color:#ff8a4c;transform:rotate(-5deg);margin-top:auto">пятница, 9 утра. лучшее время</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <template class="n"><p>Слева: что выдает нейросеть без брифа. Фиолетовый градиент, всё по центру, эмодзи, три одинаковые карточки, «революционное решение». Справа: конкретика, реальное фото, адрес, цена, рукописная пометка. Вывод: отличает не код, а конкретный бриф и свои материалы.</p></template>
+</section>
+
+<section class="slide dark" data-title="Как сделать анти-ИИ">
+  <div class="run"><span>05 · Тренды 2026</span><span>Анти-ИИ на практике</span></div>
+  <h2 class="h-m" data-a="up">Признаки ИИ-шаблона и что делать вместо</h2>
+  <table class="t" style="margin-top:40px;color:var(--paper)" data-a="fade">
+    <tr><th>Шаблон</th><th>Вместо этого</th></tr>
+    <tr><td>Фиолетовый градиент и стеклянные 3D-кристаллы</td><td>Палитра из мира бренда: цвет фасада, упаковки, моря за окном</td></tr>
+    <tr><td>Inter, всё по центру, одинаковые карточки</td><td>Сильный шрифт с характером, асимметрия, разные размеры блоков</td></tr>
+    <tr><td>«Инновационные решения для вашего бизнеса»</td><td>Факты: адрес, цена, срок, имя мастера, число клиентов</td></tr>
+    <tr><td>Эмодзи и иконки в кружках</td><td>Свои фото, сканы, рукописные пометки, нарисованные от руки элементы</td></tr>
+    <tr><td>Идеально гладко и стерильно</td><td>Зерно, неровность, живая анимация, «ошибки», которые сделаны специально</td></tr>
+  </table>
+  <p class="note-hand" data-a="rot" style="--d:6;color:var(--lime);align-self:flex-end;margin-top:auto">нейросеть делает. вкус выбираете вы</p>
+</section>
+
+<section class="slide" data-title="Инструмент: impeccable">
+  <div class="run"><span>05 · Анти-ИИ</span><span>impeccable.style/slop</span></div>
+  <div class="g2 grow" style="grid-template-columns:1.25fr .75fr;gap:60px;align-items:center">
+    <div data-a="left"><div class="bf" style="height:640px"><div class="bar"><i></i><i></i><i></i><span>impeccable.style/slop</span></div><img src="screens/impeccable.webp" alt="impeccable.style/slop" loading="lazy"></div></div>
+    <div class="col">
+      <h2 class="h-m" data-a="up">Проверка на ИИ-слоп</h2>
+      <p class="txt" data-a="up" style="--d:1">Каталог из 60+ признаков сгенерированного дизайна и бесплатный сканер. Показывает, где фиолетовый градиент, Inter, карточки в карточках и мелкий текст.</p>
+      <pre class="prompt" data-a="up" style="--d:2;font-size:22px">npx impeccable detect index.html</pre>
+      <p class="small muted" data-a="up" style="--d:3">Сайты-примеры из набора прошли эту проверку и переделку перед парой.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="8 живых примеров">
+  <div class="run"><span>05 · Тренды</span><span>Папка sites, открываются кликом</span></div>
+  <h2 class="h-m" data-a="up">Восемь живых сайтов в трендах 2026</h2>
+  <div class="g4 interactive" style="margin-top:40px;gap:36px 30px"><a href="../sites/01-oversize/index.html" target="_blank" rel="noopener" data-a="up" style="--d:1;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/01.webp" alt="Сайт ТУМАН" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">01 · Oversize</span><b style="font:700 30px/1 var(--f-display)">ТУМАН</b></a><a href="../sites/02-editorial/index.html" target="_blank" rel="noopener" data-a="up" style="--d:2;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/02.webp" alt="Сайт СДВИГ" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">02 · Editorial + модульная</span><b style="font:700 30px/1 var(--f-display)">СДВИГ</b></a><a href="../sites/03-bento/index.html" target="_blank" rel="noopener" data-a="up" style="--d:3;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/03.webp" alt="Сайт МАЯК" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">03 · Bento box</span><b style="font:700 30px/1 var(--f-display)">МАЯК</b></a><a href="../sites/04-new-rococo/index.html" target="_blank" rel="noopener" data-a="up" style="--d:4;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/04.webp" alt="Сайт Мох и Роза" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">04 · New Rococo</span><b style="font:700 30px/1 var(--f-display)">Мох и Роза</b></a><a href="../sites/05-ascii/index.html" target="_blank" rel="noopener" data-a="up" style="--d:5;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/05.webp" alt="Сайт СИГНАЛ" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">05 · ASCII art</span><b style="font:700 30px/1 var(--f-display)">СИГНАЛ</b></a><a href="../sites/06-punk-grunge/index.html" target="_blank" rel="noopener" data-a="up" style="--d:6;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/06.webp" alt="Сайт ГАРАЖ" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">06 · Punk grunge</span><b style="font:700 30px/1 var(--f-display)">ГАРАЖ</b></a><a href="../sites/07-naive/index.html" target="_blank" rel="noopener" data-a="up" style="--d:7;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/07.webp" alt="Сайт Пломбир с Седанки" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">07 · Naive</span><b style="font:700 30px/1 var(--f-display)">Пломбир с Седанки</b></a><a href="../sites/08-trinket/index.html" target="_blank" rel="noopener" data-a="up" style="--d:8;text-decoration:none;display:flex;flex-direction:column;gap:10px"><div style="aspect-ratio:16/10;overflow:hidden;background:#ccc;box-shadow:0 10px 30px rgba(0,0,0,.12)"><img src="../assets/thumbs/08.webp" alt="Сайт Мелочи" style="width:100%;height:100%;object-fit:cover;object-position:top"></div><span class="mono" style="font-size:20px;opacity:.6">08 · Trinket</span><b style="font:700 30px/1 var(--f-display)">Мелочи</b></a></div>
+  <p class="small muted" style="margin-top:auto">Вымышленные бренды из Владивостока, реальные фото, шрифты с кириллицей и микроанимации. В каждом сайте кнопка «О стиле».</p>
+  <template class="n"><p>Можно открыть любой сайт прямо сейчас. Показать плашку «О стиле»: какие шрифты, библиотеки и эффекты reactbits использованы. Это готовые референсы, которые можно скормить нейросети: «сделай в таком же стиле».</p></template>
+</section>
+
+<!-- 01 OVERSIZE -->
+<section class="slide" data-title="Тренд: Oversize типографика" style="background:#F2F2F0;padding:0">
+  <div class="run"><span>Тренд 01</span><span>Пример: sites/01-oversize</span></div>
+  <div style="position:absolute;left:-10px;right:-10px;top:110px;font:900 410px/.78 'Unbounded',sans-serif;letter-spacing:-.07em;white-space:nowrap" class="split">ТУМАН</div>
+  <div class="ph" data-a="maskup" style="--d:5;position:absolute;right:120px;top:300px;width:420px;height:560px"><img src="../assets/photos/fashion-woman-hat.webp" alt="Девушка в шляпе"></div>
+  <div class="col" style="position:absolute;left:120px;bottom:110px;width:900px">
+    <p class="eyebrow" data-a="fade" style="--d:6">Oversize типографика</p>
+    <p class="txt" data-a="up" style="--d:7">Буквы на всю ширину экрана становятся главным изображением. Монохром, один сигнальный цвет, огромные заголовки, которые двигаются при скролле.</p>
+    <div class="row" style="gap:14px;flex-wrap:wrap" data-a="up"><span class="tag">fashion</span><span class="tag">музыка</span><span class="tag">ивенты</span><span class="tag">личный бренд</span><a class="tag fill" href="../sites/01-oversize/index.html" target="_blank" rel="noopener">Открыть пример</a></div>
+  </div>
+  <template class="n"><p>Шрифты: Unbounded 900, Dela Gothic One. Не работает, когда много информации: юристы, медицина, сложные услуги. Пример: магазин одежды ТУМАН.</p></template>
+</section>
+
+<!-- 02 EDITORIAL -->
+<section class="slide" data-title="Тренд: Editorial design 2.0" style="background:#F1EEE8">
+  <div class="run"><span>Тренд 02</span><span>Пример: sites/02-editorial</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1.05fr;gap:70px">
+    <div class="col" style="justify-content:center">
+      <p style="font:500 22px/1 'IBM Plex Mono';letter-spacing:.1em;color:#E2231A;margin:0" data-a="fade">№ 07 · ОКТЯБРЬ 2026 · ПОЛОСА 12</p>
+      <h2 data-a="up" style="--d:1;font:700 170px/.82 'Oswald',sans-serif;text-transform:uppercase;letter-spacing:-.01em;margin:0">Editorial<br><span style="color:#E2231A">Design 2.0</span></h2>
+      <p data-a="up" style="--d:2;font:italic 400 44px/1.15 'Playfair Display',serif;margin:0">Сайт верстается как журнал: развороты, колонки, буквицы и смелые кадры.</p>
+      <p class="small" data-a="up" style="--d:3">Узкий гротеск огромным кеглем + антиква курсивом + моноширинный для подписей. Красные пометки от руки, коллажи, номера полос. Референсы: Dazed, i-D, The Gentlewoman.</p>
+      <div class="row" style="gap:14px;flex-wrap:wrap" data-a="up"><span class="tag">медиа</span><span class="tag">мода</span><span class="tag">культура</span><span class="tag">лонгриды</span><a class="tag fill" href="../sites/02-editorial/index.html" target="_blank" rel="noopener">Открыть пример</a></div>
+    </div>
+    <div class="col" data-a="scale" style="--d:2">
+      <img src="../references/setters-trends/clean/05-editorial-design.png" alt="Референсы editorial design" style="width:100%;height:760px;object-fit:cover;object-position:50% 34%;box-shadow:0 20px 60px rgba(0,0,0,.18)">
+      <span class="cap">Референсы тренда. Подборка tg: SETTERS Agency</span>
+    </div>
+  </div>
+</section>
+
+<!-- 03 MODULAR -->
+<section class="slide" data-title="Тренд: модульная типографика" style="background:#fff;padding:0">
+  <div class="run" style="color:#000"><span>Тренд 03</span><span>Швейцарская сетка 2.0</span></div>
+  <div style="position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,1fr);padding:0 120px;gap:20px;pointer-events:none" data-a="fade">
+    <i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i><i style="border-left:1px solid #ff3b3b55;border-right:1px solid #ff3b3b55"></i>
+  </div>
+  <div style="position:absolute;left:120px;right:120px;top:130px;bottom:90px;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(6,1fr);gap:20px;color:#000">
+    <div style="grid-column:1/8;grid-row:1/4;font:700 200px/.82 'Inter Tight','Onest',sans-serif;letter-spacing:-.06em" data-a="up">Модуль&shy;ная</div>
+    <div style="grid-column:8/13;grid-row:1/2;font:400 22px/1.4 'JetBrains Mono'" data-a="fade">01 Сетка 12 колонок<br>02 Шаг модуля 20 px<br>03 Всё стоит на линиях</div>
+    <div style="grid-column:8/13;grid-row:2/5;background:#000;color:#fff;padding:30px;display:flex;flex-direction:column;justify-content:space-between" data-a="maskup"><b style="font:700 120px/.8 'Inter Tight'">12</b><span style="font:400 26px/1.3 Onest">Каждый блок занимает целое число модулей. Порядок виден, даже если сетку не показывать.</span></div>
+    <div style="grid-column:1/5;grid-row:4/7;background:#FF3B3B" data-a="maskup"></div>
+    <div style="grid-column:5/8;grid-row:4/7;font:700 92px/.85 'Inter Tight';letter-spacing:-.05em;align-self:end" data-a="up">типо&shy;графика</div>
+    <div style="grid-column:8/13;grid-row:5/7;display:flex;flex-direction:column;gap:14px;justify-content:flex-end" data-a="up">
+      <span style="font:400 24px/1.35 Onest">Наследие швейцарского стиля 1950-х (Мюллер-Брокманн), переосмысленное для экранов: видимые линейки, номера, крупный гротеск. Подходит технологиям, архитектуре, B2B, событиям.</span>
+      <a class="tag fill" href="../sites/02-editorial/index.html" target="_blank" rel="noopener" style="align-self:flex-start">Пример в sites/02: кнопка «показать сетку»</a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BENTO -->
+<section class="slide" data-title="Тренд: Bento box" style="background:#DCE3E8">
+  <div class="run"><span>Тренд 04</span><span>Пример: sites/03-bento</span></div>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,1fr);gap:20px;flex:1;margin-top:10px">
+    <div style="grid-column:1/4;grid-row:1/3;background:#1E2A33;color:#fff;border-radius:28px;padding:40px;display:flex;flex-direction:column;justify-content:space-between" data-a="scale"><span class="mono" style="font-size:22px;opacity:.6">Тренд 04</span><h2 style="font:800 150px/.85 var(--f-display);margin:0;letter-spacing:-.05em">Bento<br>box</h2></div>
+    <div style="grid-column:4/6;grid-row:1/2;background:#FFD23F;border-radius:28px;padding:28px;display:flex;align-items:center;gap:18px" data-a="scale"><span style="width:22px;height:22px;border-radius:50%;background:#1a8f4a;box-shadow:0 0 0 8px #1a8f4a33"></span><b style="font:700 36px/1 var(--f-text)">Открыто до 22:00</b></div>
+    <div class="ph" style="grid-column:6/7;grid-row:1/3;border-radius:28px" data-a="scale"><img src="../assets/photos/coffee-cookies.webp" alt="Кофе"></div>
+    <div style="grid-column:4/6;grid-row:2/3;background:#fff;border-radius:28px;padding:28px;display:flex;justify-content:space-between;align-items:flex-end" data-a="scale"><div><span class="mono small muted">Карта гостя</span><br><b style="font:800 70px/1 var(--f-display)">6/7</b></div><div style="display:flex;gap:8px">●●●●●●○</div></div>
+    <div style="grid-column:1/3;grid-row:3/5;background:#fff;border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:14px" data-a="scale"><span class="mono small muted">Что это</span><p style="font:500 30px/1.3 var(--f-text);margin:0">Контент разложен в карточки разного размера, как еда в японском ланч-боксе. Каждая карточка живая мини-функция. Популярно после презентаций Apple.</p></div>
+    <div style="grid-column:3/5;grid-row:3/5;background:#2335FF;color:#fff;border-radius:28px;padding:36px;display:flex;flex-direction:column;justify-content:space-between" data-a="scale"><span class="mono small" style="opacity:.7">Где работает</span><b style="font:700 40px/1.15 var(--f-text)">Приложения, SaaS, кафе, продукты с несколькими функциями</b></div>
+    <div style="grid-column:5/7;grid-row:3/5;background:#1E2A33;color:#fff;border-radius:28px;padding:36px;display:flex;flex-direction:column;justify-content:space-between" data-a="scale"><span class="mono small" style="opacity:.7">Секрет</span><b style="font:700 36px/1.2 var(--f-text)">Разный размер карточек и разное содержимое. Одинаковые клетки выглядят как ИИ-шаблон.</b><a class="tag" href="../sites/03-bento/index.html" target="_blank" rel="noopener" style="align-self:flex-start;color:#fff">Открыть пример</a></div>
+  </div>
+</section>
+
+<!-- 05 NEW ROCOCO -->
+<section class="slide" data-title="Тренд: New Rococo" style="background:#1F2B22;color:#EDE6D6">
+  <div class="run"><span>Тренд 05</span><span>Пример: sites/04-new-rococo</span></div>
+  <div class="g2 grow" style="grid-template-columns:1.05fr 1fr;align-items:center">
+    <div style="position:relative;height:820px" data-a="fade">
+      <img src="../references/setters-trends/clean/01-new-rococo.png" alt="Референсы New Rococo" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%">
+      <span class="cap" style="position:absolute;bottom:-34px;left:0;width:100%">Референсы тренда. Подборка tg: SETTERS Agency</span>
+    </div>
+    <div class="col" style="padding-left:30px">
+      <svg viewBox="0 0 600 120" class="draw" style="width:520px;margin-bottom:-10px"><path d="M10 80 C 80 10, 140 110, 210 60 S 300 0, 330 60 S 420 120, 470 50 S 560 20, 590 70" fill="none" stroke="#D9C9A3" stroke-width="3" pathLength="1"/><path d="M200 60 c 20 -40 60 -40 50 0 c -10 30 -50 20 -40 -10" fill="none" stroke="#D9C9A3" stroke-width="2.5" pathLength="1" style="--d:3"/></svg>
+      <h2 style="font:400 150px/.9 'Marck Script',cursive;margin:0" data-a="blur">New Rococo</h2>
+      <p style="font:italic 500 40px/1.2 'Cormorant Garamond',serif;margin:0" data-a="up">Каллиграфия, рокайльные рамки, кружево из линий. Нежность вместо минимализма.</p>
+      <p class="small" style="opacity:.75" data-a="up">Тонкие росчерки прорисовываются линией, фото в орнаментальных рамках, глубокий мшистый зеленый, жемчужный, дымчато-розовый. Работает для косметики, ювелирки, цветов, свадеб, вина, бутиков.</p>
+      <a class="tag" href="../sites/04-new-rococo/index.html" target="_blank" rel="noopener" style="align-self:flex-start" data-a="up">Открыть пример «Мох и Роза»</a>
+    </div>
+  </div>
+</section>
+
+<!-- 06 ASCII -->
+<section class="slide" data-title="Тренд: ASCII art" style="background:#0E0F12;color:#E8E8E8">
+  <div class="run"><span>Тренд 06</span><span>Пример: sites/05-ascii</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1fr;align-items:center">
+    <div class="col">
+      <h2 style="font:700 150px/.9 'JetBrains Mono',monospace;margin:0;letter-spacing:-.04em" class="scramble">ASCII ART</h2>
+      <p style="font:400 italic 44px/1.2 'Playfair Display',serif;margin:0" data-a="up">Фото, собранное из символов. Цифровая природа без глянца.</p>
+      <p class="small" style="opacity:.75" data-a="up">Живой ASCII-рендер поверх реальных фото, моноширинные шрифты, расшифровка текста при наведении (reactbits: Decrypted Text, ASCII Text). Технологии, IT-события, музыка, экология, AI-продукты, которые хотят выглядеть честно.</p>
+      <a class="tag" href="../sites/05-ascii/index.html" target="_blank" rel="noopener" style="align-self:flex-start" data-a="up">Открыть пример «СИГНАЛ»</a>
+    </div>
+    <div style="position:relative;height:820px" class="interactive">
+      <canvas class="ascii-cv" data-src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCABuAG4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDY09EG0YqPVwu08VmtqogOAcVUu9V89sA1F7oxi22cxrMe64OARUNnp5uGCZVcnGSa3Xi87kjrS2ai0uDIxSNF+83fH161zVYuK5j0KMouSixW8IQKg+034RyMgLHyB68msa+8KWZDNDqUrjnAWDOf/HqTWtUlmlkaR5DAXwI4+DIR2PsPT8/SqC3VzPcSRTttEaCRkU8AZ6e9csKlTe53zpU5KzRds4tMhZLSK4mt5YxucMgyxwOpzxXUaVDpUlgYxBOJ1GDkjdj2/wAK86NvNHvZ0yrsXULw6E9we/uP5VYtdcv7Dia3WWNf4mJjIHv2/KnJy3iwhCFrNHby6MmxpLfLovLDqV+tZl1ZgDIAqbR/Eltcobi2TN1CMsin59vfHr9O9a0gtdZt/temPnJ/eRY5Q9+O1bUcQ2+WocuIwqiuenscXOhRwQKngmwR2rebTDnDA47cUraTwDtrf2ljkSjbUqQPuANWlPHFSR2Ui8Batx2r+lHtET7qOe1KeRZcbDu96qW00nmjepwT1qf+3sW3naq8UhJwFEXJ+nenL4g0dY972tx5TYIdDkr+GKyjidNUdTwjjpHU2RMkFm07RSyKo+7Ehdj9AK5bWNdtNcktLfRpmLtkO2Cpj9c+/p710ms+I7TT9Nh/s5GMs2NrOOq454+lYGk6GkNhLeiPZdTFnGODj+tKdRTQ6OGcJqUtxqaVI9sY8kPjART27c/T9aktrFrq7ndkaIklWz0II5/nTnurlU8ywm+fGNxTjP8AWiC6u7qGUXcjbiNqEAAk46mua7Z6FkizDpF5NECrPkHao4+bHVuQarvocZmZr1vMC8BQcZ+q9M17PpXgaS88I6T5DbZfIJLH1LZyT7DPA74rhvEWg/ZbxbSd2z/CS3JHrjn+dXOlKKTM6daE24nEapZWsTpd2mEnhwMxNhivcYrf8KX4t5GknXcJDh5UHOOxrUk0ayt4XheIvlcM3H5VxFzE+kyySWk7JGCQVBDg+nFQ00rM0TTZ6RIfNjaWB45oxnJ3bSv4GsW/8V2kDNb2+ya7TqM4X86851DX7hbYTLcuYzwQCcE9MY/z0rmLy9kkmDXYUxE8so5xVRpyluzCpGne9j1218WTzxySQQRF4WxJG4wyfjW1Z+J7C7VnvIprVwcZRQ6k+n1ry++mTR7TcXYSKAo9SD/MVCNZmsmw5kgu8BXO0Mjjsfr7+9QoSesTT3Fo0c/rer3EmpnK/ulby0wvp2HvWlO7PZJtZkkbqpOfzr12y+G9nLo8ralab5pLhpoAGAaIEAAnkdcZx7CvNvE/h7VdJuzFJEBDnYkqkEN7n0PtUU8ZSqy9mlZr8fQxV03rcj0O7N3qdpbytxEmMHmvQLG/E4VyFEY+VMDjFcR8NbO2k1S/uLh8GKMoAVJ/GuvW2/syYwKVe3YBkYDja1az0fKjam7q4Xlrm5leJH3NjucCr+haY91cRpGp3O4U5GQP85ptp/rVjmb5c/mK9s8HeGrOK0tJziUkB9w9fX+lVSh7SRNaqqUTs9NgFppdrbED9zEseB6gV4v8RXitPEzqGX5VBkbHJJ5P4AYFe03BYurZwv1r5y+JMs41++kuXTdu5EbZwOw+vArrxGkLHFhNZ3ZV1zUPMijiiJ3t0XH864nxdp13bwfaZHUiXG4YxhvWuq0W4tljuL/UJUENjEZGz7DNc9d+NY9d0y+hZXEHRZCgC59Nw6Zrg1eq2PQbS06nmM12rTPbTZ5bKse1NuIppLbaImeTdgDGST6U24tmu72CGFMs524XnvXtPgTwOtzcrqlxG7RW0pWKIAcyDHzNnqASOPWtcTiYYWCk/wCmcvK5XuedeP7aZ4NJedZIZJLUO6MpXaehzWl4O8KHVIftWv3M8MHlhLdf4iB357eleseO/DUOovpl7doWFvuTa4A8zgtnjsNpB+oqJfss9nBsQJGowK58PivbUrLc3pwUnzM9Q07UrSXTrVZGtGkWEA72VTkKBg5Psf0rD8cWlhq3hs26tbC4WVZMoy/Ng47c9CawEHpSkelP+zIcykns7nEptO5ymp+FI4NEuRpX7u8wTvUcuPSuYs4NU0+zlS7V5ra3fCSEHhHAYD6Bsj8a9WiU5Ga5vxNq0M9k9gBh4kaPg9fY1tXShY3oycmYNjeCa8hTjacbiTj/AAr6R8JXqLodv5KowRAAUIIP418raTsnGJndDuz1zx3r6g8G2qPotpJEEjtiGCRKOCucAk+vH61rhlZuxOK1Sua97eZtpNyMgVT8wPH4YOcV8t+MLky6pfuswcbm2nOB7cdq+kfE92NK0ySR03EAfIOoydv9c/hXzN4rVxLNMFTY5JVQOnPeqr9EThdLs3fC3hiLVfDFxaXUrG61FQHXOPLUnj+QqhrXgKHw54X1GxSTzn3h1cj0GetWtI1prbT4WQMksiB2I7Z6CotZ8QPe2NzG5JcoQQfpXn+1a0Oxx6nOfDPSITfQyTKC6EHkV67Za1p+m24UXEsWct8qE5OeenTv/np5t4IJgufLYYYgYP4Vp2MqSaXC0jqWBZSQT/Ws8RCNe6l0CME1ZnS+LvFEOpC1hsnd7aBCspdNpYkD157dfes/S2R4mjXgZ3KD6VjQmCfckTJIWHDD29antZUjkw5IwuP1q6NONKPLA0UVFWOpW4C85p63AY1mlGZcikUOp716p5RsrIOpNcL4msCmryXJOI5SGrrEYlRWF4wieaziaPJIO0gfX/8AXXPileF+xtQdpWOQ0SRbbUnLpGsTMdzP6en+fWvqTwXeC68M2m0jaFwVyB0GPzJ/Svm3TdJdr9Ni70R+OnJHX8M8fnX0R4I0KTT9HtUvPJ4GQinhcjn6nPeqwrux4v4UZ/xKuQvh87g8kkjh1XGenPbv+teBa9LDc5aVGjmwABnhvT6ivePibo93NHHNpoRoVyXEfJ/GvHNUsZJyUnlYOeiAAgc+vpyaK796xWGXuXMWK62WiQFT2HPYdq09Osorq6jEjDJG3GOGpPsaRxGN1DBeM461d0tI494yQwQup9DXmSXvHYZ2kqItbcDOwMevoKg8Py79ChLEkiViCB7U+FxHDe3RxmKJ3z+B/wDrUzRYfs2mWuHwj/NnrnNXDqyTO8NSulw4k+Uh+ncVuQy5uJhnHzHjv1rFhWGzvGCkupfO73qS5lK30wDbhnPFW+6KuemKuOtMdGJ+RCfoK07loljPQVBYXcO/BcAD1r1lA8Z1PIjt7aVukR5qHWtMmfTJWMZATEn4A5Nbseo2qn/WLU41G2kVlB3ZBGMcUTpRlFpscakk07EvhAaVoljZrc2az6heqZt7EfIOygHuRzXdHVbZbQSbBE4GDFnBJrzz4iaXHc3lpp8cUqBYUkjuIHxIrDoB2xxzXOXniy+s2jgucysuMP61gpezXKzqlCM7Tetz1rUdegtLFLy9hhhhXljLJtwe31zXJzxaf488OSajZWX2O8iyVK43FezDHauC1TTx472Jqd26Rw5aOMPhZD/tDvxXpnw301LVbi6AUIIVt0RF/d7R6evSi/tNOgnFU4863PFdVaazKxTKS5dkJxjpjtTdQn+x6TJIzYdgFUHuSO36V1XxOi+y6rBIEIVpGYjABAUda82NxJqtzuljdIyxkKN/CB0FefKFm7nTz32DWJ/sfhidZMZlKxdfU5P8qsWDqLOAQvujjjyPqax/FDi7ubO1jIKKS5HXk8D+tWdFR5F8oMQFyBx1xRa0EXF6k94mbmLavVug4qtqseLlmTgE4q5MzJcDGCueTn+lRRHz2l8w5IbqRVboo9AmkMg5JJ+tPgCg881kxzsAM9KuQSMW68V6Z5JpDbjGPyqeKdUK45GeRnrWeznBpEcmgZuePvESajHDHZpMt0ufJ2emOf0rya51K4Wdy9rcSHP8QA/ma7DUL1otSt8KDsQtn/CqWsiOeIXAiVWc/MMd64alXmk0+hv7KUIpowI9YurcEpDcRBhj5WHIP416To3xCfTdPtLSGxYZHyg8cDqfpXk8fi+3t2aD7D5ksIJBOADj3p0/iC5vdD1C7+7coAVPQKpIGB6VcXKO3UzSc9JGt8XPGsmr65Zy22FWFAsqA54POfxP8qluhFHJbCMohuUVh/tLgE4/l+Fef6KkbSu8+6TOSxI5PGa2Z9Uur8C8ZwILYfu4cdBjjn8qirG7sdFP3ULeWpt9cu5BIHXG5MnnGP8AGn6ZcG1sEuHYElsknpya5+9nlazWUyNvnfa59RV/xE32bSYIEPLkfSjku0maKVrs6dhFfWwuYgN+MMKz9OnjKSDeRhsdKp+H9Se3051RABznv0qXSR5mmpK3Dl2BI47mo5GtzTmvsf/Z" width="760" height="760" style="width:100%;height:100%;object-fit:cover;background:#0E0F12"></canvas>
+      <span class="cap" style="position:absolute;bottom:-30px;left:0;width:100%">ASCII-рендер фото прямо в браузере (canvas)</span>
+    </div>
+  </div>
+</section>
+
+<!-- 07 PUNK GRUNGE -->
+<section class="slide" data-title="Тренд: Punk grunge" style="background:#d9d9d4;overflow:hidden">
+  <div class="run"><span>Тренд 07</span><span>Пример: sites/06-punk-grunge</span></div>
+  <img src="../assets/photos/red-smoke.webp" alt="" style="position:absolute;right:-40px;top:80px;width:800px;height:560px;object-fit:cover;filter:grayscale(1) contrast(2.4) brightness(1.1);mix-blend-mode:multiply;transform:rotate(3deg)" data-a="fade">
+  <div style="position:absolute;right:120px;top:520px;width:560px;height:150px;background:#C6F432;transform:rotate(-4deg);display:grid;place-items:center;font:400 60px 'Rubik Glitch';box-shadow:0 10px 30px rgba(0,0,0,.25)" data-a="rot">7 НОЯБРЯ</div>
+  <div style="position:absolute;right:200px;top:700px;width:150px;height:44px;background:#f3eecf99;transform:rotate(18deg)"></div>
+  <div class="col" style="position:relative;z-index:2;max-width:960px">
+    <h2 style="font:400 220px/.85 'Rubik Dirt',sans-serif;margin:0;color:#111" data-a="up">PUNK<br><span style="color:#B3121B">GRUNGE</span></h2>
+    <p style="font:700 40px/1.1 'Dela Gothic One';background:#111;color:#C6F432;padding:12px 18px;align-self:flex-start;transform:rotate(-1.5deg);margin:0" data-a="left">ксерокс, скотч, хаос</p>
+    <p class="txt" style="font-family:'Onest'" data-a="up">Грязные сканы, рваная бумага, стикеры, вырезки разных шрифтов, 1-bit фото. Музыка, клубы, фестивали, стритвир, барбершопы, тату, молодежные медиа.</p>
+    <p class="small" data-a="up"><b>Правило:</b> хаос в декоре, порядок в главном. Дата, место, цена и кнопка читаются за секунду.</p>
+    <a class="tag fill" href="../sites/06-punk-grunge/index.html" target="_blank" rel="noopener" style="align-self:flex-start" data-a="up">Открыть пример «ГАРАЖ»</a>
+  </div>
+</section>
+
+<!-- 08 NAIVE -->
+<section class="slide" data-title="Тренд: Naive design" style="background:#5DBB63">
+  <div class="run"><span>Тренд 08</span><span>Пример: sites/07-naive</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1fr;align-items:center">
+    <div class="col">
+      <svg viewBox="0 0 300 220" style="width:300px" class="draw"><path d="M60 120 C 40 60, 120 40, 150 70 C 180 40, 260 60, 240 120 C 230 180, 170 200, 150 190 C 130 200, 70 180, 60 120 Z" fill="#fff" stroke="#111" stroke-width="7" stroke-linejoin="round" pathLength="1"/><path d="M65 85 L 30 55 M235 85 L 270 55" stroke="#111" stroke-width="7" stroke-linecap="round" pathLength="1"/><circle cx="120" cy="115" r="7" fill="#111"/><circle cx="182" cy="113" r="7" fill="#111"/><path d="M128 160 Q 152 175 176 158" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round" pathLength="1"/></svg>
+      <h2 style="font:400 150px/.9 'Rubik Mono One',sans-serif;margin:0;color:#111" data-a="up">Naive</h2>
+      <p style="font:400 48px/1.15 'Pangolin',cursive;margin:0;color:#111" data-a="up">Нарочно по-детски. Кривые линии, яркие плоские цвета, улыбки.</p>
+      <p class="small" style="color:#111" data-a="up">Человечность против стерильных ИИ-картинок. Еда, мороженое, детские товары, зоотовары, кофейни, локальные бренды. Референсы: Crémoir, Good Boy, Woof Retreat.</p>
+      <a class="tag fill" href="../sites/07-naive/index.html" target="_blank" rel="noopener" style="align-self:flex-start" data-a="up">Открыть пример «Пломбир с Седанки»</a>
+    </div>
+    <div data-a="scale" style="--d:2;background:#fff;padding:16px;transform:rotate(2deg)">
+      <img src="../references/setters-trends/clean/06-naive-design.png" alt="Референсы naive design" style="width:100%;height:760px;object-fit:cover;object-position:50% 50%">
+      <span class="cap" style="color:#111">Подборка tg: SETTERS Agency</span>
+    </div>
+  </div>
+</section>
+
+<!-- 09 TRINKET -->
+<section class="slide" data-title="Тренд: Trinket design" style="background:#F4F3EF">
+  <div class="run"><span>Тренд 09</span><span>Пример: sites/08-trinket</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1fr;align-items:center">
+    <div style="position:relative;height:800px" data-a="fade">
+      <div class="ph" style="position:absolute;left:0;top:30px;width:340px;height:250px;transform:rotate(-6deg);box-shadow:0 18px 30px rgba(0,0,0,.2)"><img src="../assets/photos/vintage-cameras.webp" alt="Винтажные камеры"></div>
+      <span style="position:absolute;left:330px;top:10px;font:700 70px Caveat">1</span>
+      <div class="ph" style="position:absolute;left:380px;top:120px;width:320px;height:240px;transform:rotate(4deg);box-shadow:0 18px 30px rgba(0,0,0,.2)"><img src="../assets/photos/oxford-shoes.webp" alt="Ботинки"></div>
+      <span style="position:absolute;left:700px;top:100px;font:700 70px Caveat">2</span>
+      <div class="ph" style="position:absolute;left:60px;top:360px;width:300px;height:300px;border-radius:50%;box-shadow:0 18px 30px rgba(0,0,0,.2)"><img src="../assets/photos/oranges-basket.webp" alt="Мандарины"></div>
+      <span style="position:absolute;left:40px;top:640px;font:700 70px Caveat">3</span>
+      <div style="position:absolute;left:430px;top:430px;width:230px;height:330px;background:#FF7A1A;border-radius:28px 28px 60px 60px;display:grid;place-items:center;transform:rotate(-8deg);box-shadow:0 18px 30px rgba(0,0,0,.2)"><span style="width:30px;height:30px;border-radius:50%;background:#F4F3EF;position:absolute;top:22px"></span><b style="font:400 64px/1 'Yeseva One';color:#111;writing-mode:vertical-rl">Мелочи</b></div>
+      <span style="position:absolute;left:660px;top:420px;font:700 70px Caveat">4</span>
+    </div>
+    <div class="col">
+      <h2 style="font:400 150px/.9 'Yeseva One',serif;margin:0" data-a="up">Trinket</h2>
+      <p style="font:700 52px/1.1 'Caveat',cursive;margin:0;color:#c2410c" data-a="up">вещи, разложенные на столе</p>
+      <p class="small" data-a="up">Эстетика инвентаря: вырезанные предметы с рукописными номерами, списки, брелоки, бирки, марки, коллекционные карточки. Подарки, селект-шопы, кафе, мерч, маркетплейсы брендов.</p>
+      <p class="small muted" data-a="up">Предметы можно тянуть мышкой, брелоки качаются, на hover появляется ценник.</p>
+      <a class="tag fill" href="../sites/08-trinket/index.html" target="_blank" rel="noopener" style="align-self:flex-start" data-a="up">Открыть пример «Мелочи»</a>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="Все тренды на одной странице">
+  <div class="run"><span>05 · Тренды</span><span>Референсы SETTERS Agency</span></div>
+  <h2 class="h-m" data-a="up">Шесть подборок, которые стоит сохранить</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px 30px;margin-top:30px;flex:1;min-height:0">
+    <figure style="margin:0" data-a="up"><img src="../references/setters-trends/clean/01-new-rococo.png" alt="New Rococo" style="width:100%;height:330px;object-fit:cover;object-position:50% 45%"><figcaption class="cap">01 New Rococo</figcaption></figure>
+    <figure style="margin:0;--d:1" data-a="up"><img src="../references/setters-trends/clean/02-ascii-art.png" alt="ASCII Art" style="width:100%;height:330px;object-fit:cover;object-position:50% 45%"><figcaption class="cap">02 ASCII Art</figcaption></figure>
+    <figure style="margin:0;--d:2" data-a="up"><img src="../references/setters-trends/clean/03-punk-grunge.png" alt="Punk grunge" style="width:100%;height:330px;object-fit:cover;object-position:50% 45%"><figcaption class="cap">03 Punk grunge</figcaption></figure>
+    <figure style="margin:0;--d:3" data-a="up"><img src="../references/setters-trends/clean/05-editorial-design.png" alt="Editorial" style="width:100%;height:330px;object-fit:cover;object-position:50% 45%"><figcaption class="cap">05 Editorial 2.0</figcaption></figure>
+    <figure style="margin:0;--d:4" data-a="up"><img src="../references/setters-trends/clean/06-naive-design.png" alt="Naive" style="width:100%;height:330px;object-fit:cover;object-position:50% 45%"><figcaption class="cap">06 Naive design</figcaption></figure>
+    <figure style="margin:0;--d:5" data-a="up"><img src="../references/setters-trends/clean/07-trinket-design.png" alt="Trinket" style="width:100%;height:330px;object-fit:cover;object-position:50% 45%"><figcaption class="cap">07 Trinket design</figcaption></figure>
+  </div>
+  <p class="small mono muted">Источник подборок: Telegram-канал SETTERS Agency. Оригиналы в папке references.</p>
+</section>
+
+<section class="slide" data-title="Живые референсы">
+  <div class="run"><span>05 · Тренды</span><span>реальные сайты, октябрь 2026</span></div>
+  <h2 class="h-m" data-a="up">Как это выглядит у сильных команд</h2>
+  <div class="g3" style="margin-top:36px;gap:40px;flex:1;min-height:0">
+    <div class="col" data-a="up" style="--d:1"><div class="bf" style="height:430px"><div class="bar"><i></i><i></i><i></i><span>swissted.com</span></div><img src="screens/swissted.webp" alt="swissted.com" loading="lazy"></div><p class="small"><b>Модульная сетка.</b> Постеры концертов в швейцарском стиле.</p></div>
+    <div class="col" data-a="up" style="--d:2"><div class="bf" style="height:430px"><div class="bar"><i></i><i></i><i></i><span>pudding.cool</span></div><img src="screens/pudding.webp" alt="pudding.cool" loading="lazy"></div><p class="small"><b>Editorial.</b> Визуальные эссе, номера выпусков, стикеры.</p></div>
+    <div class="col" data-a="up" style="--d:3"><div class="bf" style="height:430px"><div class="bar"><i></i><i></i><i></i><span>awwwards.com</span></div><img src="screens/awwwards.webp" alt="awwwards.com" loading="lazy"></div><p class="small"><b>Галерея.</b> Сайт дня: oversize-типографика и живые фото.</p></div>
+  </div>
+</section>
+
+<section class="slide dark fontwall" data-title="Сильные шрифты с кириллицей">
+  <div class="run"><span>05 · Типографика</span><span>Бесплатно, Google Fonts, есть в архиве</span></div>
+  <h2 class="h-m" data-a="up">Шрифт делает половину стиля</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:26px 40px;margin-top:40px">
+    <div class="col" data-a="up" style="--d:1;gap:6px"><span style="font:900 70px/1 Unbounded">Ветер</span><span class="mono small" style="opacity:.6">Unbounded · oversize</span></div>
+    <div class="col" data-a="up" style="--d:2;gap:6px"><span style="font:400 70px/1 'Dela Gothic One'">Шторм</span><span class="mono small" style="opacity:.6">Dela Gothic One · плакат</span></div>
+    <div class="col" data-a="up" style="--d:3;gap:6px"><span style="font:700 76px/1 Oswald;text-transform:uppercase">Журнал</span><span class="mono small" style="opacity:.6">Oswald · editorial</span></div>
+    <div class="col" data-a="up" style="--d:4;gap:6px"><span style="font:italic 400 70px/1 'Playfair Display'">Обложка</span><span class="mono small" style="opacity:.6">Playfair Display · антиква</span></div>
+    <div class="col" data-a="up" style="--d:5;gap:6px"><span style="font:400 76px/1 'Marck Script'">Роза</span><span class="mono small" style="opacity:.6">Marck Script · каллиграфия</span></div>
+    <div class="col" data-a="up" style="--d:6;gap:6px"><span style="font:italic 500 74px/1 'Cormorant Garamond'">Шепот</span><span class="mono small" style="opacity:.6">Cormorant Garamond · rococo</span></div>
+    <div class="col" data-a="up" style="--d:7;gap:6px"><span style="font:700 64px/1 'JetBrains Mono'">Сигнал</span><span class="mono small" style="opacity:.6">JetBrains Mono · ASCII</span></div>
+    <div class="col" data-a="up" style="--d:8;gap:6px"><span style="font:400 66px/1 'Rubik Dirt'">Гараж</span><span class="mono small" style="opacity:.6">Rubik Dirt · grunge</span></div>
+    <div class="col" data-a="up" style="--d:9;gap:6px"><span style="font:400 66px/1 'Rubik Glitch'">Сбой</span><span class="mono small" style="opacity:.6">Rubik Glitch · punk</span></div>
+    <div class="col" data-a="up" style="--d:10;gap:6px"><span style="font:400 70px/1 Pangolin">Пломбир</span><span class="mono small" style="opacity:.6">Pangolin · naive</span></div>
+    <div class="col" data-a="up" style="--d:11;gap:6px"><span style="font:400 70px/1 'Yeseva One'">Мелочи</span><span class="mono small" style="opacity:.6">Yeseva One · trinket</span></div>
+    <div class="col" data-a="up" style="--d:12;gap:6px"><span style="font:700 76px/1 Caveat">от руки</span><span class="mono small" style="opacity:.6">Caveat · пометки</span></div>
+  </div>
+  <p class="small" style="margin-top:auto;opacity:.7">Платные российские словолитни: Paratype, Contrast Foundry, Type Today. Для коммерческого сайта проверяйте лицензию шрифта.</p>
+</section>
+
+<section class="slide" data-title="Микроанимации">
+  <div class="run"><span>05 · Моушен</span><span>Живые демо на слайде</span></div>
+  <h2 class="h-m" data-a="up">Микроанимации: где взять и как попросить</h2>
+  <div class="g4" style="margin-top:40px">
+    <div class="cell" data-a="up" style="--d:1"><span class="k">reactbits.dev</span><h4>Готовые эффекты</h4><p>110+ компонентов: Split Text, Magnet, Click Spark, Circular Text, Noise. Копируете код или называете эффект нейросети.</p></div>
+    <div class="cell" data-a="up" style="--d:2"><span class="k">animejs.com</span><h4>anime.js</h4><p>Легкая библиотека: появления, stagger, рисование SVG-линий, счетчики.</p></div>
+    <div class="cell" data-a="up" style="--d:3"><span class="k">gsap.com</span><h4>GSAP</h4><p>Стандарт индустрии. Скролл-сцены, SplitText. С 2025 года бесплатен целиком.</p></div>
+    <div class="cell" data-a="up" style="--d:4"><span class="k">motion.dev</span><h4>Motion</h4><p>Бывший Framer Motion. Пружины, hover, жесты, анимации для React и обычного JS.</p></div>
+  </div>
+  <div class="g3 interactive" style="margin-top:40px;flex:1">
+    <div style="background:var(--paper2);display:grid;place-items:center;position:relative" data-a="scale"><span class="mono small muted" style="position:absolute;top:16px;left:20px">Magnet · наведите</span><button class="magnet" style="all:unset;cursor:pointer;background:var(--ink);color:var(--paper);font:700 34px/1 var(--f-display);padding:30px 54px;border-radius:999px;transition:transform .25s">Купить</button></div>
+    <div style="background:var(--ink);color:var(--lime);display:grid;place-items:center;position:relative" data-a="scale"><span class="mono small" style="position:absolute;top:16px;left:20px;color:#888">Scrambled Text · наведите</span><span class="scramble" style="font:700 54px/1 var(--f-mono)">ПРОДАВАЙ</span></div>
+    <div style="background:var(--blue);color:#fff;overflow:hidden;display:flex;align-items:center;position:relative" data-a="scale"><span class="mono small" style="position:absolute;top:16px;left:20px;opacity:.7">Marquee</span><div class="marquee" style="font:800 64px/1 var(--f-display)"><div><span>Скидка 20%</span><span>до пятницы</span></div><div aria-hidden="true"><span>Скидка 20%</span><span>до пятницы</span></div></div></div>
+  </div>
+  <p class="small muted" style="margin-top:20px">Промпт: «Добавь появление заголовка по буквам как Split Text из reactbits и магнитную кнопку как Magnet. Уважай prefers-reduced-motion».</p>
+</section>
+
+<section class="slide dark" data-title="Где брать анимации">
+  <div class="run"><span>05 · Моушен</span><span>скриншоты из браузера</span></div>
+  <div class="g2 grow" style="gap:50px;margin-top:10px">
+    <div class="col" data-a="left"><div class="bf" style="height:560px"><div class="bar"><i></i><i></i><i></i><span>reactbits.dev</span></div><img src="screens/reactbits.webp" alt="reactbits.dev" loading="lazy"></div><p class="small" style="color:#ccc"><b>React Bits.</b> 200+ анимированных компонентов. Можно скопировать или отдать название нейросети.</p></div>
+    <div class="col" data-a="right"><div class="bf" style="height:560px"><div class="bar"><i></i><i></i><i></i><span>gsap.com</span></div><img src="screens/gsap.webp" alt="gsap.com" loading="lazy"></div><p class="small" style="color:#ccc"><b>GSAP.</b> Стандарт анимации, с 2025 года бесплатен целиком благодаря Webflow.</p></div>
+  </div>
+</section>
+
+<section class="slide brief-slide" data-title="Бриф: стиль, шрифты, анимации">
+  <div class="run"><span>Сквозной бриф · поля 07-09</span><span>после блока 05</span></div>
+  <div class="row between" style="align-items:flex-end"><h2 class="h-l" data-a="up">Заполняем бриф</h2><a class="go-brief interactive" href="../brief/index.html#f-biz" target="_blank" rel="noopener">Открыть бриф</a></div>
+  <div class="flds"><div class="fld" data-a="up"><b>07</b><div><h3>Тренд</h3><p>Голосуем руками за один тренд</p><div class="opts"><span>oversize</span><span>editorial</span><span>bento</span><span>new rococo</span><span>ascii</span><span>grunge</span><span>naive</span><span>trinket</span></div></div></div><div class="fld" data-a="up"><b>08</b><div><h3>Шрифты и цвета</h3><p>2 шрифта с кириллицей и 2-3 цвета</p><div class="opts"><span>Unbounded + Onest</span><span>Cormorant + Onest</span></div></div></div><div class="fld" data-a="up"><b>09</b><div><h3>Анимации</h3><p>Не больше трех эффектов</p><div class="opts"><span>Split Text</span><span>Magnet</span><span>Marquee</span><span>Count Up</span></div></div></div></div>
+  <p class="small" style="margin-top:auto;opacity:.8">Поле 13 «Чего не должно быть» заполняем по слайду анти-ИИ.</p>
+  <template class="n"><p>Спросите группу, запишите ответ в бриф на проекторе (brief/index.html). Можно голосовать поднятием рук. Не больше 2 минут на поле.</p></template>
+</section>
+
+<!-- ГЛАВА 6 -->
+<section class="slide blue chapter" data-title="06 · HTML, CSS, JS" data-chapter="1">
+  <div class="run"><span>Глава</span><span>4 минуты</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 06</p><h2 class="split">HTML, CSS, JS простыми словами</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">06</div>
+</section>
+
+<section class="slide" data-title="Скелет, одежда, мышцы">
+  <div class="run"><span>06 · Код</span><span>Нажмите вкладки и кнопку</span></div>
+  <h2 class="h-m" data-a="up">Сайт это три слоя</h2>
+  <div class="g3" style="margin-top:30px">
+    <div class="cell" data-a="up" style="--d:1"><span class="k">HTML · скелет</span><p>Структура и содержание: заголовки, текст, картинки, кнопки, формы.</p></div>
+    <div class="cell" data-a="up" style="--d:2"><span class="k">CSS · одежда</span><p>Цвета, шрифты, размеры, расположение, адаптив под телефон.</p></div>
+    <div class="cell" data-a="up" style="--d:3"><span class="k">JavaScript · мышцы</span><p>Поведение: клик, отправка формы, слайдер, калькулятор.</p></div>
+  </div>
+  <div class="hcj interactive" data-a="up" style="--d:4">
+    <div class="col" style="gap:16px">
+      <div class="hcj-tabs"><button data-layer="html" class="on">HTML</button><button data-layer="css">+ CSS</button><button data-layer="js">+ JS</button></div>
+      <pre class="hcj-code">&lt;button&gt;Записаться&lt;/button&gt;</pre>
+    </div>
+    <div class="hcj-stage"><button class="hcj-target html">Записаться</button><span class="mono small muted" style="position:absolute;bottom:16px;left:20px">так это видит браузер</span></div>
+  </div>
+  <template class="n"><p>Нажать HTML: голая системная кнопка. CSS: появляется дизайн. JS: кнопка реагирует на клик. Потом показать F12 на любом сайте: поменять текст заголовка в инструментах разработчика. Изменение только локальное.</p></template>
+</section>
+
+<section class="slide dark" data-title="Что знать без программирования">
+  <div class="run"><span>06 · Код</span><span>Словарь</span></div>
+  <h2 class="h-m" data-a="up">Писать код не нужно. Понимать нужно.</h2>
+  <div class="g3" style="margin-top:50px">
+    <div class="cell" data-a="up" style="--d:1"><span class="k">Браузер</span><p>Читает HTML, CSS и JS и рисует страницу. Сайт это просто набор файлов.</p></div>
+    <div class="cell" data-a="up" style="--d:2"><span class="k">Тег</span><p>Команда в угловых скобках: &lt;p&gt; абзац, &lt;a&gt; ссылка, &lt;img&gt; картинка, &lt;form&gt; форма.</p></div>
+    <div class="cell" data-a="up" style="--d:3"><span class="k">Класс</span><p>Имя элемента, по которому CSS понимает, что красить: .button-main</p></div>
+    <div class="cell" data-a="up" style="--d:4"><span class="k">Адаптив</span><p>Правила CSS, которые меняют вид страницы на маленьком экране.</p></div>
+    <div class="cell" data-a="up" style="--d:5"><span class="k">Фронтенд</span><p>Всё, что видит пользователь в браузере.</p></div>
+    <div class="cell" data-a="up" style="--d:6"><span class="k">Бэкенд</span><p>То, что работает на сервере: база данных, заявки, оплата.</p></div>
+  </div>
+  <p class="lead" data-a="fade" style="--d:8;margin-top:auto;max-width:none;color:var(--lime)">Попросите ChatGPT объяснить код вашего сайта построчно. Это пара вечеров.</p>
+</section>
+
+<!-- ГЛАВА 7 -->
+<section class="slide lime chapter" data-title="07 · React и стек" data-chapter="1">
+  <div class="run"><span>Глава</span><span>4 минуты</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 07</p><h2 class="split">React и стек для лендингов</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">07</div>
+</section>
+
+<section class="slide" data-title="React: компоненты">
+  <div class="run"><span>07 · Стек</span><span>Под капотом Lovable и AI Studio</span></div>
+  <div class="g2 grow" style="align-items:center">
+    <div class="col">
+      <img src="../assets/logos/react.svg" alt="React" style="width:110px" data-a="rot">
+      <h2 class="h-l" data-a="up">Один раз сделали карточку, вставили десять раз</h2>
+      <p class="txt" data-a="up" style="--d:2">React открыт Facebook в 2013 году. Страница собирается из компонентов: кнопка, карточка тарифа, отзыв. Нейросети знают React лучше всего, поэтому почти все AI-конструкторы пишут на нем.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px" data-a="fade">
+      <div style="grid-column:1/4;background:var(--ink);color:var(--paper);padding:26px;font:700 30px var(--f-mono)" data-a="down">&lt;Hero /&gt;</div>
+      <div style="background:var(--blue);color:#fff;padding:26px;height:200px;font:700 26px var(--f-mono)" data-a="up">&lt;Tariff /&gt;<br><span style="font:400 22px var(--f-text)">Базовый</span></div>
+      <div style="background:var(--blue);color:#fff;padding:26px;height:200px;font:700 26px var(--f-mono)" data-a="up">&lt;Tariff /&gt;<br><span style="font:400 22px var(--f-text)">Популярный</span></div>
+      <div style="background:var(--blue);color:#fff;padding:26px;height:200px;font:700 26px var(--f-mono)" data-a="up">&lt;Tariff /&gt;<br><span style="font:400 22px var(--f-text)">Премиум</span></div>
+      <div style="grid-column:1/3;background:var(--lime);padding:26px;font:700 26px var(--f-mono)" data-a="up">&lt;Review /&gt; ×3</div>
+      <div style="background:var(--signal);color:#fff;padding:26px;font:700 26px var(--f-mono)" data-a="up">&lt;Form /&gt;</div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="Стек 2026">
+  <div class="run"><span>07 · Стек</span><span>Что вы встретите в коде</span></div>
+  <h2 class="h-m" data-a="up">Стек, который генерируют нейросети</h2>
+  <div class="g4" style="margin-top:46px;gap:26px">
+    <div class="toolcard" data-a="up" style="--d:1"><img src="../assets/logos/react.svg" alt=""><h4>React</h4><p>Компоненты интерфейса</p></div>
+    <div class="toolcard" data-a="up" style="--d:2"><img src="../assets/logos/typescript.svg" alt=""><h4>TypeScript</h4><p>JavaScript с проверкой типов</p></div>
+    <div class="toolcard" data-a="up" style="--d:3"><img src="../assets/logos/vite.svg" alt=""><h4>Vite</h4><p>Быстрая сборка проекта</p></div>
+    <div class="toolcard" data-a="up" style="--d:4"><img src="../assets/logos/tailwindcss.svg" alt=""><h4>Tailwind</h4><p>Стили короткими классами</p></div>
+    <div class="toolcard" data-a="up" style="--d:5"><img src="../assets/logos/nextdotjs.svg" alt=""><h4>Next.js</h4><p>React с хорошим SEO</p></div>
+    <div class="toolcard" data-a="up" style="--d:6"><img src="../assets/logos/astro.svg" alt=""><h4>Astro</h4><p>Самые быстрые лендинги и блоги</p></div>
+    <div class="toolcard" data-a="up" style="--d:7"><img src="../assets/logos/supabase.svg" alt=""><h4>Supabase</h4><p>Готовый бэкенд: база, вход, файлы</p></div>
+    <div class="toolcard" data-a="up" style="--d:8"><img src="../assets/logos/gsap.svg" alt="" onerror="this.remove()"><h4>shadcn/ui, Motion</h4><p>Готовые компоненты и анимации</p></div>
+  </div>
+</section>
+
+<section class="slide paper2" data-title="Tilda или нейросеть">
+  <div class="run"><span>07 · Стек</span><span>Что выбрать</span></div>
+  <h2 class="h-m" data-a="up">Что выбрать под задачу</h2>
+  <div class="g3" style="margin-top:50px;align-items:start">
+    <div class="col" style="background:var(--white);padding:40px" data-a="up"><span class="chip" style="align-self:flex-start">No-code</span><h3 class="h-s">Tilda</h3><p class="small">Быстро, российская оплата, своя CRM для заявок, клиент правит сам. Ограничены блоками конструктора.</p></div>
+    <div class="col" style="background:var(--blue);color:#fff;padding:40px;--d:1" data-a="up"><span class="chip" style="align-self:flex-start;background:#fff;color:var(--blue)">AI-генерация</span><h3 class="h-s">Lovable, AI Studio, Claude</h3><p class="small">Уникальный дизайн, квиз, калькулятор, AI-консультант, личный кабинет. Код ваш, его можно унести куда угодно.</p></div>
+    <div class="col" style="background:var(--ink);color:var(--paper);padding:40px;--d:2" data-a="up"><span class="chip" style="align-self:flex-start;background:var(--lime);color:var(--ink)">CMS и фреймворки</span><h3 class="h-s">WordPress, Next.js, Astro</h3><p class="small">Большой сайт с контентом и поисковым трафиком на годы.</p></div>
+  </div>
+</section>
+
+<!-- ГЛАВА 8 -->
+<section class="slide dark chapter" data-title="08 · Архитектура лендинга" data-chapter="1">
+  <div class="run"><span>Глава</span><span>4 минуты</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 08</p><h2 class="split">Архитектура лендинга</h2></div>
+  <div class="bignum" data-a="up" style="--d:4;color:var(--signal)">08</div>
+</section>
+
+<section class="slide" data-title="Цепочка лендинга">
+  <div class="run"><span>08 · Архитектура</span><span>Порвано одно звено, бюджет сгорает</span></div>
+  <h2 class="h-m" data-a="up">Лендинг это цепочка, а не страница</h2>
+  <div class="chain">
+    <div class="st" data-a="up" style="--d:1"><span class="n">1</span><h4>Трафик</h4><p>Яндекс Директ, VK Реклама, Telegram Ads, посевы, SEO</p></div>
+    <div class="st" data-a="up" style="--d:2"><span class="n">2</span><h4>UTM-метки</h4><p>Подписывают, из какого объявления пришел человек</p></div>
+    <div class="st" data-a="up" style="--d:3"><span class="n">3</span><h4>Страница</h4><p>Сам лендинг на хостинге</p></div>
+    <div class="st" data-a="up" style="--d:4"><span class="n">4</span><h4>Форма</h4><p>Имя, телефон, согласие на обработку данных</p></div>
+    <div class="st" data-a="up" style="--d:5"><span class="n" style="background:var(--blue)">5</span><h4>Заявка</h4><p>Telegram-бот, почта, amoCRM, Битрикс24</p></div>
+    <div class="st" data-a="up" style="--d:6"><span class="n" style="background:var(--signal)">6</span><h4>Аналитика</h4><p>Яндекс Метрика: цели, Вебвизор</p></div>
+    <div class="st" data-a="up" style="--d:7"><span class="n">7</span><h4>Ретаргетинг</h4><p>Догоняем тех, кто ушел без заявки</p></div>
+  </div>
+  <div class="prompt" data-a="up" style="--d:9;margin-top:auto">site.ru/?<em>utm_source=vk</em>&amp;<em>utm_campaign=autumn_sale</em></div>
+  <template class="n"><p>Если спросят, как сделать заявки в Телеграм: «Сделай отправку формы в Telegram-бота. Я создам бота через @BotFather и дам токен». Токен нельзя оставлять в коде страницы, нейросеть должна вынести отправку на сервер.</p></template>
+</section>
+
+<section class="slide" data-title="Статика, SSR, SPA">
+  <div class="run"><span>08 · Архитектура</span><span>Три способа устроить сайт</span></div>
+  <h2 class="h-m" data-a="up">Как сайт попадает к человеку</h2>
+  <div class="g3" style="margin-top:50px;flex:1">
+    <div class="col" data-a="up" style="--d:1"><svg viewBox="0 0 400 160" class="draw" style="width:100%"><rect x="10" y="20" width="120" height="120" fill="none" stroke="#121212" stroke-width="6" pathLength="1"/><path d="M150 80 H 250" stroke="#2335FF" stroke-width="6" pathLength="1"/><rect x="270" y="20" width="120" height="120" fill="#C6F432" stroke="#121212" stroke-width="6" pathLength="1"/></svg><h3 class="h-s">Статика</h3><p class="small">Готовые HTML-файлы. Очень быстро, дешево или бесплатно, отлично индексируется.</p><span class="tag fill" style="align-self:flex-start">лендинги, визитки</span></div>
+    <div class="col" data-a="up" style="--d:2"><svg viewBox="0 0 400 160" class="draw" style="width:100%"><circle cx="70" cy="80" r="60" fill="none" stroke="#121212" stroke-width="6" pathLength="1"/><path d="M150 80 H 250" stroke="#2335FF" stroke-width="6" pathLength="1"/><rect x="270" y="20" width="120" height="120" fill="none" stroke="#121212" stroke-width="6" pathLength="1"/></svg><h3 class="h-s">SSR</h3><p class="small">Сервер собирает страницу при каждом запросе. Хорошее SEO, свежие данные, нужен сервер.</p><span class="tag fill" style="align-self:flex-start">магазины, СМИ</span></div>
+    <div class="col" data-a="up" style="--d:3"><svg viewBox="0 0 400 160" class="draw" style="width:100%"><rect x="10" y="20" width="120" height="120" fill="none" stroke="#121212" stroke-width="6" stroke-dasharray="1" pathLength="1"/><path d="M150 80 H 250" stroke="#FF5A1F" stroke-width="6" pathLength="1"/><rect x="270" y="20" width="120" height="120" fill="#2335FF" stroke="#121212" stroke-width="6" pathLength="1"/></svg><h3 class="h-s">SPA</h3><p class="small">Браузер получает JS и сам рисует страницу. Плавно, как приложение, но SEO хуже без доработок.</p><span class="tag fill" style="align-self:flex-start">кабинеты, сервисы</span></div>
+  </div>
+  <p class="txt" data-a="fade" style="--d:5;max-width:none"><b>Lovable и AI Studio по умолчанию делают SPA.</b> Для рекламы это нормально. Для поиска попросите пререндеринг или Astro.</p>
+</section>
+
+<section class="slide brief-slide" data-title="Бриф: техника">
+  <div class="run"><span>Сквозной бриф · поля 10</span><span>после блоков 06-08</span></div>
+  <div class="row between" style="align-items:flex-end"><h2 class="h-l" data-a="up">Заполняем бриф</h2><a class="go-brief interactive" href="../brief/index.html#f-biz" target="_blank" rel="noopener">Открыть бриф</a></div>
+  <div class="flds"><div class="fld" data-a="up"><b>10</b><div><h3>Технически</h3><p>Для GitHub Pages проще всего один файл index.html. Опытным: React + Vite и сборка.</p><div class="opts"><span>один index.html</span><span>React + Vite</span><span>Astro</span></div></div></div></div>
+  <p class="small" style="margin-top:auto;opacity:.8"></p>
+  <template class="n"><p>Спросите группу, запишите ответ в бриф на проекторе (brief/index.html). Можно голосовать поднятием рук. Не больше 2 минут на поле.</p></template>
+</section>
+
+<!-- ГЛАВА 9 -->
+<section class="slide blue chapter" data-title="09 · Скорость и SEO" data-chapter="1">
+  <div class="run"><span>Глава</span><span>7 минут</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 09</p><h2 class="split">Скорость и SEO</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">09</div>
+</section>
+
+<section class="slide" data-title="Core Web Vitals">
+  <div class="run"><span>09 · Скорость</span><span>pagespeed.web.dev</span></div>
+  <h2 class="h-m" data-a="up">Медленный сайт теряет людей до оффера</h2>
+  <div class="row" style="margin-top:50px;justify-content:space-between">
+    <div class="gauge" data-a="up" style="--d:1"><div class="ring" style="--v:92;--c:#1a8f4a"><b data-count="92">0</b></div><h4 class="h-s">PageSpeed</h4><p class="small muted">Цель: 90+ на телефоне</p></div>
+    <div class="gauge" data-a="up" style="--d:2"><div class="ring" style="--v:70;--c:var(--blue)"><b>2,5 с</b></div><h4 class="h-s">LCP</h4><p class="small muted">Загрузка главного блока</p></div>
+    <div class="gauge" data-a="up" style="--d:3"><div class="ring" style="--v:55;--c:var(--blue)"><b>200 мс</b></div><h4 class="h-s">INP</h4><p class="small muted">Реакция на нажатие</p></div>
+    <div class="gauge" data-a="up" style="--d:4"><div class="ring" style="--v:20;--c:var(--signal)"><b>0,1</b></div><h4 class="h-s">CLS</h4><p class="small muted">Прыгает ли верстка</p></div>
+  </div>
+  <div class="prompt" data-a="up" style="--d:6;margin-top:auto">Оптимизируй сайт под PageSpeed: переведи картинки в <em>WebP</em>, добавь <em>lazy loading</em>, убери неиспользуемый код, проверь LCP и CLS.</div>
+  <template class="n"><p>Главная причина медленных сайтов: фото с телефона на 5 МБ. Сжимать в Squoosh или TinyPNG. Видео встраивать через Rutube или VK Видео. Каждый виджет и пиксель замедляет страницу.</p></template>
+</section>
+
+<section class="slide" data-title="SEO-минимум">
+  <div class="run"><span>09 · SEO</span><span>Бесплатный трафик на годы</span></div>
+  <div class="g2 grow" style="grid-template-columns:1.1fr 1fr;align-items:center">
+    <div class="col" style="gap:30px">
+      <div class="serp" data-a="up">
+        <span class="u">kofe-vl.ru › menu</span>
+        <span class="ti">Кофейня во Владивостоке на Светланской | Кофе с собой</span>
+        <span class="de">Свежая обжарка каждый четверг. Фильтр от 180 ₽, завтраки до 12:00. Закажите кофе с собой онлайн и заберите без очереди.</span>
+      </div>
+      <div class="row" style="gap:30px"><span class="ann" data-a="rot" style="--d:2">title: до 60 символов</span><span class="ann" data-a="rot" style="--d:3">description: до 160</span></div>
+    </div>
+    <div class="col">
+      <h2 class="h-m" data-a="up">SEO-минимум</h2>
+      <ul class="small" style="padding-left:28px;display:flex;flex-direction:column;gap:12px;margin:0" data-a="up">
+        <li>Один H1, дальше H2 и H3 по смыслу</li>
+        <li>Alt-текст у картинок</li>
+        <li>Понятные адреса: /uslugi/strizhka</li>
+        <li>sitemap.xml и robots.txt</li>
+        <li>HTTPS и адаптив</li>
+        <li>Open Graph для превью в Telegram и VK</li>
+        <li>Микроразметка Schema.org: организация, FAQ</li>
+        <li>Яндекс Вебмастер и Google Search Console</li>
+        <li>Карточка в Яндекс Бизнесе и на Картах</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide dark" data-title="GEO: SEO для нейросетей">
+  <div class="run"><span>09 · GEO</span><span>Новая компетенция маркетолога</span></div>
+  <div class="g2 grow" style="align-items:center">
+    <div class="col">
+      <p class="eyebrow" data-a="fade">Алиса AI в поиске Яндекса, II квартал 2026</p>
+      <div style="font:900 330px/.8 var(--f-display);letter-spacing:-.06em;color:var(--lime)" data-a="up"><span data-count="42">0</span>%</div>
+      <p class="lead" style="color:var(--paper)" data-a="up">запросов уже получают ответ нейросети прямо под строкой поиска. Это 49,5 млн человек в месяц.</p>
+      <p class="small mono" style="opacity:.5" data-a="fade">Источник: публикация TenChat по данным Яндекса. В Вебмастере появился инструмент «Видимость сайта в Алисе AI».</p>
+    </div>
+    <div class="col">
+      <h2 class="h-m" data-a="up">Чтобы нейросеть цитировала вас</h2>
+      <div class="cell" data-a="up" style="--d:2"><p>Четкие ответы на конкретные вопросы: блок FAQ</p></div>
+      <div class="cell" data-a="up" style="--d:3"><p>Факты и цифры, а не общие слова</p></div>
+      <div class="cell" data-a="up" style="--d:4"><p>Структура с подзаголовками и микроразметка</p></div>
+      <div class="cell" data-a="up" style="--d:5"><p>Упоминания бренда на других площадках</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide brief-slide" data-title="Бриф: SEO">
+  <div class="run"><span>Сквозной бриф · поля 11</span><span>после блока 09</span></div>
+  <div class="row between" style="align-items:flex-end"><h2 class="h-l" data-a="up">Заполняем бриф</h2><a class="go-brief interactive" href="../brief/index.html#f-biz" target="_blank" rel="noopener">Открыть бриф</a></div>
+  <div class="flds"><div class="fld" data-a="up"><b>11</b><div><h3>SEO</h3><p>Title до 60 символов и описание до 160</p><div class="opts"><span>что + город + выгода</span></div></div></div></div>
+  <p class="small" style="margin-top:auto;opacity:.8"></p>
+  <template class="n"><p>Спросите группу, запишите ответ в бриф на проекторе (brief/index.html). Можно голосовать поднятием рук. Не больше 2 минут на поле.</p></template>
+</section>
+
+<!-- ГЛАВА 10 -->
+<section class="slide lime chapter" data-title="10 · Домены, деплой, закон" data-chapter="1">
+  <div class="run"><span>Глава</span><span>7 минут</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 10</p><h2 class="split">Домены, деплой и закон</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">10</div>
+</section>
+
+<section class="slide" data-title="Домен, DNS, хостинг">
+  <div class="run"><span>10 · Деплой</span><span>Три вещи, чтобы сайт увидели</span></div>
+  <h2 class="h-m" data-a="up">Адрес, телефонная книга, дом</h2>
+  <svg viewBox="0 0 1680 330" class="draw" style="width:100%;margin-top:40px" aria-label="Схема: домен, DNS, хостинг, браузер">
+    <rect x="0" y="60" width="380" height="200" fill="#C6F432" stroke="#121212" stroke-width="5" pathLength="1"/>
+    <rect x="650" y="60" width="380" height="200" fill="none" stroke="#121212" stroke-width="5" pathLength="1" style="--d:1"/>
+    <rect x="1300" y="60" width="380" height="200" fill="#2335FF" stroke="#121212" stroke-width="5" pathLength="1" style="--d:2"/>
+    <path d="M390 160 H 640 M620 145 L 640 160 L 620 175" fill="none" stroke="#121212" stroke-width="5" pathLength="1" style="--d:3"/>
+    <path d="M1040 160 H 1290 M1270 145 L 1290 160 L 1270 175" fill="none" stroke="#121212" stroke-width="5" pathLength="1" style="--d:4"/>
+    <text x="30" y="125" font-family="Unbounded" font-weight="800" font-size="40">Домен</text><text x="30" y="175" font-family="JetBrains Mono" font-size="26">kofe-vl.ru</text><text x="30" y="225" font-family="Onest" font-size="22">аренда на год</text>
+    <text x="680" y="125" font-family="Unbounded" font-weight="800" font-size="40">DNS</text><text x="680" y="175" font-family="JetBrains Mono" font-size="26">домен = IP сервера</text><text x="680" y="225" font-family="Onest" font-size="22">телефонная книга интернета</text>
+    <text x="1330" y="125" font-family="Unbounded" font-weight="800" font-size="40" fill="#fff">Хостинг</text><text x="1330" y="175" font-family="JetBrains Mono" font-size="26" fill="#fff">файлы сайта</text><text x="1330" y="225" font-family="Onest" font-size="22" fill="#fff">дом, где он живет</text>
+  </svg>
+  <div class="g3" style="margin-top:40px">
+    <div class="cell" data-a="up" style="--d:5"><span class="k">Где купить .ru</span><p>Аккредитованные регистраторы, список на cctld.ru. Крупнейшие: Рег.ру и RU-CENTER.</p></div>
+    <div class="cell" data-a="up" style="--d:6"><span class="k">Ловушка цены</span><p>Рег.ру с 2026: регистрация .ru от 129 ₽, продление 999 ₽ в год. Смотрите цену продления.</p></div>
+    <div class="cell" data-a="up" style="--d:7"><span class="k">Деплой</span><p>Код в GitHub, платформа сама публикует новую версию после каждого изменения.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Где разместить сайт для России">
+  <div class="run"><span>10 · Деплой</span><span>Проверено 21.10.2026</span></div>
+  <h2 class="h-m" data-a="up">Где разместить сайт для аудитории в России</h2>
+  <table class="t" style="margin-top:36px" data-a="fade">
+    <tr><th>Платформа</th><th>Цена</th><th>Для России</th></tr>
+    <tr><td>Lovable, AI Studio, ChatGPT Sites</td><td>Встроено в сервис</td><td>Зарубежные, доступ и оплата ограничены</td></tr>
+    <tr><td>Vercel, Netlify</td><td>Бесплатно для личных</td><td><span class="sig">Свой домен часто не открывается с мобильного интернета без VPN</span></td></tr>
+    <tr><td>Cloudflare Pages</td><td>Бесплатно</td><td><span class="sig">С июня 2025 провайдеры пропускают только первые 16 КБ</span></td></tr>
+    <tr><td>GitHub Pages</td><td>Бесплатно</td><td>Обычно стабильнее, только статика</td></tr>
+    <tr><td>Timeweb Cloud, Beget, Рег.ру, Selectel, Яндекс Облако</td><td>От 0 до сотен ₽ в месяц</td><td><b>Лучший выбор: серверы в РФ, оплата картой, поддержка</b></td></tr>
+  </table>
+  <p class="small muted" data-a="fade" style="margin-top:auto">Вывод: учебный проект публикуйте где удобно. Под рекламу на Россию: российский хостинг и проверка с мобильного интернета разных операторов.</p>
+</section>
+
+<section class="slide" data-title="152-ФЗ: форма на лендинге">
+  <div class="run"><span>10 · Закон</span><span>152-ФЗ о персональных данных</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1.1fr;align-items:center">
+    <div style="background:var(--white);padding:50px;box-shadow:0 20px 60px rgba(0,0,0,.12);display:flex;flex-direction:column;gap:18px" data-a="left">
+      <b style="font:800 40px/1.1 var(--f-display)">Запись на стрижку</b>
+      <div style="border:2px solid var(--line);padding:20px;font:400 26px var(--f-text);color:var(--ink2)">Имя</div>
+      <div style="border:2px solid var(--line);padding:20px;font:400 26px var(--f-text);color:var(--ink2)">+7 (___) ___-__-__</div>
+      <label style="display:flex;gap:16px;align-items:flex-start;font:400 22px/1.35 var(--f-text);outline:4px solid var(--signal);outline-offset:10px"><span style="flex:none;width:30px;height:30px;border:3px solid var(--ink)"></span><span>Согласен на обработку персональных данных и с <u>политикой конфиденциальности</u></span></label>
+      <span style="background:var(--ink);color:#fff;font:700 30px var(--f-text);padding:24px;text-align:center;margin-top:10px">Записаться</span>
+      <span class="ann" style="align-self:flex-end">галочку ставит сам человек</span>
+    </div>
+    <div class="col">
+      <h2 class="h-m" data-a="up">Форма с телефоном делает вас оператором данных</h2>
+      <p class="small" data-a="up" style="--d:1">С 30 мая 2025 штрафы выросли до сотен тысяч рублей. С 1 сентября 2025 согласие оформляется отдельно от других документов.</p>
+      <div class="col" style="gap:10px;font:500 26px/1.3 var(--f-text);--d:2" data-a="up">
+        <span>☐ Страница «Политика обработки персональных данных»</span>
+        <span>☐ Отдельный чекбокс согласия, не отмеченный заранее</span>
+        <span>☐ Уведомление в Роскомнадзор</span>
+        <span>☐ Данные россиян хранятся на серверах в России</span>
+        <span>☐ Баннер о cookie, если есть аналитика</span>
+      </div>
+      <p class="small muted" data-a="fade" style="--d:4">Нейросеть не знает про 152-ФЗ, пока вы не напишете это в промпте. Для реального бизнеса покажите документы юристу.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide brief-slide" data-title="Бриф: форма и запреты">
+  <div class="run"><span>Сквозной бриф · поля 12-13</span><span>после блока 10</span></div>
+  <div class="row between" style="align-items:flex-end"><h2 class="h-l" data-a="up">Заполняем бриф</h2><a class="go-brief interactive" href="../brief/index.html#f-biz" target="_blank" rel="noopener">Открыть бриф</a></div>
+  <div class="flds"><div class="fld" data-a="up"><b>12</b><div><h3>Форма и 152-ФЗ</h3><p>Какие поля? Чекбокс согласия обязателен</p><div class="opts"><span>имя + телефон</span><span>имя + телефон + услуга</span></div></div></div><div class="fld" data-a="up"><b>13</b><div><h3>Чего не должно быть</h3><p>Запреты против ИИ-шаблона</p><div class="opts"><span>градиенты</span><span>Inter</span><span>эмодзи</span><span>иконки в кружках</span><span>всё по центру</span></div></div></div></div>
+  <p class="small" style="margin-top:auto;opacity:.8">Бриф готов. Дальше генерируем сайт.</p>
+  <template class="n"><p>Спросите группу, запишите ответ в бриф на проекторе (brief/index.html). Можно голосовать поднятием рук. Не больше 2 минут на поле.</p></template>
+</section>
+
+<!-- ГЛАВА 11 -->
+<section class="slide chapter" data-title="11 · AI-разработка" data-chapter="1" style="background:var(--signal);color:var(--ink)">
+  <div class="run"><span>Глава</span><span>20 минут · живые демо</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 11</p><h2 class="split">Сайт делается разговором</h2></div>
+  <div class="bignum" data-a="up" style="--d:4;color:var(--paper)">11</div>
+</section>
+
+<section class="slide" data-title="Вайб-кодинг">
+  <div class="run"><span>11 · AI</span><span>Февраль 2025</span></div>
+  <div class="g2 grow" style="align-items:center">
+    <div class="col">
+      <p class="eyebrow" data-a="fade">Термин Андрея Карпаты</p>
+      <h2 class="h-xl" data-a="up" style="font-size:150px">Вайб-кодинг</h2>
+      <p class="txt" data-a="up" style="--d:2">Человек описывает результат словами и оценивает, что получилось. В сам код не смотрит. Год назад это была шутка, сегодня индустрия с миллиардными оборотами.</p>
+    </div>
+    <div class="col" style="gap:18px">
+      <div class="prompt" data-a="up" style="--d:2">Сделай лендинг для барбершопа «Якорь» во Владивостоке. Мужчины 20-40 лет, стрижка за 40 минут без очереди...</div>
+      <svg viewBox="0 0 40 90" style="width:34px;align-self:center" aria-hidden="true"><path d="M20 0 V80 M6 66 L20 82 L34 66" fill="none" stroke="#2335FF" stroke-width="5"/></svg>
+      <div style="background:var(--blue);color:#fff;padding:30px;display:flex;justify-content:space-between;align-items:center;--d:5" data-a="up"><b style="font:800 44px/1 var(--f-display)">Готовый сайт</b><span class="tag" style="color:#fff">1-2 минуты</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="Три класса AI-инструментов">
+  <div class="run"><span>11 · AI</span><span>Карта инструментов</span></div>
+  <h2 class="h-m" data-a="up">Три класса инструментов</h2>
+  <div class="g3" style="margin-top:50px;flex:1">
+    <div class="col" style="background:var(--lime);padding:40px;--d:1" data-a="up"><span class="mono small">01 · для маркетолога</span><h3 class="h-s">AI-конструкторы</h3><p class="small">Пишете в чат, справа сразу сайт, публикация кнопкой.</p><p class="small" style="margin-top:auto"><b>Lovable, Google AI Studio, ChatGPT Sites, Bolt, v0</b></p></div>
+    <div class="col" style="background:var(--white);padding:40px;border:3px solid var(--ink);--d:2" data-a="up"><span class="mono small">02 · для всех</span><h3 class="h-s">Чат-ассистенты</h3><p class="small">Пишут тексты, офферы и отдельный HTML-файл, который вы публикуете сами.</p><p class="small" style="margin-top:auto"><b>ChatGPT, Claude, Gemini, GigaChat, Алиса AI</b></p></div>
+    <div class="col" style="background:var(--ink);color:var(--paper);padding:40px;--d:3" data-a="up"><span class="mono small" style="opacity:.6">03 · продвинутым</span><h3 class="h-s">Агенты</h3><p class="small">Работают с файлами проекта: пишут, запускают, проверяют, исправляют, публикуют.</p><p class="small" style="margin-top:auto"><b>Claude Code, Codex, Antigravity, Cursor</b></p></div>
+  </div>
+</section>
+
+<section class="slide dark" data-title="История Lovable">
+  <div class="run"><span>11 · Кейс</span><span>Lovable, Стокгольм</span></div>
+  <div class="g2 grow" style="grid-template-columns:.9fr 1.1fr">
+    <div class="col">
+      <h2 class="h-l" data-a="up">Три года от open-source до 13,3 млрд $</h2>
+      <p class="small" style="opacity:.8;--d:1" data-a="up">2023: Антон Осика выкладывает на GitHub открытый проект GPT Engineer. С Фабианом Хедином основывает компанию. Конец 2024: продукт переименован в Lovable и открыт для всех.</p>
+      <p class="small" style="opacity:.8;--d:2" data-a="up">Август 2026: раунд 400 млн $ при оценке 13,3 млрд $. 60 млн проектов на платформе, их посещают 900 млн человек в месяц.</p>
+      <p class="lead" style="color:var(--lime);margin-top:auto;--d:3" data-a="up">Миллионы людей без навыков кода захотели делать сайты сами. Среди них вы.</p>
+    </div>
+    <div class="col" style="justify-content:flex-end">
+      <span class="mono small" style="opacity:.6">Годовая выручка (ARR), млн $</span>
+      <div style="display:flex;align-items:flex-end;gap:30px;height:640px;border-bottom:3px solid var(--paper)">
+        <div class="col" style="flex:1;gap:10px;align-items:stretch;justify-content:flex-end;height:100%"><b style="font:800 40px var(--f-display)">100</b><div class="bar" style="--d:1;height:16.6%;background:#555"></div></div>
+        <div class="col" style="flex:1;gap:10px;align-items:stretch;justify-content:flex-end;height:100%"><b style="font:800 40px var(--f-display)">200</b><div class="bar" style="--d:2;height:33.3%;background:#777"></div></div>
+        <div class="col" style="flex:1;gap:10px;align-items:stretch;justify-content:flex-end;height:100%"><b style="font:800 40px var(--f-display)">400</b><div class="bar" style="--d:3;height:66.6%;background:#999"></div></div>
+        <div class="col" style="flex:1;gap:10px;align-items:stretch;justify-content:flex-end;height:100%"><b style="font:800 40px var(--f-display)">500</b><div class="bar" style="--d:4;height:83.3%;background:#bbb"></div></div>
+        <div class="col" style="flex:1;gap:10px;align-items:stretch;justify-content:flex-end;height:100%"><b style="font:800 40px var(--f-display);color:var(--lime)">600+</b><div class="bar" style="--d:5;height:100%;background:var(--lime)"></div></div>
+      </div>
+      <div style="display:flex;gap:30px;font:500 22px var(--f-mono);opacity:.7"><span style="flex:1">07.2025</span><span style="flex:1">11.2025</span><span style="flex:1">02.2026</span><span style="flex:1">06.2026</span><span style="flex:1">09.2026</span></div>
+      <span class="mono" style="font-size:18px;opacity:.45">Источники: TechCrunch, TechDogs, Википедия. Данные компании, не аудированы.</span>
+    </div>
+  </div>
+  <template class="n"><p>Июль 2025: 100 млн за ~8 месяцев после запуска, Forbes назвал это самым быстрым ростом от 1 до 100 млн. Февраль 2026: 400 млн, причем 100 млн добавили за месяц при ~146 сотрудниках.</p></template>
+</section>
+
+<section class="slide" data-title="Инструменты по отдельности">
+  <div class="run"><span>11 · AI</span><span>Цены и факты на 21.10.2026</span></div>
+  <h2 class="h-m" data-a="up">Где делать сайт</h2>
+  <div class="g4" style="margin-top:40px;gap:24px;flex:1">
+    <div class="toolcard" data-a="up" style="--d:1"><div style="width:56px;height:56px;background:linear-gradient(135deg,#ff5a8a,#ff9a3d);border-radius:14px"></div><h4>Lovable</h4><p>Сайт на React за 1-2 минуты, визуальные правки кликом, Plan Mode, GitHub, публикация кнопкой.</p><span class="pr">Free 5 кредитов в день (до 30 в мес) · Pro от 25 $</span></div>
+    <div class="toolcard" data-a="up" style="--d:2"><img src="../assets/logos/googlegemini.svg" alt=""><h4>Google AI Studio</h4><p>Режим Build: бесплатно, без карты. Аннотации: выделил кусок экрана и описал правку. Можно встроить Gemini в сайт.</p><span class="pr">Бесплатно · промпты могут идти в обучение</span></div>
+    <div class="toolcard" data-a="up" style="--d:3"><img src="../assets/logos/openai.svg" alt=""><h4>ChatGPT Sites</h4><p>С 9 июля 2026 в бете: пишете слово «website», Codex строит и хостит сайт. Canvas убрали в мае 2026.</p><span class="pr">Plus, Pro, рабочие · не Free и Go</span></div>
+    <div class="toolcard" data-a="up" style="--d:4"><img src="../assets/logos/claude.svg" alt=""><h4>Claude Code</h4><p>Агент Anthropic: сам создает проект, запускает, видит ошибки, исправляет, коммитит и деплоит.</p><span class="pr">От Pro 20 $ · Max 100 и 200 $</span></div>
+  </div>
+  <p class="small muted" data-a="fade" style="margin-top:24px">Еще: v0 (Vercel), Bolt.new, Cursor, Antigravity (Google), Framer AI, Canva Code. В России без ограничений: GigaChat, Алиса AI.</p>
+</section>
+
+<section class="slide paper2" data-title="Так выглядят инструменты">
+  <div class="run"><span>11 · AI</span><span>скриншоты из браузера, октябрь 2026</span></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:28px;flex:1;min-height:0">
+    <div style="grid-row:span 2" class="col" data-a="up"><div class="bf" style="height:100%"><div class="bar"><i></i><i></i><i></i><span>lovable.dev</span></div><img src="screens/lovable.webp" alt="lovable.dev" loading="lazy"></div></div>
+    <div data-a="up" style="--d:1;min-height:0"><div class="bf" style="height:100%"><div class="bar"><i></i><i></i><i></i><span>ai.google.dev · Build mode</span></div><img src="screens/aistudio.webp" alt="ai.google.dev · Build mode" loading="lazy"></div></div>
+    <div data-a="up" style="--d:2;min-height:0"><div class="bf" style="height:100%"><div class="bar"><i></i><i></i><i></i><span>openai.com · ChatGPT Sites</span></div><img src="screens/chatgptsites.webp" alt="openai.com · ChatGPT Sites" loading="lazy"></div></div>
+    <div data-a="up" style="--d:3;min-height:0"><div class="bf" style="height:100%"><div class="bar"><i></i><i></i><i></i><span>claude.com · Claude Code</span></div><img src="screens/claudecode.webp" alt="claude.com · Claude Code" loading="lazy"></div></div>
+    <div data-a="up" style="--d:4;min-height:0"><div class="bf" style="height:100%"><div class="bar"><i></i><i></i><i></i><span>v0.app</span></div><img src="screens/v0.webp" alt="v0.app" loading="lazy"></div></div>
+  </div>
+</section>
+
+<section class="slide paper2" data-title="Доступность и ограничения">
+  <div class="run"><span>11 · AI</span><span>Сказать честно</span></div>
+  <div class="g2 grow">
+    <div class="col">
+      <h2 class="h-m" data-a="up">Доступ из России</h2>
+      <p class="txt" data-a="up" style="--d:1">OpenAI, Anthropic и Google официально не предоставляют AI-сервисы в России, российские карты не работают.</p>
+      <p class="txt" data-a="up" style="--d:2">GigaChat и Алиса AI работают без ограничений. Для текстов, офферов, структуры и простого HTML-файла их хватает.</p>
+      <span class="tag fill" data-a="up" style="--d:3;align-self:flex-start">Проверяйте доступ заранее</span>
+    </div>
+    <div class="col">
+      <h2 class="h-m" data-a="up">Где AI ошибается</h2>
+      <div class="cell" data-a="up" style="--d:1"><p><b>Одинаковость.</b> Без брифа все сайты похожи.</p></div>
+      <div class="cell" data-a="up" style="--d:2"><p><b>Поломки.</b> Сохраняйте версии, везде есть откат.</p></div>
+      <div class="cell" data-a="up" style="--d:3"><p><b>Безопасность.</b> Ключи и токены иногда оказываются в открытом коде.</p></div>
+      <div class="cell" data-a="up" style="--d:4"><p><b>Факты.</b> Цены, отзывы и адреса выдуманы. Заменяйте.</p></div>
+      <div class="cell" data-a="up" style="--d:5"><p><b>Закон.</b> Про 152-ФЗ нужно написать в промпте.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide practice" data-title="Практика 1: генерируем сайт">
+  <div class="run"><span>Практика 1 из 3</span><span>10 минут</span></div>
+  <div class="g2 grow" style="grid-template-columns:1.2fr .8fr;gap:60px">
+    <div class="col">
+      <span class="tag-p" data-a="fade">Все за ноутбуки и телефоны</span>
+      <h2 class="h-l" data-a="up" style="margin-top:20px">Генерируем сайт по нашему брифу</h2>
+      <ol class="steps2" style="margin-top:20px">
+        <li data-a="up" style="--d:2"><span><b>Скопируйте промпт</b> из брифа группы (ссылку пришлю в чат)</span></li>
+        <li data-a="up" style="--d:3"><span><b>Выберите платформу:</b> Google AI Studio (бесплатно), Lovable, ChatGPT, Claude, GigaChat</span></li>
+        <li data-a="up" style="--d:4"><span><b>Сделайте одну правку</b> своими словами: «сделай дороже», «замени цвет»</span></li>
+      </ol>
+    </div>
+    <div class="col center interactive" style="gap:20px">
+      <div class="timer" data-min="10" title="Нажмите, чтобы запустить">10:00</div>
+      <span class="mono small" style="opacity:.6">нажмите на таймер</span>
+    </div>
+  </div>
+  <template class="n"><p>Пока все генерируют, сами делаете то же самое на проекторе (Lovable или AI Studio). Ходите по аудитории, помогайте. Кто без доступа к зарубежным сервисам: GigaChat или Алиса AI, промпт «выдай один файл index.html целиком».</p></template>
+</section>
+
+<section class="slide practice" data-title="Практика 2: забираем код">
+  <div class="run"><span>Практика 2 из 3</span><span>5 минут</span></div>
+  <h2 class="h-l" data-a="up">Забираем код себе</h2>
+  <div class="g4" style="margin-top:44px;gap:30px">
+    <div class="cell" data-a="up" style="--d:1"><span class="k">Google AI Studio</span><p>Кнопка скачивания проекта (Download / Export) или «Export to GitHub». Получите ZIP с проектом.</p></div>
+    <div class="cell" data-a="up" style="--d:2"><span class="k">Lovable</span><p>Подключите GitHub в настройках проекта: код сам появится в репозитории.</p></div>
+    <div class="cell" data-a="up" style="--d:3"><span class="k">ChatGPT, Claude, GigaChat</span><p>Попросите: «Выдай сайт одним файлом index.html, CSS и JS внутри». Сохраните текст в файл.</p></div>
+    <div class="cell" data-a="up" style="--d:4"><span class="k">Проверка</span><p>Дважды кликните по index.html. Открылся в браузере? Значит, это и есть сайт.</p></div>
+  </div>
+  <div class="box" style="margin-top:auto;background:#262624;padding:30px" data-a="up"><p class="txt" style="color:#fff;max-width:none;margin:0"><b style="color:var(--lime)">Главный момент пары:</b> сайт это просто файл. Его можно положить куда угодно, и он будет работать.</p></div>
+</section>
+
+<section class="slide practice" data-title="Практика 3: GitHub Pages">
+  <div class="run"><span>Практика 3 из 3</span><span>10 минут · без терминала</span></div>
+  <div class="g2 grow" style="grid-template-columns:1fr 1fr;gap:60px">
+    <div class="col">
+      <h2 class="h-m" data-a="up">Публикуем на GitHub Pages</h2>
+      <ol class="steps2" style="margin-top:14px">
+        <li data-a="up" style="--d:1"><span><b>New repository</b>, имя <code>my-site</code>, Public</span></li>
+        <li data-a="up" style="--d:2"><span><b>Add file</b>, затем <b>Upload files</b>: перетащите index.html, нажмите Commit</span></li>
+        <li data-a="up" style="--d:3"><span><b>Settings</b>, раздел <b>Pages</b>: Deploy from a branch, main, / (root), Save</span></li>
+        <li data-a="up" style="--d:4"><span>Через 1-2 минуты сайт по адресу <code>имя.github.io/my-site</code></span></li>
+      </ol>
+    </div>
+    <div class="col" data-a="right" style="--d:2;min-height:0">
+      <div class="bf" style="height:520px;box-shadow:10px 10px 0 #000"><div class="bar"><i></i><i></i><i></i><span>docs.github.com · GitHub Pages</span></div><img src="screens/ghpages.webp" alt="Документация GitHub Pages"></div>
+      <div class="row" style="align-items:center;gap:24px;margin-top:20px"><div class="qr" style="width:150px;height:150px;padding:10px"><img src="screens/qr-ghpages-docs.svg" alt="QR-код инструкции GitHub Pages"></div><span class="small" style="color:#ccc">Официальная инструкция на русском</span></div>
+    </div>
+  </div>
+  <template class="n"><p>Если GitHub пишет «Доступ ограничен», выключить VPN. Если сайт 404: подождать 2 минуты, проверить, что файл называется index.html (маленькими буквами) и лежит в корне.</p></template>
+</section>
+
+<section class="slide practice" data-title="Практика 3б: React-проект локально">
+  <div class="run"><span>Для тех, кто успел</span><span>React / Vite из AI Studio или Lovable</span></div>
+  <div class="g2 grow" style="gap:60px">
+    <div class="col">
+      <h2 class="h-m" data-a="up">Собираем проект на своем компьютере</h2>
+      <ol class="steps2" style="margin-top:14px">
+        <li data-a="up" style="--d:1"><span>Установите <b>Node.js LTS</b> с nodejs.org</span></li>
+        <li data-a="up" style="--d:2"><span>Распакуйте ZIP, откройте папку в терминале</span></li>
+        <li data-a="up" style="--d:3"><span><code>npm install</code>, потом <code>npm run dev</code>: сайт на localhost</span></li>
+        <li data-a="up" style="--d:4"><span><code>npm run build</code> создаст папку <code>dist</code></span></li>
+        <li data-a="up" style="--d:5"><span>Загрузите содержимое <code>dist</code> в репозиторий, как в практике 3</span></li>
+      </ol>
+    </div>
+    <div class="col" style="justify-content:center;gap:26px">
+      <pre class="prompt" data-a="right" style="font-size:22px">// vite.config.ts
+export default defineConfig({
+  <em>base: '/my-site/',</em>
+  plugins: [react()],
+})</pre>
+      <p class="small" style="color:#ccc" data-a="up">Без строки <b>base</b> на GitHub Pages будет белый экран: сайт ищет файлы в корне домена, а лежит в папке репозитория. Самый частый вопрос после пары.</p>
+    </div>
+  </div>
+  <template class="n"><p>Если не успели: это домашнее задание. Попросить нейросеть: «Объясни по шагам, как собрать этот Vite-проект и опубликовать на GitHub Pages, я на Windows».</p></template>
+</section>
+
+<section class="slide story" data-title="История 04: Git push, и код уже проверен">
+  <div class="run"><span>История из опыта</span><span>04</span></div>
+  <span class="lbl" data-a="rot">история из опыта</span>
+  <h2 data-a="up" style="--d:1">Git push, и&nbsp;код уже проверен</h2>
+  <div class="beats"><div data-a="up" style="--d:2"><span>Проект</span><p>Я делаю kornishon: платформу, где разработчики решают реальные задачи и отправляют код через Git.</p></div><div data-a="up" style="--d:3"><span>Как работает</span><p>Человек делает git push, а автоматика сама запускает проверки: линтер, тесты, нагрузку. Никто не носит файлы руками.</p></div><div data-a="up" style="--d:4"><span>Для вас</span><p>Вы сегодня сделали первый шаг того же пути: код лежит в GitHub и сам превращается в сайт. Дальше можно настроить автодеплой.</p></div></div>
+  <template class="n"><p>Коротко, 1 минута. Если есть время, покажите, как GitHub Actions публикует сайт при каждом пуше (вкладка Actions в репозитории).</p></template>
+</section>
+
+<section class="slide lime" data-title="Показываем ссылки">
+  <div class="run"><span>Финал практики</span><span>3 минуты</span></div>
+  <div class="grow col center" style="align-items:flex-start">
+    <h2 class="h-xl split" style="font-size:150px">Кидайте ссылки в чат</h2>
+    <p class="lead" data-a="up" style="--d:5;margin-top:30px;max-width:40ch">Открываем 3-4 сайта на проекторе. Ищем вместе: где получилось, где вылез ИИ-шаблон, что бы вы поправили одной фразой.</p>
+  </div>
+  <template class="n"><p>Похвалить конкретное. Найти на одном сайте 2-3 признака слопа по памятке 01 и показать, какой фразой их убрать.</p></template>
+</section>
+
+<section class="slide" data-title="Промпт-шаблон">
+  <div class="run"><span>11 · Демо</span><span>Основной шаблон</span></div>
+  <div class="g2 grow" style="grid-template-columns:1.25fr 1fr;gap:60px">
+    <pre class="prompt" data-a="up" style="font-size:22px;line-height:1.5">Создай современный одностраничный продающий лендинг на русском.
+
+БИЗНЕС: <em>[название, что продаем, город]</em>
+АУДИТОРИЯ: <em>[кто клиент, чего хочет, чего боится]</em>
+ОТЛИЧИЕ: <em>[УТП]</em>
+ДЕЙСТВИЕ: <em>[записаться / купить / позвонить]</em>
+СТИЛЬ: <em>[настроение]</em>, шрифты Google Fonts с кириллицей,
+mobile first, анимации при скролле.
+Избегай шаблонного вида AI-сайтов: никаких фиолетовых
+градиентов и одинаковых карточек с иконками в кружках.
+
+СТРУКТУРА: шапка, первый экран с оффером и кнопкой,
+цифры доверия, боли, услуги с ценами, 4 шага, отзывы,
+FAQ, форма (имя, телефон, обязательный чекбокс согласия
+на обработку персональных данных), футер.
+
+SEO: title, description, Open Graph, один H1.</pre>
+    <div class="col">
+      <h2 class="h-m" data-a="up">Правки одной фразой</h2>
+      <div class="cell" data-a="up" style="--d:2"><span class="k">Дизайн</span><p>«Сделай дороже: больше воздуха, крупнее заголовки, один акцентный цвет»</p></div>
+      <div class="cell" data-a="up" style="--d:3"><span class="k">Тексты</span><p>«Короче и конкретнее, выгоды вместо характеристик, без канцелярита»</p></div>
+      <div class="cell" data-a="up" style="--d:4"><span class="k">Телефон</span><p>«Проверь 375px, кнопки от 44px, закрепи запись внизу»</p></div>
+      <div class="cell" data-a="up" style="--d:5"><span class="k">Стиль</span><p>«Сделай в стиле New Rococo» и блок стиля из гайдбука</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ГЛАВА 12 -->
+<section class="slide blue chapter" data-title="12 · Итоги" data-chapter="1">
+  <div class="run"><span>Глава</span><span>5 минут</span></div>
+  <div class="grow col end"><p class="eyebrow" data-a="fade">Блок 12</p><h2 class="split">Итоги и вопросы</h2></div>
+  <div class="bignum" data-a="up" style="--d:4">12</div>
+</section>
+
+<section class="slide" data-title="10 шагов до лендинга">
+  <div class="run"><span>12 · Итоги</span><span>Лендинг за вечер</span></div>
+  <h2 class="h-m" data-a="up">От идеи до заявок за 10 шагов</h2>
+  <div class="rules" style="margin-top:50px">
+    <div class="r" data-a="up" style="--d:1"><b>01</b><h4>5 вопросов</h4><p>Что, кому, почему мы, действие, настроение</p></div>
+    <div class="r" data-a="up" style="--d:2"><b>02</b><h4>ТЗ</h4><p>Через ChatGPT или GigaChat</p></div>
+    <div class="r" data-a="up" style="--d:3"><b>03</b><h4>Генерация</h4><p>Lovable или Google AI Studio</p></div>
+    <div class="r" data-a="up" style="--d:4"><b>04</b><h4>Правки</h4><p>Тексты, дизайн, телефон</p></div>
+    <div class="r" data-a="up" style="--d:5"><b>05</b><h4>Реальное</h4><p>Фото, цены, отзывы, контакты</p></div>
+    <div class="r" data-a="up" style="--d:6"><b>06</b><h4>152-ФЗ</h4><p>Политика и чекбокс согласия</p></div>
+    <div class="r" data-a="up" style="--d:7"><b>07</b><h4>Заявки</h4><p>Telegram, почта, CRM</p></div>
+    <div class="r" data-a="up" style="--d:8"><b>08</b><h4>Домен .ru</h4><p>Хостинг в России, HTTPS</p></div>
+    <div class="r" data-a="up" style="--d:9"><b>09</b><h4>Метрика</h4><p>Цели и Вебмастер</p></div>
+    <div class="r" data-a="up" style="--d:10"><b>10</b><h4>Реклама</h4><p>И смотреть на конверсию</p></div>
+  </div>
+</section>
+
+<section class="slide story" data-title="История 05: Клиент покупает заявки, а не сайт">
+  <div class="run"><span>История из опыта</span><span>05</span></div>
+  <span class="lbl" data-a="rot">история из опыта</span>
+  <h2 data-a="up" style="--d:1">Клиент покупает заявки, а&nbsp;не&nbsp;сайт</h2>
+  <div class="beats"><div data-a="up" style="--d:2"><span>Контекст</span><p>Я выкладываю услуги на биржи фриланса: лендинги, боты, автоматизация, ИИ-агенты для бизнеса.</p></div><div data-a="up" style="--d:3"><span>Что понял</span><p>Заказчику неважно, на чем сайт. Ему важно, сколько придет заявок и как быстро. Продается результат.</p></div><div data-a="up" style="--d:4"><span>Для вас</span><p>Маркетолог, который умеет за вечер собрать лендинг с аналитикой, продает именно результат. Это уже профессия.</p></div></div>
+  <template class="n"><p>Подставьте свои цифры и случаи: что заказывают, сколько стоит лендинг на биржах, что клиенты спрашивают первым.</p></template>
+</section>
+
+<section class="slide dark" data-title="Финальная мысль">
+  <div class="run"><span>12 · Итоги</span><span>Главное</span></div>
+  <div class="grow col center" style="align-items:flex-start">
+    <h2 class="h-xl split" style="font-size:150px">Код больше не барьер.</h2>
+    <p class="lead" data-a="up" style="--d:6;color:#ccc;max-width:44ch;margin-top:40px">Барьер в другом: знать, кому продаете, что обещаете и почему вам поверят. Пользуйтесь AI каждый день, запускайтесь быстро, проверяйте гипотезы на людях.</p>
+    <p class="note-hand" data-a="rot" style="--d:9;color:var(--lime);font-size:64px;margin-top:40px">Сегодня вы узнали, что эти знания существуют</p>
+  </div>
+</section>
+
+<section class="slide lime" data-title="Вопросы и материалы">
+  <div class="run"><span>Спасибо</span><span>Вопросы</span></div>
+  <h2 class="h-mega split" style="font-size:250px;margin-top:40px">Вопросы?</h2>
+  <p class="eyebrow" data-a="fade" style="--d:4;margin-top:auto">Что в архиве</p>
+  <div class="g4">
+    <div class="cell" data-a="up" style="--d:5"><span class="k">presentation</span><p>Эта презентация с заметками (N) и оглавлением (M)</p></div>
+    <div class="cell" data-a="up" style="--d:6"><span class="k">sites</span><p>8 живых сайтов в трендах 2026, у каждого плашка «О стиле»</p></div>
+    <div class="cell" data-a="up" style="--d:7"><span class="k">guide</span><p>Гайдбук: референсы, шрифты, промпты по стилям, чек-листы</p></div>
+    <div class="cell" data-a="up" style="--d:8"><span class="k">assets</span><p>Шрифты с кириллицей, anime.js, GSAP, Motion, фото</p></div>
+  </div>
+</section>
+
+
+
+
+
+</div><div id="grain"></div></div>
+
+<div id="ui">
+  <button id="bPrev" aria-label="Назад">Назад</button>
+  <span class="count num">1 / 1</span>
+  <button id="bNext" aria-label="Вперед">Вперед</button>
+  <div class="prog"><i></i></div>
+  <button id="bMenu">Оглавление (M)</button>
+  <button id="bNotes">Заметки (N)</button>
+  <button id="bFs">Экран (F)</button>
+</div>
+<div id="notes" hidden><h5>Заметки</h5><div></div></div>
+<div id="menu" hidden><div class="close"><button>Закрыть</button></div><ol></ol></div>
+<div id="hint">Стрелки или свайп · M оглавление · N заметки · F полный экран</div>
+
+<script src="../assets/js/anime.min.js"></script>
+<script src="deck.js"></script>
+
+</body></html>

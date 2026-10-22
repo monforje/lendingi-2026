@@ -1,0 +1,105 @@
+<meta charset="utf-8">
+<title>Набор лектора Медиаком</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Стартовая страница архива. Бумага, чернила, ультрамарин, как в презентации. */
+:root{--paper:#EFEFEB;--ink:#121212;--ink2:#5a5a54;--line:#cfcfc7;--blue:#2335FF;--lime:#C6F432;--card:#fff;
+  --f-d:'Unbounded','Arial Black',sans-serif;--f-t:'Onest',Arial,sans-serif;--f-m:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#131313;--ink:#EDEDE7;--ink2:#a3a39b;--line:#2c2c2a;--blue:#6a78ff;--card:#1c1c1b;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#131313;--ink:#EDEDE7;--ink2:#a3a39b;--line:#2c2c2a;--blue:#6a78ff;--card:#1c1c1b;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.5 var(--f-t)}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+.top{display:flex;justify-content:space-between;gap:16px;font:500 13px/1.3 var(--f-m);text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);flex-wrap:wrap}
+h1{font:900 clamp(48px,11vw,150px)/.86 var(--f-d);letter-spacing:-.05em;margin:40px 0 24px;text-wrap:balance}
+.lead{font-size:clamp(18px,2vw,22px);max-width:56ch;margin:0 0 40px;color:var(--ink2)}
+.main{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-bottom:56px}
+.big{display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:28px;min-height:280px;text-decoration:none;color:inherit;transition:transform .25s}
+.big:hover{transform:translateY(-4px)}
+.big.deck{background:var(--blue);color:#fff}
+.big.guide{background:var(--lime);color:#121212}
+.main2{grid-template-columns:1fr 1fr;margin-top:-36px}
+.big.brief{background:#121212;color:#fff}
+.big.scen{background:#ff5a1f;color:#121212}
+.big b{font:800 clamp(28px,4vw,48px)/1 var(--f-d);letter-spacing:-.03em}
+.big span{font:500 13px var(--f-m);text-transform:uppercase;letter-spacing:.06em;opacity:.8}
+.big p{margin:0;max-width:40ch}
+h2{font:700 clamp(26px,3.4vw,40px)/1 var(--f-d);letter-spacing:-.02em;margin:0 0 20px}
+.sites{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 20px;margin-bottom:56px}
+.site{text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:10px;min-width:0}
+.site .im{aspect-ratio:16/10;background:var(--line);overflow:hidden;max-width:100%}
+.site img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s}
+.site:hover img{transform:scale(1.04)}
+.site small{font:500 12px var(--f-m);color:var(--ink2);text-transform:uppercase;letter-spacing:.06em}
+.site b{font:700 18px/1.2 var(--f-t)}
+.site p{margin:0;font-size:14px;color:var(--ink2)}
+.refs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:56px}
+.refs a{display:block;aspect-ratio:4/5;overflow:hidden;max-width:100%}
+.refs img{width:100%;height:100%;object-fit:cover}
+.memos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:56px}
+.memo{background:var(--card);padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:6px;border-top:3px solid var(--ink);transition:transform .2s}
+.memo:hover{transform:translateY(-3px)}
+.memo small{font:500 12px var(--f-m);color:var(--blue)}
+.memo b{font:700 19px/1.15 var(--f-d)}
+.memo p{margin:0;font-size:14px;color:var(--ink2)}
+.lead a{color:var(--blue)}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.howto div{border-top:2px solid var(--ink);padding-top:14px}
+.howto h3{font:700 18px var(--f-t);margin:0 0 6px}
+.howto p{margin:0;color:var(--ink2);font-size:15px}
+kbd{font:500 13px var(--f-m);border:1px solid var(--line);padding:1px 6px;border-radius:4px}
+a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+@media (max-width:900px){.memos{grid-template-columns:1fr 1fr}.main{grid-template-columns:1fr}.sites{grid-template-columns:1fr 1fr}.refs{grid-template-columns:repeat(3,1fr)}.howto{grid-template-columns:1fr}}
+@media (max-width:480px){.sites{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div class="top"><span>Лекция для Медиакома</span><span>Даниил Комаров · октябрь 2026</span></div>
+  <h1>Сайты, что продают</h1>
+  <p class="lead">Набор лектора: презентация, сквозной бриф для интерактива, сценарий пары на бумаге, восемь живых сайтов в трендах 2026, гайдбук с референсами и промптами, восемь PDF-памяток, шрифты и библиотеки анимаций. Всё работает без интернета.</p>
+
+  <div class="main">
+    <a class="big deck" href="presentation/index.html"><span>Открыть первым</span><b>Презентация, 95 слайдов</b><p>Стрелки или свайп для перелистывания. <kbd>N</kbd> заметки лектора, <kbd>M</kbd> оглавление, <kbd>F</kbd> полный экран.</p></a>
+    <a class="big guide" href="guide/index.html"><span>Справочник</span><b>Гайдбук</b><p>Референсы по каждому тренду, шрифты с кириллицей, промпты стилей, чек-листы, словарь.</p></a>
+  </div>
+  <div class="main main2">
+    <a class="big brief" href="brief/index.html"><span>Вывести на проектор</span><b>Сквозной бриф</b><p>13 пустых полей, которые группа заполняет по ходу пары. Внизу собирается готовый промпт для Lovable, AI Studio, ChatGPT и Claude. Кнопка «Пример: барбершоп», если группа молчит.</p></a>
+    <a class="big scen" href="pdf/00-scenarij-lektora.pdf"><span>Только для лектора, распечатать</span><b>Сценарий пары</b><p>10 страниц А4: тайминг, что говорить, когда заполнять бриф, истории, практика с GitHub Pages, ответы на вопросы и рабочий лист для группы.</p></a>
+  </div>
+
+  <h2>PDF-памятки для студентов</h2>
+  <p class="lead" style="margin-bottom:20px">Можно раздать файлами или распечатать на А4. <a href="pdf/00-vse-pamyatki.pdf">Все памятки одним файлом</a>, 27 страниц.</p>
+  <div class="memos"><a class="memo" href="pdf/01-anti-ii.pdf"><small>01</small><b>Анти-ИИ</b><p>Штампы ИИ-дизайна и ИИ-текстов, что делать вместо. 4 стр.</p></a><a class="memo" href="pdf/02-cheklist-lendinga.pdf"><small>02</small><b>Чек-лист лендинга</b><p>40 пунктов и тест 5 секунд. 2 стр.</p></a><a class="memo" href="pdf/03-lending-za-vecher.pdf"><small>03</small><b>Лендинг за вечер</b><p>Рабочий лист, план на 4 часа, промпты. 3 стр.</p></a><a class="memo" href="pdf/04-trendy-2026.pdf"><small>04</small><b>Тренды 2026</b><p>9 стилей: признаки, палитра, шрифты, блок для промпта. 10 стр.</p></a><a class="memo" href="pdf/05-skorost-i-seo.pdf"><small>05</small><b>Скорость и SEO</b><p>Core Web Vitals, SEO-минимум, Яндекс и GEO. 2 стр.</p></a><a class="memo" href="pdf/06-zapusk-v-rossii.pdf"><small>06</small><b>Запуск в России</b><p>Домен, хостинг, деплой, 152-ФЗ, реклама. 2 стр.</p></a><a class="memo" href="pdf/07-shrifty-i-animacii.pdf"><small>07</small><b>Шрифты и анимации</b><p>Шрифты с кириллицей, пары, библиотеки, reactbits. 2 стр.</p></a><a class="memo" href="pdf/08-slovar.pdf"><small>08</small><b>Словарь</b><p>36 терминов простыми словами. 2 стр.</p></a></div>
+
+  <h2>Восемь сайтов-примеров</h2>
+  <div class="sites">
+    <a class="site" href="sites/01-oversize/index.html"><div class="im"><img src="assets/thumbs/01.webp" alt="Сайт ТУМАН" loading="lazy"></div><small>01 · Oversize</small><b>ТУМАН</b><p>Одежда для ветра и моря</p></a>
+    <a class="site" href="sites/02-editorial/index.html"><div class="im"><img src="assets/thumbs/02.webp" alt="Сайт СДВИГ" loading="lazy"></div><small>02 · Editorial + модульная</small><b>СДВИГ</b><p>Журнал и фестиваль культуры</p></a>
+    <a class="site" href="sites/03-bento/index.html"><div class="im"><img src="assets/thumbs/03.webp" alt="Сайт МАЯК" loading="lazy"></div><small>03 · Bento box</small><b>МАЯК</b><p>Обжарка и кофейня</p></a>
+    <a class="site" href="sites/04-new-rococo/index.html"><div class="im"><img src="assets/thumbs/04.webp" alt="Сайт Мох и Роза" loading="lazy"></div><small>04 · New Rococo</small><b>Мох и Роза</b><p>Натуральная косметика</p></a>
+    <a class="site" href="sites/05-ascii/index.html"><div class="im"><img src="assets/thumbs/05.webp" alt="Сайт СИГНАЛ" loading="lazy"></div><small>05 · ASCII art</small><b>СИГНАЛ</b><p>Конференция о технологиях и природе</p></a>
+    <a class="site" href="sites/06-punk-grunge/index.html"><div class="im"><img src="assets/thumbs/06.webp" alt="Сайт ГАРАЖ" loading="lazy"></div><small>06 · Punk grunge</small><b>ГАРАЖ</b><p>DIY-фестиваль на Эгершельде</p></a>
+    <a class="site" href="sites/07-naive/index.html"><div class="im"><img src="assets/thumbs/07.webp" alt="Сайт Пломбир с Седанки" loading="lazy"></div><small>07 · Naive</small><b>Пломбир с Седанки</b><p>Фермерское мороженое</p></a>
+    <a class="site" href="sites/08-trinket/index.html"><div class="im"><img src="assets/thumbs/08.webp" alt="Сайт Мелочи" loading="lazy"></div><small>08 · Trinket</small><b>Мелочи</b><p>Селект-шоп подарков</p></a>
+  </div>
+
+  <h2>Референсы трендов</h2>
+  <div class="refs">
+    <a href="references/setters-trends/clean/01-new-rococo.png"><img src="references/setters-trends/clean/01-new-rococo.png" alt="New Rococo" loading="lazy"></a>
+    <a href="references/setters-trends/clean/02-ascii-art.png"><img src="references/setters-trends/clean/02-ascii-art.png" alt="ASCII Art" loading="lazy"></a>
+    <a href="references/setters-trends/clean/03-punk-grunge.png"><img src="references/setters-trends/clean/03-punk-grunge.png" alt="Punk grunge" loading="lazy"></a>
+    <a href="references/setters-trends/clean/05-editorial-design.png"><img src="references/setters-trends/clean/05-editorial-design.png" alt="Editorial Design 2.0" loading="lazy"></a>
+    <a href="references/setters-trends/clean/06-naive-design.png"><img src="references/setters-trends/clean/06-naive-design.png" alt="Naive design" loading="lazy"></a>
+    <a href="references/setters-trends/clean/07-trinket-design.png"><img src="references/setters-trends/clean/07-trinket-design.png" alt="Trinket design" loading="lazy"></a>
+  </div>
+
+  <h2>Как пользоваться</h2>
+  <div class="howto">
+    <div><h3>На лекции</h3><p>Откройте presentation/index.html в Chrome, нажмите F. Заметки к каждому слайду по клавише N.</p></div>
+    <div><h3>Показать пример</h3><p>На слайдах трендов есть кнопка «Открыть пример». В каждом сайте кнопка «О стиле» объясняет шрифты и анимации.</p></div>
+    <div><h3>Взять себе</h3><p>Шрифты и библиотеки в папке assets. Фото с Unsplash по свободной лицензии, логотипы из simple-icons.</p></div>
+  </div>
+</div>
